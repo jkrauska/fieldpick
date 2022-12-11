@@ -1,1 +1,4 @@
 env
+secret.json
+__pycache__
+data/*.pkl
