@@ -81,6 +81,75 @@ cFrame = add_time_slots(
 )
 
 ##################################################
+## Paul Goode
+cFrame = add_time_slots(
+    fields=["Paul Goode Practice"],
+    days_of_week="Saturday",
+    start_day="3/11/2023",
+    end_day="5/27/2023",
+    times=[("11:00", "12:30"),("12:30", "14:00")],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    fields="Paul Goode Practice",
+    days_of_week="Sunday",
+    start_day="2/25/2023",
+    end_day="5/27/2023",
+    times=[("9:00", "10:30"),("10:30", "12:00")],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    fields="Paul Goode Main",
+    days_of_week="Sunday",
+    start_day="2/25/2023",
+    end_day="5/27/2023",
+    times=[("15:00", "18:00")],
+    input=cFrame,
+)
+##################################################
+
+# RecPark Weekdays
+
+cFrame = add_time_slots(
+    fields=["Kimbell D1 NW", "Kimbell D2 SE", "Kimbell D3 SW"],
+    days_of_week="Wednesday",
+    start_day="3/8/2023",
+    end_day="5/27/2023",
+    times=[("17:30", "20:00")],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    fields=["McCoppin"],
+    days_of_week="Tuesday",
+    start_day="3/7/2023",
+    end_day="5/27/2023",
+    times=[("17:30", "20:00")],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    fields=["South Sunset D2 South"],
+    days_of_week=["Tuesday", "Thursday", "Friday"],
+    start_day="3/7/2023",
+    end_day="5/27/2023",
+    times=[("17:30", "20:00")],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    fields=["South Sunset D1 North"],
+    days_of_week=["Friday"],
+    start_day="3/7/2023",
+    end_day="5/27/2023",
+    times=[("17:30", "20:00")],
+    input=cFrame,
+)
+
+
+##################################################
 # Cleanup
 cFrame.sort_values(by=["Datestamp"], inplace=True, ignore_index=True)
 

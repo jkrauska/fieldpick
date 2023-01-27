@@ -1,9 +1,12 @@
 import calendar
 from datetime import datetime, timedelta
 import pandas as pd
+import sys
 
 from inputs import blackout_days, week_split_data, field_info
+import logging
 
+logger = logging.getLogger()
 
 
 # Helper date conversion functions
@@ -32,6 +35,10 @@ def add_time_slots(
     only_days=None,
     input=pd.DataFrame(),
 ):
+
+
+    if isinstance(fields, str):
+        fields = [fields]
 
     output = pd.DataFrame()
 
@@ -62,7 +69,7 @@ def add_time_slots(
         # Apply for multiple fields
         for field in fields:
             for (start_time, end_time) in times:
-                # print(f"{day_of_week} {single_date.date()} {start_time}-{end_time} {field}")
+                logger.info(f"Creating slot for {day_of_week} {single_date.date()} {start_time}-{end_time} {field}")
                 (hours, minutes) = start_time.split(":")
                 datestamp = single_date + timedelta(
                     hours=int(hours), minutes=int(minutes)
@@ -95,6 +102,9 @@ def add_time_slots(
                     Game_ID=None,
                 )
                 # adds field data
+                if field not in field_data:
+                    logger.error(f"ERROR Field {field} not found in field data -- check inputs.py")
+                    sys.exit(1)
                 for (key, value) in field_data[field].items():
                     if key == "field_name":
                         continue  # redundant

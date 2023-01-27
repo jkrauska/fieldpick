@@ -95,6 +95,12 @@ field_info = {
         "type": "turf",
         "infield": "turf",
     },
+    "Kimbell D3 SW": {
+        "location": "SF",
+        "size": "46/60",
+        "type": "turf",
+        "infield": "turf",
+    },
     "Lang D1": {
         "location": "SF",
         "size": "46/60",
@@ -173,13 +179,13 @@ field_info = {
         "type": "grass",
         "infield": "grass",
     },
-    "SouthSunset D1 North": {
+    "South Sunset D1 North": {
         "location": "SF",
         "size": "46/60",
         "type": "turf",
         "infield": "turf",
     },
-    "SouthSunset D2 South": {
+    "South Sunset D2 South": {
         "location": "SF",
         "size": "46/60",
         "type": "turf",

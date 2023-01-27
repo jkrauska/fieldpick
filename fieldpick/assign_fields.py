@@ -1,6 +1,5 @@
 import pandas as pd
 import logging
-import random
 
 
 
@@ -11,7 +10,7 @@ logger = logging.getLogger()
 
 
 # Load calendar
-logger.info("Loading calendar"
+logger.info("Loading calendar")
 save_file = "data/calendar.pkl"
 cFrame = pd.read_pickle(save_file)
 

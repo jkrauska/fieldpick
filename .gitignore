@@ -2,3 +2,5 @@ env
 secret.json
 __pycache__
 data/*.pkl
+.venv
+fieldpick/data/*.pkl

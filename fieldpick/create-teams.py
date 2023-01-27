@@ -1,6 +1,5 @@
 import pandas as pd
 import logging
-import random
 from inputs import division_info
 
 logging.basicConfig(
