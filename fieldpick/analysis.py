@@ -1,13 +1,9 @@
 import pandas as pd
 import logging
-import sys
-from inputs import division_info
-from frametools import list_teams_for_division, weeks_in_season, save_frame, score_frame, clear_division, analyze_columns
-from faceoffs import faceoffs_repeated
+from frametools import analyze_columns
 from gsheets import publish_df_to_gsheet
 
 
-from random import shuffle, seed
 
 logging.basicConfig(
     format="%(asctime)s %(levelname)s\t%(message)s",

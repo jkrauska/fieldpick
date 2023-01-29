@@ -1,6 +1,5 @@
 import pandas as pd
 import logging
-import sys
 from inputs import division_info
 from frametools import list_teams_for_division, weeks_in_season, save_frame, score_frame, clear_division, reserve_slots
 from faceoffs import faceoffs_repeated

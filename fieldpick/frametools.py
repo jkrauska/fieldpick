@@ -163,8 +163,6 @@ def analyze_columns(cFrame):
                 "Wednesday": len(team_frame[team_frame["Day_of_Week"] == "Wednesday"]),
                 "Thursday": len(team_frame[team_frame["Day_of_Week"] == "Thursday"]),
                 "Friday": len(team_frame[team_frame["Day_of_Week"] == "Friday"]),
-                "Saturday": len(team_frame[team_frame["Day_of_Week"] == "Saturday"]),
-                "Sunday": len(team_frame[team_frame["Day_of_Week"] == "Sunday"]),
                 "Week 1": len(team_frame[team_frame["Week_Name"] == "Week 1"]),
                 "Week 2": len(team_frame[team_frame["Week_Name"] == "Week 2"]),
                 "Week 3": len(team_frame[team_frame["Week_Name"] == "Week 3"]),
@@ -197,7 +195,6 @@ def analyze_columns(cFrame):
                 "Vs Team 14": len(team_frame[team_frame["Away_Team"] == "Team 14"]) + len(team_frame[team_frame["Home_Team"] == "Team 14"]),
                 "TI": len(team_frame[team_frame["location"] == "TI"]),
                 "SF": len(team_frame[team_frame["location"] == "SF"]),
-
             }
 
             for field in extract_field_names(cFrame):

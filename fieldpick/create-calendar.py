@@ -1,7 +1,6 @@
 from helpers import add_time_slots, fort_scott, tepper_ketcham, weekdays
 import pandas as pd
 import logging
-import sys
 from frametools import save_frame
 
 logging.basicConfig(

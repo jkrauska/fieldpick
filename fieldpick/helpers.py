@@ -10,17 +10,13 @@ import logging
 from astral import LocationInfo
 
 
-
 # import datetime
 from astral.sun import sun
 
-loc = LocationInfo(name='SJC', region='CA, USA', timezone='America/Los_Angeles',
-                   latitude=37.3713439, longitude=-121.944675)
+loc = LocationInfo(name="SJC", region="CA, USA", timezone="America/Los_Angeles", latitude=37.3713439, longitude=-121.944675)
 
 
 logger = logging.getLogger()
-
-
 
 
 # Helper date conversion functions
@@ -93,7 +89,6 @@ def add_time_slots(
 
                 sun_info = sun(loc.observer, date=single_date, tzinfo=loc.timezone)
 
-
                 mydata = dict(
                     Week_Name=f"{schedule_week}",
                     Week_Number=week_number,
@@ -111,7 +106,7 @@ def add_time_slots(
                     Away_Team=None,
                     Away_Team_Name=None,
                     Game_ID=None,
-                    Sunset = sun_info['sunset'].strftime("%H:%M"),
+                    Sunset=sun_info["sunset"].strftime("%H:%M"),
                 )
                 # adds field data
                 if field not in field_data:
