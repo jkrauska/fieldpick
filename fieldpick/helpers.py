@@ -6,7 +6,21 @@ import sys
 from inputs import blackout_days, week_split_data, field_info
 import logging
 
+
+from astral import LocationInfo
+
+
+
+# import datetime
+from astral.sun import sun
+
+loc = LocationInfo(name='SJC', region='CA, USA', timezone='America/Los_Angeles',
+                   latitude=37.3713439, longitude=-121.944675)
+
+
 logger = logging.getLogger()
+
+
 
 
 # Helper date conversion functions
@@ -35,8 +49,6 @@ def add_time_slots(
     only_days=None,
     input=pd.DataFrame(),
 ):
-
-
     if isinstance(fields, str):
         fields = [fields]
 
@@ -69,19 +81,18 @@ def add_time_slots(
         # Apply for multiple fields
         for field in fields:
             for (start_time, end_time) in times:
-                logger.info(f"Creating slot for {day_of_week} {single_date.date()} {start_time}-{end_time} {field}")
+                logger.debug(f"Creating slot for {day_of_week} {single_date.date()} {start_time}-{end_time} {field}")
                 (hours, minutes) = start_time.split(":")
-                datestamp = single_date + timedelta(
-                    hours=int(hours), minutes=int(minutes)
-                )
+                datestamp = single_date + timedelta(hours=int(hours), minutes=int(minutes))
 
                 # Calculate field time length
                 (start_h, start_m) = start_time.split(":")
                 (end_h, end_m) = end_time.split(":")
-                game_length = (60 * int(end_h) + int(end_m)) - (
-                    60 * int(start_h) + int(start_m)
-                )
+                game_length = (60 * int(end_h) + int(end_m)) - (60 * int(start_h) + int(start_m))
                 game_length_pretty = game_length
+
+                sun_info = sun(loc.observer, date=single_date, tzinfo=loc.timezone)
+
 
                 mydata = dict(
                     Week_Name=f"{schedule_week}",
@@ -100,6 +111,7 @@ def add_time_slots(
                     Away_Team=None,
                     Away_Team_Name=None,
                     Game_ID=None,
+                    Sunset = sun_info['sunset'].strftime("%H:%M"),
                 )
                 # adds field data
                 if field not in field_data:
@@ -111,11 +123,11 @@ def add_time_slots(
                     mydata[key] = value
                 mydf = pd.DataFrame(mydata, index=[0])
 
-                output = pd.concat([output, mydf], ignore_index=True)
+                output = pd.concat([output, mydf], ignore_index=True)  # concat times
 
     if not input.empty:
         return pd.concat([input, output], ignore_index=True)
-    else: 
+    else:
         return output
 
 

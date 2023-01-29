@@ -27,18 +27,106 @@ blackout_days = [date_string_to_datetime(item) for item in blackout_dates]
 
 
 division_info = {
-    "Tee Ball": {"teams": 12, "games": 7, "playoffs": None},
-    "Lower Farm": {"teams": 14, "games": 7, "playoffs": None},
-    "Upper Farm": {"teams": 12, "games": 7, "playoffs": None},
-    "Rookie": {"teams": 12, "games": 7, "playoffs": None},
-    "Minors AA": {"teams": 10, "games": 11, "playoffs": None},
-    "Minors AAA": {"teams": 8, "games": 11, "playoffs": None},
-    "Majors": {"teams": 10, "games": 14, "playoffs": None},
+    # "Challenger": {
+    #     "teams": 4,
+    #     "games": 2,
+    #     "games_per_week": 2,
+    #     "playoffs": None,
+    #     "preferred_days": ["Sunday"],
+    #     "preferred_fields": [["Riordan"],["Tepper"],["McCoppin"]],
+    # },
+    "Tee Ball": {
+        "teams": 14,
+        "games": 7,
+        "games_per_week": 7,
+        "playoffs": None,
+        "preferred_days": ["Saturday"],
+        "time_length": "90",
+        "preferred_fields": [["Larsen", "Paul Goode Practice"]],
+        "skip_weeks": ["1", "6", "13"],
+        "random_seed": 132,
+        "max_loops": 1,
+    },
+    "Lower Farm": {
+        "teams": 12,
+        "games": 6,
+        "games_per_week": 6,
+        "playoffs": None,
+        "preferred_days": ["Sunday"],
+        "time_length": "120",
+        "skip_weeks": ["6", "13"],
+        "preferred_fields": [
+            ["Larsen", "Paul Goode Practice"],
+            ["Larsen", "Paul Goode Practice", "Ft. Scott - South", "Christopher"],
+        ],
+        "random_seed": 2745,
+        "max_loops": 1,
+    },
+    "Upper Farm": {
+        "teams": 14,
+        "games": 7,
+        "games_per_week": 7,
+        "playoffs": None,
+        "preferred_days": [
+            ["Sunday"],
+            ["Saturday"],
+        ],
+        "time_length": "120",
+        "skip_weeks": ["6", "13"],
+        "preferred_fields": [
+            [
+                "Larsen",
+                "Paul Goode Practice",
+                "Ft. Scott - South",
+                "Christopher",
+                "Rossi Park #1",
+            ],
+        ],
+        "random_seed": 859,
+        "max_loops": 1,
+    },
+    "Rookie": {
+        "teams": 14,
+        "games": 7,
+        "games_per_week": 7,
+        "preferred_days": [
+            ["Saturday", "Sunday"],
+            ["Saturday", "Sunday", "Tuesday"],
+        ],
+        "preferred_fields": [
+            [
+                "Rossi Park #1",
+                "South Sunset D2 South",
+                "Ft. Scott - North",
+            ],
+            [None],
+        ],
+        "skip_weeks": ["6", "13"],
+        "playoffs": None,
+        "time_length": "150",
+        "random_seed": 1342,
+        "max_loops": 5,
+    },
+    "Minors AA": {
+        "teams": 10,
+        "games": 11,
+        "games_per_week": 5,
+        "playoffs": None,
+        "time_length": "150",
+    },
+    "Minors AAA": {"teams": 8, "games": 11, "games_per_week": 4, "time_length": "150", "playoffs": None},
+    "Majors": {"teams": 10, "games": 14, "games_per_week": 5, "playoffs": None},
     "Juniors": {"teams": 8, "games": 14, "playoffs": None},
 }
 
 # https://sfrecpark.org/525/Individual-Field-Maps
 field_info = {
+    "Christopher": {
+        "location": "SF",
+        "size": "46/60",
+        "type": "grass",
+        "infield": "grass",
+    },
     "Crocker Amazon D3": {
         "location": "SF",
         "size": "46/60",
@@ -106,6 +194,12 @@ field_info = {
         "size": "46/60",
         "type": "turf",
         "infield": "turf",
+    },
+    "Larsen": {
+        "location": "SF",
+        "size": "46/60",
+        "type": "grass",
+        "infield": "grass",
     },
     "Louis Sutter  D1": {
         "location": "SF",
@@ -209,8 +303,9 @@ field_info = {
         "type": "grass",
         "infield": "dirt",
     },
-    "Sweeney": {"location": "SF", "size": "60/90", "type": "grass", "infield": "grass"},
+    "Balboa - Sweeney": {"location": "SF", "size": "60/90", "type": "grass", "infield": "grass"},
     "Tepper": {"location": "TI", "size": "46/60", "type": "grass", "infield": "grass"},
+    "Riordan": {"location": "SF", "size": "60/90", "type": "turf", "infield": "turf"},
     "West Sunset #3": {
         "location": "SF",
         "size": "46/60",

@@ -1,0 +1,1320 @@
+2023-01-28 14:25:13  Generating 14 teams for Tee Ball
+2023-01-28 14:25:13  Generating 12 teams for Lower Farm
+2023-01-28 14:25:13  Generating 14 teams for Upper Farm
+2023-01-28 14:25:13  Generating 14 teams for Rookie
+2023-01-28 14:25:13  Generating 10 teams for Minors AA
+2023-01-28 14:25:13  Generating 8 teams for Minors AAA
+2023-01-28 14:25:13  Generating 10 teams for Majors
+2023-01-28 14:25:13  Generating 8 teams for Juniors
+2023-01-28 14:25:13  Saving 90 rows to disk: data/teams.pkl
+
+real	0m0.296s
+user	0m0.576s
+sys	0m1.978s
+2023-01-28 14:25:14 INFO	Saving 652 rows to disk: data/calendar.pkl
+
+real	0m0.482s
+user	0m1.017s
+sys	0m1.907s
+2023-01-28 14:25:14 INFO	Loading calendar data
+2023-01-28 14:25:14 INFO	Loading teams data
+2023-01-28 14:25:14 INFO	################################################################################
+2023-01-28 14:25:14 INFO	Processing Tee Ball with 14 teams
+2023-01-28 14:25:14 INFO		Preferred days: ['Saturday']
+2023-01-28 14:25:14 INFO		Preferred fields: [['Larsen', 'Paul Goode Practice']]
+2023-01-28 14:25:14 INFO		⤵ Skipping Week 1
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 2 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 8') in slot 66 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 9') in slot 57 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 10') in slot 64 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 11') in slot 54 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 12') in slot 69 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 13') in slot 56 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 14') in slot 63 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 3 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 9') in slot 130 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 10') in slot 118 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 11') in slot 122 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 12') in slot 126 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 13') in slot 124 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 14') in slot 115 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 7') in slot 119 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 4 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 10') in slot 180 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 11') in slot 192 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 12') in slot 198 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 13') in slot 194 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 14') in slot 189 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 7') in slot 184 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 6') in slot 185 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 5 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 11') in slot 244 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 12') in slot 252 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 13') in slot 258 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 14') in slot 247 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 7') in slot 251 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 6') in slot 254 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 5') in slot 246 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		⤵ Skipping Week 6
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 7 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 12') in slot 337 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 13') in slot 344 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 14') in slot 333 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 7') in slot 338 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 6') in slot 329 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 5') in slot 340 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 4') in slot 332 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 8 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 13') in slot 399 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 14') in slot 412 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 7') in slot 405 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 6') in slot 398 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 5') in slot 396 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 4') in slot 406 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 3') in slot 408 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 9 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 14') in slot 460 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 7') in slot 464 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 6') in slot 456 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 5') in slot 466 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 4') in slot 468 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 3') in slot 461 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 2') in slot 471 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 10 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 7') in slot 523 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 6') in slot 529 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 5') in slot 526 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 4') in slot 521 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 3') in slot 522 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 2') in slot 525 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 8') in slot 528 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 11 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 6') in slot 570 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 5') in slot 569 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 4') in slot 574 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 3') in slot 566 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 2') in slot 572 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 8') in slot 568 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 9') in slot 575 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Tee Ball -- Week 12 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 5') in slot 612 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 4') in slot 618 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 3') in slot 622 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 2') in slot 613 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 8') in slot 620 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 9') in slot 610 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 10') in slot 616 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		⤵ Skipping Week 13
+2023-01-28 14:25:14 INFO	Scoring Tee Ball slots
+2023-01-28 14:25:14 INFO	Scoring 70 slots
+2023-01-28 14:25:14 INFO	Scoring Tee Ball slots
+2023-01-28 14:25:14 INFO	Scoring 70 slots
+2023-01-28 14:25:14 INFO	SCORES FOR Tee Ball on 132:1.476  Best: 132:1.476
+2023-01-28 14:25:14 INFO	Loop 1 of 1
+2023-01-28 14:25:14 INFO	Best SCORE for Tee Ball is 132:1.476
+2023-01-28 14:25:14 INFO	################################################################################
+2023-01-28 14:25:14 INFO	Processing Lower Farm with 12 teams
+2023-01-28 14:25:14 INFO		Preferred days: ['Sunday']
+2023-01-28 14:25:14 INFO		Preferred fields: [['Larsen', 'Paul Goode Practice'], ['Larsen', 'Paul Goode Practice', 'Ft. Scott - South', 'Christopher']]
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 1 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 7') in slot 24 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 8') in slot 40 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 9') in slot 20 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 10') in slot 28 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 11') in slot 35 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 12') in slot 32 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 2 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 8') in slot 71 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 9') in slot 76 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 10') in slot 84 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 11') in slot 90 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 12') in slot 79 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 6') in slot 78 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 3 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 9') in slot 148 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 10') in slot 135 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 11') in slot 140 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 12') in slot 134 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 6') in slot 152 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 5') in slot 132 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 4 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 10') in slot 219 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 11') in slot 205 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 12') in slot 211 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 6') in slot 203 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 5') in slot 208 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 4') in slot 217 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 5 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 11') in slot 268 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 12') in slot 277 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 6') in slot 282 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 5') in slot 261 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 4') in slot 259 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 3') in slot 269 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		⤵ Skipping Week 6
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 7 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 12') in slot 369 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 6') in slot 356 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 5') in slot 361 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 4') in slot 348 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 3') in slot 351 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 2') in slot 354 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 8 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 6') in slot 421 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 5') in slot 413 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 4') in slot 431 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 3') in slot 414 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 2') in slot 426 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 7') in slot 433 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 9 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 5') in slot 478 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 4') in slot 479 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 3') in slot 490 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 2') in slot 494 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 7') in slot 484 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 8') in slot 488 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 10 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 4') in slot 539 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 3') in slot 543 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 2') in slot 531 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 7') in slot 548 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 8') in slot 532 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 9') in slot 549 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 11 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 3') in slot 584 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 2') in slot 590 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 7') in slot 581 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 8') in slot 593 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 9') in slot 582 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 10') in slot 586 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Lower Farm -- Week 12 -- Games to schedule: 6 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 2') in slot 627 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 7') in slot 628 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 8') in slot 632 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 9') in slot 635 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 10') in slot 624 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 11') in slot 633 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		⤵ Skipping Week 13
+2023-01-28 14:25:14 INFO	Scoring Lower Farm slots
+2023-01-28 14:25:14 INFO	Scoring 66 slots
+2023-01-28 14:25:14 INFO	Scoring Lower Farm slots
+2023-01-28 14:25:14 INFO	Scoring 66 slots
+2023-01-28 14:25:14 INFO	SCORES FOR Lower Farm on 2745:1.168  Best: 2745:1.168
+2023-01-28 14:25:14 INFO	Loop 1 of 1
+2023-01-28 14:25:14 INFO	Best SCORE for Lower Farm is 2745:1.168
+2023-01-28 14:25:14 INFO	################################################################################
+2023-01-28 14:25:14 INFO	Processing Upper Farm with 14 teams
+2023-01-28 14:25:14 INFO		Preferred days: [['Sunday'], ['Saturday']]
+2023-01-28 14:25:14 INFO		Preferred fields: [['Larsen', 'Paul Goode Practice', 'Ft. Scott - South', 'Christopher', 'Rossi Park #1']]
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 1 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 8') in slot 26 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 9') in slot 27 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 10') in slot 38 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 11') in slot 25 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 12') in slot 34 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 13') in slot 17 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 14') in slot 18 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 2 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 9') in slot 72 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 10') in slot 85 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 11') in slot 91 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 12') in slot 83 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 13') in slot 80 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 14') in slot 75 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 7') in slot 65 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 3 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 10') in slot 142 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 11') in slot 149 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 12') in slot 154 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 13') in slot 147 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 14') in slot 138 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 7') in slot 141 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 6') in slot 139 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 4 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 11') in slot 212 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 12') in slot 207 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 13') in slot 213 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 14') in slot 204 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 7') in slot 200 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 6') in slot 206 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 5') in slot 191 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 5 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 12') in slot 262 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 13') in slot 281 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 14') in slot 274 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 7') in slot 263 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 6') in slot 270 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 5') in slot 276 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 4') in slot 275 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		⤵ Skipping Week 6
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 7 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 13') in slot 355 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 14') in slot 353 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 7') in slot 360 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 6') in slot 363 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 5') in slot 347 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 4') in slot 362 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 3') in slot 352 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 8 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 14') in slot 422 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 7') in slot 418 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 6') in slot 415 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 5') in slot 427 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 4') in slot 425 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 3') in slot 420 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 2') in slot 397 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 9 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 7') in slot 482 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 6') in slot 481 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 5') in slot 491 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 4') in slot 495 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 3') in slot 489 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 2') in slot 483 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 8') in slot 477 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 10 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 6') in slot 534 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 5') in slot 540 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 4') in slot 544 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 3') in slot 542 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 2') in slot 545 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 8') in slot 538 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 9') in slot 537 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 11 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 5') in slot 583 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 4') in slot 585 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 3') in slot 589 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 2') in slot 594 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 8') in slot 591 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 9') in slot 588 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 10') in slot 580 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Upper Farm -- Week 12 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 4') in slot 629 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 3') in slot 625 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 2') in slot 626 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 8') in slot 637 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 9') in slot 631 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 10') in slot 630 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 11') in slot 619 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		⤵ Skipping Week 13
+2023-01-28 14:25:14 INFO	Scoring Upper Farm slots
+2023-01-28 14:25:14 INFO	Scoring 77 slots
+2023-01-28 14:25:14 INFO	Scoring Upper Farm slots
+2023-01-28 14:25:14 INFO	Scoring 77 slots
+2023-01-28 14:25:14 INFO	SCORES FOR Upper Farm on 859:1.557  Best: 859:1.557
+2023-01-28 14:25:14 INFO	Loop 1 of 1
+2023-01-28 14:25:14 INFO	Best SCORE for Upper Farm is 859:1.557
+2023-01-28 14:25:14 INFO	################################################################################
+2023-01-28 14:25:14 INFO	Processing Rookie with 14 teams
+2023-01-28 14:25:14 INFO		Preferred days: [['Saturday', 'Sunday'], ['Saturday', 'Sunday', 'Tuesday']]
+2023-01-28 14:25:14 INFO		Preferred fields: [['Rossi Park #1', 'South Sunset D2 South', 'Ft. Scott - North'], [None]]
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 1 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 8') in slot 39 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 9') in slot 31 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 10') in slot 19 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 11') in slot 16 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 12') in slot 7 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 13') in slot 14 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 14') in slot 30 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 2 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 9') in slot 51 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 10') in slot 70 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 11') in slot 89 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 12') in slot 59 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 13') in slot 60 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 14') in slot 50 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 7') in slot 82 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 3 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 10') in slot 129 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 11') in slot 133 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 12') in slot 153 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 13') in slot 143 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 14') in slot 144 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 7') in slot 151 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 6') in slot 114 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 4 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 11') in slot 182 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 12') in slot 216 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 13') in slot 197 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 14') in slot 188 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 7') in slot 196 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 6') in slot 215 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 5') in slot 202 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 5 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 12') in slot 257 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 13') in slot 272 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 14') in slot 265 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 7') in slot 283 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 6') in slot 242 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 5') in slot 273 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 4') in slot 245 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		⤵ Skipping Week 6
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 7 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 13') in slot 350 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 14') in slot 343 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 7') in slot 366 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 6') in slot 359 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 5') in slot 342 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 4') in slot 364 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 3') in slot 346 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 8 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 14') in slot 432 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 7') in slot 411 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 6') in slot 402 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 5') in slot 393 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 4') in slot 394 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 3') in slot 423 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 2') in slot 416 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 9 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 7') in slot 474 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 6') in slot 497 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 5') in slot 485 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 4') in slot 472 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 3') in slot 480 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 2') in slot 492 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 8') in slot 487 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 10 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 6') in slot 541 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 5') in slot 530 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 4') in slot 536 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 3') in slot 547 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 2') in slot 554 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 8') in slot 557 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 9') in slot 556 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 11 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 5') in slot 576 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 4') in slot 595 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 3') in slot 577 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 2') in slot 587 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 8') in slot 596 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 9') in slot 599 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 10') in slot 597 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 12 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 4') in slot 621 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 3') in slot 636 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 2') in slot 608 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 8') in slot 614 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 14', 'Team 9') in slot 639 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 13', 'Team 10') in slot 641 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 12', 'Team 11') in slot 640 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		⤵ Skipping Week 13
+2023-01-28 14:25:14 INFO	Scoring Rookie slots
+2023-01-28 14:25:14 INFO	Scoring 77 slots
+2023-01-28 14:25:14 INFO	Scoring Rookie slots
+2023-01-28 14:25:14 INFO	Scoring 77 slots
+2023-01-28 14:25:14 INFO	SCORES FOR Rookie on 1342:1.353  Best: 1342:1.353
+2023-01-28 14:25:14 INFO	Loop 1 of 5
+2023-01-28 14:25:14 INFO	Clearing division Rookie
+2023-01-28 14:25:14 INFO	################################################################################
+2023-01-28 14:25:14 INFO	Processing Rookie with 14 teams
+2023-01-28 14:25:14 INFO		Preferred days: [['Saturday', 'Sunday'], ['Saturday', 'Sunday', 'Tuesday']]
+2023-01-28 14:25:14 INFO		Preferred fields: [['Rossi Park #1', 'South Sunset D2 South', 'Ft. Scott - North'], [None]]
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 1 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 8') in slot 39 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 9') in slot 16 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 10') in slot 19 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 11') in slot 31 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 12') in slot 29 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 13') in slot 4 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 7', 'Team 14') in slot 8 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 2 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 9') in slot 70 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 10') in slot 59 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 11') in slot 51 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 12') in slot 89 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 13') in slot 60 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 14') in slot 67 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 6', 'Team 7') in slot 52 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 3 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 10') in slot 153 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 11') in slot 143 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 12') in slot 129 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 13') in slot 133 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 14') in slot 120 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 7') in slot 144 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 5', 'Team 6') in slot 151 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 4 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 11') in slot 197 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 12') in slot 188 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 13') in slot 182 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 8', 'Team 14') in slot 216 - Games left to schedule: 3
+2023-01-28 14:25:14 INFO			Placed ('Team 2', 'Team 7') in slot 202 - Games left to schedule: 2
+2023-01-28 14:25:14 INFO			Placed ('Team 3', 'Team 6') in slot 215 - Games left to schedule: 1
+2023-01-28 14:25:14 INFO			Placed ('Team 4', 'Team 5') in slot 178 - Games left to schedule: 0
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO			✅ No more games to schedule
+2023-01-28 14:25:14 INFO		Processing Rookie -- Week 5 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:14 INFO			Placed ('Team 1', 'Team 12') in slot 265 - Games left to schedule: 6
+2023-01-28 14:25:14 INFO			Placed ('Team 11', 'Team 13') in slot 257 - Games left to schedule: 5
+2023-01-28 14:25:14 INFO			Placed ('Team 10', 'Team 14') in slot 272 - Games left to schedule: 4
+2023-01-28 14:25:14 INFO			Placed ('Team 9', 'Team 7') in slot 283 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 6') in slot 260 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 5') in slot 278 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 4') in slot 271 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 6
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 7 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 13') in slot 359 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 14') in slot 343 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 7') in slot 350 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 6') in slot 366 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 5') in slot 345 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 4') in slot 346 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 3') in slot 342 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 8 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 14') in slot 411 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 7') in slot 402 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 6') in slot 432 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 5') in slot 393 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 4') in slot 417 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 3') in slot 429 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 2') in slot 424 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 9 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 7') in slot 485 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 6') in slot 497 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 5') in slot 472 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 4') in slot 474 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 3') in slot 473 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 2') in slot 462 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 8') in slot 463 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 10 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 6') in slot 536 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 5') in slot 530 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 4') in slot 541 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 3') in slot 547 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 2') in slot 557 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 8') in slot 554 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 9') in slot 555 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 11 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 5') in slot 587 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 4') in slot 595 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 3') in slot 576 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 2') in slot 577 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 8') in slot 599 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 9') in slot 596 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 10') in slot 597 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 12 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 4') in slot 614 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 3') in slot 608 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 2') in slot 621 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 8') in slot 636 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 9') in slot 639 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 10') in slot 641 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 11') in slot 638 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 13
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	SCORES FOR Rookie on 1343:1.791  Best: 1342:1.353
+2023-01-28 14:25:15 INFO	Loop 2 of 5
+2023-01-28 14:25:15 INFO	Clearing division Rookie
+2023-01-28 14:25:15 INFO	################################################################################
+2023-01-28 14:25:15 INFO	Processing Rookie with 14 teams
+2023-01-28 14:25:15 INFO		Preferred days: [['Saturday', 'Sunday'], ['Saturday', 'Sunday', 'Tuesday']]
+2023-01-28 14:25:15 INFO		Preferred fields: [['Rossi Park #1', 'South Sunset D2 South', 'Ft. Scott - North'], [None]]
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 1 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 8') in slot 16 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 9') in slot 31 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 10') in slot 19 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 11') in slot 39 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 12') in slot 4 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 13') in slot 14 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 14') in slot 29 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 2 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 9') in slot 89 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 10') in slot 51 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 11') in slot 59 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 12') in slot 70 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 13') in slot 68 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 14') in slot 67 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 7') in slot 87 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 3 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 10') in slot 153 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 11') in slot 143 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 12') in slot 129 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 13') in slot 133 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 14') in slot 137 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 7') in slot 151 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 6') in slot 145 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 4 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 11') in slot 216 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 12') in slot 197 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 13') in slot 182 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 14') in slot 188 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 7') in slot 214 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 6') in slot 196 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 5') in slot 209 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 5 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 12') in slot 283 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 13') in slot 265 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 14') in slot 272 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 7') in slot 257 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 6') in slot 278 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 5') in slot 245 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 4') in slot 242 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 6
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 7 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 13') in slot 366 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 14') in slot 359 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 7') in slot 343 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 6') in slot 350 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 5') in slot 335 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 4') in slot 365 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 3') in slot 358 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 8 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 14') in slot 411 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 7') in slot 432 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 6') in slot 393 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 5') in slot 402 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 4') in slot 409 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 3') in slot 395 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 2') in slot 424 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 9 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 7') in slot 472 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 6') in slot 497 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 5') in slot 485 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 4') in slot 474 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 3') in slot 480 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 2') in slot 470 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 8') in slot 469 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 10 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 6') in slot 536 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 5') in slot 547 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 4') in slot 530 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 3') in slot 541 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 2') in slot 557 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 8') in slot 554 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 9') in slot 553 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 11 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 5') in slot 577 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 4') in slot 595 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 3') in slot 576 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 2') in slot 587 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 8') in slot 596 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 9') in slot 599 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 10') in slot 597 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 12 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 4') in slot 608 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 3') in slot 636 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 2') in slot 614 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 8') in slot 621 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 9') in slot 641 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 10') in slot 639 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 11') in slot 640 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 13
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	SCORES FOR Rookie on 1344:2.132  Best: 1342:1.353
+2023-01-28 14:25:15 INFO	Loop 3 of 5
+2023-01-28 14:25:15 INFO	Clearing division Rookie
+2023-01-28 14:25:15 INFO	################################################################################
+2023-01-28 14:25:15 INFO	Processing Rookie with 14 teams
+2023-01-28 14:25:15 INFO		Preferred days: [['Saturday', 'Sunday'], ['Saturday', 'Sunday', 'Tuesday']]
+2023-01-28 14:25:15 INFO		Preferred fields: [['Rossi Park #1', 'South Sunset D2 South', 'Ft. Scott - North'], [None]]
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 1 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 8') in slot 39 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 9') in slot 19 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 10') in slot 31 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 11') in slot 16 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 12') in slot 4 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 13') in slot 22 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 14') in slot 8 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 2 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 9') in slot 59 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 10') in slot 51 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 11') in slot 89 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 12') in slot 70 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 13') in slot 82 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 14') in slot 86 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 7') in slot 68 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 3 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 10') in slot 129 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 11') in slot 143 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 12') in slot 133 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 13') in slot 153 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 14') in slot 151 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 7') in slot 114 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 6') in slot 136 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 4 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 11') in slot 188 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 12') in slot 182 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 13') in slot 197 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 14') in slot 216 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 7') in slot 196 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 6') in slot 195 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 5') in slot 199 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 5 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 12') in slot 257 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 13') in slot 272 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 14') in slot 283 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 7') in slot 265 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 6') in slot 260 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 5') in slot 279 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 4') in slot 245 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 6
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 7 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 13') in slot 343 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 14') in slot 359 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 7') in slot 366 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 6') in slot 350 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 5') in slot 342 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 4') in slot 358 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 3') in slot 365 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 8 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 14') in slot 393 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 7') in slot 402 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 6') in slot 432 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 5') in slot 411 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 4') in slot 428 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 3') in slot 423 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 2') in slot 416 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 9 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 7') in slot 497 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 6') in slot 474 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 5') in slot 472 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 4') in slot 485 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 3') in slot 459 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 2') in slot 470 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 8') in slot 458 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 10 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 6') in slot 530 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 5') in slot 541 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 4') in slot 536 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 3') in slot 547 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 2') in slot 557 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 8') in slot 554 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 9') in slot 555 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 11 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 5') in slot 577 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 4') in slot 587 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 3') in slot 595 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 2') in slot 576 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 8') in slot 599 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 9') in slot 596 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 10') in slot 598 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 12 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 4') in slot 614 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 3') in slot 608 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 2') in slot 621 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 8') in slot 636 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 9') in slot 639 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 10') in slot 641 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 11') in slot 640 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 13
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	SCORES FOR Rookie on 1345:1.879  Best: 1342:1.353
+2023-01-28 14:25:15 INFO	Loop 4 of 5
+2023-01-28 14:25:15 INFO	Clearing division Rookie
+2023-01-28 14:25:15 INFO	################################################################################
+2023-01-28 14:25:15 INFO	Processing Rookie with 14 teams
+2023-01-28 14:25:15 INFO		Preferred days: [['Saturday', 'Sunday'], ['Saturday', 'Sunday', 'Tuesday']]
+2023-01-28 14:25:15 INFO		Preferred fields: [['Rossi Park #1', 'South Sunset D2 South', 'Ft. Scott - North'], [None]]
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 1 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 8') in slot 19 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 9') in slot 16 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 10') in slot 39 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 11') in slot 31 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 12') in slot 37 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 13') in slot 30 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 14') in slot 4 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 2 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 9') in slot 89 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 10') in slot 51 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 11') in slot 59 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 12') in slot 70 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 13') in slot 86 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 14') in slot 68 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 7') in slot 87 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 3 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 10') in slot 153 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 11') in slot 129 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 12') in slot 143 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 13') in slot 133 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 14') in slot 120 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 7') in slot 136 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 6') in slot 121 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 4 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 11') in slot 182 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 12') in slot 197 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 13') in slot 188 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 14') in slot 216 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 7') in slot 178 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 6') in slot 187 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 5') in slot 214 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 5 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 12') in slot 272 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 13') in slot 265 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 14') in slot 257 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 7') in slot 283 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 6') in slot 256 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 5') in slot 278 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 4') in slot 271 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 6
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 7 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 13') in slot 359 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 14') in slot 350 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 7') in slot 366 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 6') in slot 343 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 5') in slot 365 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 4') in slot 328 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 3') in slot 358 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 8 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 14') in slot 411 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 7') in slot 432 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 6') in slot 402 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 5') in slot 393 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 4') in slot 395 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 3') in slot 400 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 2') in slot 424 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 9 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 7') in slot 497 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 6') in slot 474 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 5') in slot 472 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 4') in slot 485 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 3') in slot 459 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 2') in slot 487 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 8') in slot 458 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 10 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 6') in slot 547 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 5') in slot 541 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 4') in slot 530 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 3') in slot 536 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 2') in slot 557 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 8') in slot 554 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 9') in slot 555 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 11 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 5') in slot 577 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 4') in slot 595 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 3') in slot 587 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 2') in slot 576 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 8') in slot 596 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 9') in slot 599 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 10') in slot 597 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 12 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 4') in slot 608 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 3') in slot 621 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 2') in slot 614 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 8') in slot 636 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 9') in slot 639 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 10') in slot 641 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 11') in slot 640 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 13
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	SCORES FOR Rookie on 1346:1.842  Best: 1342:1.353
+2023-01-28 14:25:15 INFO	Loop 5 of 5
+2023-01-28 14:25:15 INFO	RERUNNING Best SCORE for Rookie 	is 1.353 with seed 1342
+2023-01-28 14:25:15 INFO	Clearing division Rookie
+2023-01-28 14:25:15 INFO	################################################################################
+2023-01-28 14:25:15 INFO	Processing Rookie with 14 teams
+2023-01-28 14:25:15 INFO		Preferred days: [['Saturday', 'Sunday'], ['Saturday', 'Sunday', 'Tuesday']]
+2023-01-28 14:25:15 INFO		Preferred fields: [['Rossi Park #1', 'South Sunset D2 South', 'Ft. Scott - North'], [None]]
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 1 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 8') in slot 39 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 9') in slot 31 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 10') in slot 19 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 11') in slot 16 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 12') in slot 7 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 13') in slot 14 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 14') in slot 30 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 2 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 9') in slot 51 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 10') in slot 70 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 11') in slot 89 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 12') in slot 59 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 13') in slot 60 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 14') in slot 50 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 7') in slot 82 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 3 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 10') in slot 129 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 11') in slot 133 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 12') in slot 153 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 13') in slot 143 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 14') in slot 144 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 7') in slot 151 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 6') in slot 114 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 4 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 11') in slot 182 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 12') in slot 216 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 13') in slot 197 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 14') in slot 188 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 7') in slot 196 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 6') in slot 215 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 5') in slot 202 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 5 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 12') in slot 257 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 13') in slot 272 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 14') in slot 265 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 7') in slot 283 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 6') in slot 242 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 5') in slot 273 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 4') in slot 245 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 6
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 7 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 13') in slot 350 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 14') in slot 343 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 7') in slot 366 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 6') in slot 359 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 5') in slot 342 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 4') in slot 364 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 3') in slot 346 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 8 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 14') in slot 432 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 7') in slot 411 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 6') in slot 402 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 5') in slot 393 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 4') in slot 394 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 3') in slot 423 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 2') in slot 416 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 9 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 7') in slot 474 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 6') in slot 497 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 5') in slot 485 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 4') in slot 472 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 3') in slot 480 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 2') in slot 492 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 8') in slot 487 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 10 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 6') in slot 541 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 5') in slot 530 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 4') in slot 536 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 3') in slot 547 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 2') in slot 554 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 8') in slot 557 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 9') in slot 556 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 11 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 5') in slot 576 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 4') in slot 595 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 3') in slot 577 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 2') in slot 587 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 8') in slot 596 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 9') in slot 599 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 11', 'Team 10') in slot 597 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Rookie -- Week 12 -- Games to schedule: 7 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 4') in slot 621 - Games left to schedule: 6
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 3') in slot 636 - Games left to schedule: 5
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 2') in slot 608 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 8') in slot 614 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 14', 'Team 9') in slot 639 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 13', 'Team 10') in slot 641 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 12', 'Team 11') in slot 640 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		⤵ Skipping Week 13
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	Scoring Rookie slots
+2023-01-28 14:25:15 INFO	Scoring 77 slots
+2023-01-28 14:25:15 INFO	SCORES FOR Rookie on 1342:1.353  Best: 1342:1.353
+2023-01-28 14:25:15 INFO	Loop 6 of 5
+2023-01-28 14:25:15 INFO	################################################################################
+2023-01-28 14:25:15 INFO	Processing Minors AA with 10 teams
+2023-01-28 14:25:15 INFO		Preferred days: [None]
+2023-01-28 14:25:15 INFO		Preferred fields: [None]
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 1 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 6') in slot 37 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 7') in slot 4 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 8') in slot 43 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 9') in slot 48 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 10') in slot 47 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 2 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 7') in slot 94 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 8') in slot 111 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 9') in slot 112 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 10') in slot 68 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 5') in slot 113 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 3 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 8') in slot 150 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 9') in slot 162 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 10') in slot 168 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 5') in slot 163 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 4') in slot 136 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 4 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 9') in slot 227 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 10') in slot 228 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 5') in slot 231 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 4') in slot 195 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 3') in slot 240 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 5 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 10') in slot 295 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 5') in slot 302 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 4') in slot 278 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 3') in slot 284 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 2') in slot 290 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 6 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 5') in slot 316 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 4') in slot 321 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 3') in slot 308 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 2') in slot 318 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 6') in slot 314 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 7 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 4') in slot 382 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 3') in slot 384 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 2') in slot 376 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 6') in slot 334 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 7') in slot 391 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 8 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 3') in slot 400 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 2') in slot 445 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 6') in slot 435 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 7') in slot 451 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 8') in slot 449 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 9 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 2') in slot 502 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 6') in slot 518 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 7') in slot 516 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 8') in slot 513 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 9') in slot 510 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 10 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 5 games for Minors AA in week 10
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 11 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 5 games for Minors AA in week 11
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 12 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 5 games for Minors AA in week 12
+2023-01-28 14:25:15 INFO		Processing Minors AA -- Week 13 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 5 games for Minors AA in week 13
+2023-01-28 14:25:15 INFO	Scoring Minors AA slots
+2023-01-28 14:25:15 INFO	Scoring 45 slots
+2023-01-28 14:25:15 INFO	Scoring Minors AA slots
+2023-01-28 14:25:15 INFO	Scoring 45 slots
+2023-01-28 14:25:15 INFO	SCORES FOR Minors AA on 0:1.007  Best: 0:1.007
+2023-01-28 14:25:15 INFO	Loop 1 of 1
+2023-01-28 14:25:15 INFO	Best SCORE for Minors AA is 0:1.007
+2023-01-28 14:25:15 INFO	################################################################################
+2023-01-28 14:25:15 INFO	Processing Minors AAA with 8 teams
+2023-01-28 14:25:15 INFO		Preferred days: [None]
+2023-01-28 14:25:15 INFO		Preferred fields: [None]
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 1 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 5') in slot 29 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 6') in slot 13 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 7') in slot 46 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 8') in slot 8 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 2 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 6') in slot 100 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 7') in slot 104 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 8') in slot 99 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 4') in slot 73 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 3 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 7') in slot 128 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 8') in slot 116 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 4') in slot 156 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 3') in slot 127 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 4 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 8') in slot 210 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 4') in slot 179 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 3') in slot 187 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 2') in slot 178 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 5 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 4') in slot 303 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 3') in slot 300 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 2') in slot 285 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 5') in slot 264 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 6 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 3') in slot 324 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 2') in slot 313 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 5') in slot 323 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 6') in slot 310 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 7 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 2') in slot 389 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 5') in slot 378 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 6') in slot 371 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 7') in slot 380 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 8 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 4 games for Minors AAA in week 8
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 9 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 4 games for Minors AAA in week 9
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 10 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 4 games for Minors AAA in week 10
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 11 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 4 games for Minors AAA in week 11
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 12 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 4 games for Minors AAA in week 12
+2023-01-28 14:25:15 INFO		Processing Minors AAA -- Week 13 -- Games to schedule: 4 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 4 games for Minors AAA in week 13
+2023-01-28 14:25:15 INFO	Scoring Minors AAA slots
+2023-01-28 14:25:15 INFO	Scoring 28 slots
+2023-01-28 14:25:15 INFO	Scoring Minors AAA slots
+2023-01-28 14:25:15 INFO	Scoring 28 slots
+2023-01-28 14:25:15 INFO	SCORES FOR Minors AAA on 0:1.189  Best: 0:1.189
+2023-01-28 14:25:15 INFO	Loop 1 of 1
+2023-01-28 14:25:15 INFO	Best SCORE for Minors AAA is 0:1.189
+2023-01-28 14:25:15 INFO	################################################################################
+2023-01-28 14:25:15 INFO	Processing Majors with 10 teams
+2023-01-28 14:25:15 INFO		Preferred days: [None]
+2023-01-28 14:25:15 INFO		Preferred fields: [None]
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 1 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 6') in slot 3 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 7') in slot 2 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 8') in slot 22 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 9') in slot 9 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 10') in slot 49 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 2 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 7') in slot 87 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 8') in slot 58 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 9') in slot 74 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 10') in slot 106 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 5') in slot 101 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 3 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 8') in slot 175 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 9') in slot 171 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 10') in slot 120 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 5') in slot 123 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 4') in slot 146 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 4 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 9') in slot 241 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 10') in slot 235 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 5') in slot 239 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 4') in slot 226 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 2', 'Team 3') in slot 238 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 5 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 10') in slot 299 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 5') in slot 253 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 4') in slot 248 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 3') in slot 298 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 6', 'Team 2') in slot 280 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 6 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 5') in slot 312 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 4') in slot 320 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 3') in slot 325 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 2') in slot 315 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 7', 'Team 6') in slot 322 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 7 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 4') in slot 331 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 3') in slot 349 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 2') in slot 377 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 6') in slot 375 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 8', 'Team 7') in slot 386 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 8 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 3') in slot 424 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 2') in slot 444 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 6') in slot 401 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 7') in slot 450 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 9', 'Team 8') in slot 409 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 9 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			Placed ('Team 1', 'Team 2') in slot 503 - Games left to schedule: 4
+2023-01-28 14:25:15 INFO			Placed ('Team 3', 'Team 6') in slot 459 - Games left to schedule: 3
+2023-01-28 14:25:15 INFO			Placed ('Team 4', 'Team 7') in slot 507 - Games left to schedule: 2
+2023-01-28 14:25:15 INFO			Placed ('Team 5', 'Team 8') in slot 512 - Games left to schedule: 1
+2023-01-28 14:25:15 INFO			Placed ('Team 10', 'Team 9') in slot 473 - Games left to schedule: 0
+2023-01-28 14:25:15 INFO			✅ No more games to schedule
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 10 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 5 games for Majors in week 10
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 11 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 5 games for Majors in week 11
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 12 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 5 games for Majors in week 12
+2023-01-28 14:25:15 INFO		Processing Majors -- Week 13 -- Games to schedule: 5 -- 652 slots
+2023-01-28 14:25:15 INFO			No more faceoffs to process
+2023-01-28 14:25:15 WARNING			❌ Unable to schedule 5 games for Majors in week 13
+2023-01-28 14:25:15 INFO	Scoring Majors slots
+2023-01-28 14:25:15 INFO	Scoring 45 slots
+2023-01-28 14:25:15 INFO	Scoring Majors slots
+2023-01-28 14:25:15 INFO	Scoring 45 slots
+2023-01-28 14:25:15 INFO	SCORES FOR Majors on 0:0.697  Best: 0:0.697
+2023-01-28 14:25:15 INFO	Loop 1 of 1
+2023-01-28 14:25:15 INFO	Best SCORE for Majors is 0:0.697
+2023-01-28 14:25:15 INFO	################################################################################
+2023-01-28 14:25:15 INFO	Processing Juniors with 8 teams
+2023-01-28 14:25:15 WARNING		No games to schedule for Juniors
+2023-01-28 14:25:15 INFO	################################################################################
+2023-01-28 14:25:15 INFO	Processing Juniors with 8 teams
+2023-01-28 14:25:15 WARNING		No games to schedule for Juniors
+2023-01-28 14:25:15 INFO	Saving 652 rows to disk: data/calendar.pkl
+2023-01-28 14:25:15 INFO	Publishing dataframe to Google Sheet Full Schedule - https://docs.google.com/spreadsheets/d/1-8GnEEN36eI2c7dF3i9bonyHTkRhmFtLghY7_8gjCgE
+Loaded 652 slots
+
+real	0m7.447s
+user	0m2.331s
+sys	0m1.803s

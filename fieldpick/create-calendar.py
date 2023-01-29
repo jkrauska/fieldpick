@@ -1,10 +1,13 @@
-from gsheets import publish_df_to_gsheet
 from helpers import add_time_slots, fort_scott, tepper_ketcham, weekdays
 import pandas as pd
 import logging
+import sys
+from frametools import save_frame
 
 logging.basicConfig(
-    format="%(asctime)s  %(message)s", datefmt="%Y-%m-%d %H:%M:%S", level=logging.INFO
+    format="%(asctime)s %(levelname)s\t%(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    level=logging.INFO,
 )
 logger = logging.getLogger()
 
@@ -12,10 +15,7 @@ logger = logging.getLogger()
 # Override pandas display settings
 pd.set_option("display.max_rows", 500)
 
-# Wrapper function
-# FIXME: Can this go in helpers.py?
-
-
+# initialize calendar
 cFrame = pd.DataFrame()
 
 
@@ -23,14 +23,42 @@ cFrame = pd.DataFrame()
 ### Fort Scott
 # Saturdays 3/11 -- 5/27 (every other week situation)
 cFrame = add_time_slots(
-    fields=fort_scott,
-    days_of_week=["Saturday"],
+    fields="Ft. Scott - North",
+    days_of_week=["Saturday", "Sunday"],
     only_days=[
+        "3/5/2023",
         "3/11/2023",
+        "3/19/2023",
         "3/25/2023",
+        "4/2/2023",
         "4/8/2023",
+        "4/16/2023",
         "4/22/2023",
-        "5/6/2023",
+        "4/30/2023",
+        "5/7/2023",
+        "5/14/2023",
+        "5/20/2023",
+        "5/27/2023",
+    ],
+    times=[("09:00", "11:30"), ("11:30", "14:00")],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    fields="Ft. Scott - South",
+    days_of_week=["Saturday", "Sunday"],
+    only_days=[
+        "3/5/2023",
+        "3/11/2023",
+        "3/19/2023",
+        "3/25/2023",
+        "4/2/2023",
+        "4/8/2023",
+        "4/16/2023",
+        "4/22/2023",
+        "4/30/2023",
+        "5/7/2023",
+        "5/14/2023",
         "5/20/2023",
         "5/27/2023",
     ],
@@ -38,13 +66,14 @@ cFrame = add_time_slots(
     input=cFrame,
 )
 
+
 # Tuesday/Thursday
 cFrame = add_time_slots(
     fields=fort_scott,  ## FIXME: BOTH fields on just FSN?
     days_of_week=["Tuesday", "Thursday"],
     start_day="3/14/2023",
     end_day="5/30/2023",
-    times=[("17:00", "20:30")],
+    times=[("17:00", "19:30")],
     input=cFrame,
 )
 
@@ -87,16 +116,17 @@ cFrame = add_time_slots(
     days_of_week="Saturday",
     start_day="3/11/2023",
     end_day="5/27/2023",
-    times=[("11:00", "12:30"),("12:30", "14:00")],
+    times=[("11:00", "12:30"), ("12:30", "14:00")],
     input=cFrame,
 )
 
+# carved for 2h on Sundays
 cFrame = add_time_slots(
     fields="Paul Goode Practice",
     days_of_week="Sunday",
     start_day="2/25/2023",
     end_day="5/27/2023",
-    times=[("9:00", "10:30"),("10:30", "12:00")],
+    times=[("09:00", "11:00")],
     input=cFrame,
 )
 
@@ -109,7 +139,6 @@ cFrame = add_time_slots(
     input=cFrame,
 )
 ##################################################
-
 # RecPark Weekdays
 
 cFrame = add_time_slots(
@@ -126,7 +155,7 @@ cFrame = add_time_slots(
     days_of_week="Tuesday",
     start_day="3/7/2023",
     end_day="5/27/2023",
-    times=[("17:30", "20:00")],
+    times=[("17:30", "20:30")],  # needs to be hard set to 3h to avoid being used by Rookie/Minors...
     input=cFrame,
 )
 
@@ -148,17 +177,121 @@ cFrame = add_time_slots(
     input=cFrame,
 )
 
+##################################################
+# RecPark Weekends
+
+# tee 1.5h on Saturdays
+cFrame = add_time_slots(
+    fields=["Larsen"],
+    days_of_week=["Saturday"],
+    start_day="3/4/2023",
+    end_day="5/22/2023",
+    times=[
+        ("09:00", "10:30"),
+        ("10:30", "12:00"),
+        ("12:00", "13:30"),
+        ("13:30", "15:00"),
+        ("15:00", "16:30"),
+    ],
+    input=cFrame,
+)
+
+# farm 2h on sundays
+cFrame = add_time_slots(
+    fields=["Larsen", "Christopher"],
+    days_of_week=["Sunday"],
+    start_day="3/4/2023",
+    end_day="5/22/2023",
+    times=[
+        ("09:00", "11:00"),
+        ("11:00", "13:00"),
+        ("13:00", "15:00"),
+        ("15:00", "17:00"),
+    ],
+    input=cFrame,
+)
+
+
+# 2h slots (farm)
+cFrame = add_time_slots(
+    fields=["Rossi Park #1"],
+    days_of_week=["Sunday"],
+    start_day="3/4/2023",
+    end_day="5/22/2023",
+    times=[
+        ("09:00", "11:00"),
+        ("11:00", "13:00"),
+    ],
+    input=cFrame,
+)
+
+# 2.5h slots (rookie)
+cFrame = add_time_slots(
+    fields=["Rossi Park #1"],
+    days_of_week=["Saturday", "Sunday"],
+    start_day="3/4/2023",
+    end_day="5/22/2023",
+    times=[
+        ("13:00", "15:00"),  # 2h
+        ("15:00", "17:30"),  # 2.5h
+    ],
+    input=cFrame,
+)
+
+
+# Large fields (Juniors)
+cFrame = add_time_slots(
+    fields=["Balboa - Sweeney"],
+    days_of_week=["Saturday"],
+    start_day="3/4/2023",
+    end_day="5/22/2023",
+    times=[
+        ("09:00", "12:00"),
+        ("12:00", "15:00"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    fields=["McCoppin"],
+    days_of_week=["Sunday"],
+    start_day="3/4/2023",
+    end_day="5/22/2023",
+    times=[
+        ("09:00", "12:00"),
+    ],
+    input=cFrame,
+)
+
+# Challenger @ Riordan
+cFrame = add_time_slots(
+    fields=["Riordan"],
+    days_of_week=["Sunday"],
+    only_days=[
+        "3/5/2023",
+        "3/19/2023",
+        "3/26/2023",
+        "4/2/2023",
+        "4/9/2023",
+        "4/16/2023",
+        "4/23/2023",
+        "4/30/2023",
+        "5/7/2023",
+        "5/14/2023",
+        "5/21/2023",
+    ],
+    times=[
+        ("13:30", "16:30"),
+    ],
+    input=cFrame,
+)
 
 ##################################################
 # Cleanup
 cFrame.sort_values(by=["Datestamp"], inplace=True, ignore_index=True)
 
-print(cFrame)
-
-save_file = "data/calendar.pkl"
-logger.info(f"Saving to disk: {save_file}")
-cFrame.to_pickle(save_file)
+# print(cFrame)
 
 
-logger.info("Publishing to Google Sheets")
-publish_df_to_gsheet(cFrame)
+save_frame(cFrame, "calendar.pkl")
+# publish_df_to_gsheet(cFrame)
