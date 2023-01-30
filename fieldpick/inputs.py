@@ -44,7 +44,7 @@ division_info = {
         "time_length": "90",
         "preferred_fields": [["Larsen", "Paul Goode Practice"]],
         "skip_weeks": ["1", "6", "13"],
-        "random_seed": 132,
+        "random_seed": 132,  # 1.476 with seed 132
         "max_loops": 1,
     },
     "Lower Farm": {
@@ -59,7 +59,7 @@ division_info = {
             ["Larsen", "Paul Goode Practice"],
             ["Larsen", "Paul Goode Practice", "Ft. Scott - South", "Christopher"],
         ],
-        "random_seed": 2745,
+        "random_seed": 2779,  # 1.047 with seed 2779
         "max_loops": 1,
     },
     "Upper Farm": {
@@ -82,41 +82,79 @@ division_info = {
                 "Rossi Park #1",
             ],
         ],
-        "random_seed": 859,
+        "random_seed": 1776,  # 1.641 with seed 1776
         "max_loops": 1,
     },
     "Rookie": {
         "teams": 14,
         "games": 7,
         "games_per_week": 7,
+        "games_per_week_pattern": [3, 7, 8, 7, 8, 6, 8, 7, 8, 7, 8, 7, 8],
+        "midweek_start": 2,  # Midweek games start on week 2 due to DST
         "preferred_days": [
-            ["Saturday", "Sunday"],
-            ["Saturday", "Sunday", "Tuesday"],
+            ["Saturday", "Sunday", "Tuesday", "Wednesday", "Thursday"],
         ],
+        "dedicated_ti_weekend": 5,
         "preferred_fields": [
+            ["Kimbell D3 SW"],
             [
                 "Rossi Park #1",
-                "South Sunset D2 South",
                 "Ft. Scott - North",
+                "Ft. Scott - South",
+                "Kimbell D3 SW",
             ],
+            ["Rossi Park #1", "South Sunset D2 South", "Ft. Scott - North", "Ft. Scott - South", "Kimbell D3 SW"],
             [None],
         ],
-        "skip_weeks": ["6", "13"],
+        "skip_weeks": ["6", "10", "11", "12", "13"],
         "playoffs": None,
         "time_length": "150",
-        "random_seed": 1342,
-        "max_loops": 5,
+        "random_seed": 431,  # 1.729 with seed 1936
+        "max_loops": 1,
     },
     "Minors AA": {
         "teams": 10,
         "games": 11,
         "games_per_week": 5,
+        "games_per_week_pattern": [5, 7, 6, 7, 6, 6, 6, 7, 6, 7, 6, 7, 6],
+        "skip_weeks": ["10", "11", "12", "13"],
+        "midweek_start": 2,  # Midweek games start on week 2 due to DST
         "playoffs": None,
         "time_length": "150",
+        "random_seed": 500,
+        "max_loops": 1000,
+        "denied_fields": ["Kimbell D3 SW"],
     },
-    "Minors AAA": {"teams": 8, "games": 11, "games_per_week": 4, "time_length": "150", "playoffs": None},
-    "Majors": {"teams": 10, "games": 14, "games_per_week": 5, "playoffs": None},
-    "Juniors": {"teams": 8, "games": 14, "playoffs": None},
+    "Minors AAA": {
+        "teams": 8,
+        "games": 8,
+        "games_per_week": 4,
+        "games_per_week_pattern": [4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+        "skip_weeks": ["10", "11", "12", "13"],
+        "midweek_start": 2,
+        "time_length": "150",
+        "playoffs": None,
+        "random_seed": 567,  # 1.040 with seed 567
+        "max_loops": 1,
+        "denied_fields": ["Kimbell D3 SW"],
+    },
+    "Majors": {
+        "preferred_days": [
+            ["Saturday", "Sunday"],
+            ["Tuesday", "Wednesday", "Thursday"],
+            ["Saturday", "Sunday", "Tuesday"],
+        ],
+        "teams": 10,
+        "skip_weeks": ["10", "11", "12", "13"],
+        "games_per_week": 10,
+        "games_per_week_pattern": [5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+        "time_length": "150",
+        "playoffs": None,
+        "random_seed": 292,  # 1.579 with seed 292
+        "max_loops": 1,
+        "denied_fields": ["Kimbell D3 SW"],
+    },
+    "Juniors": {"teams": 8, "games": 14, "skip_weeks": ["11", "12", "13"], "time_length": "180", "playoffs": None},
 }
 
 # https://sfrecpark.org/525/Individual-Field-Maps

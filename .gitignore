@@ -5,3 +5,4 @@ data/*.pkl
 .venv
 fieldpick/data/*.pkl
 data/*.pkl
+*.log

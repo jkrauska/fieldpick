@@ -4,7 +4,6 @@ from frametools import analyze_columns
 from gsheets import publish_df_to_gsheet
 
 
-
 logging.basicConfig(
     format="%(asctime)s %(levelname)s\t%(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",

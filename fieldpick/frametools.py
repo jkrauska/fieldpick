@@ -179,23 +179,44 @@ def analyze_columns(cFrame):
                 "Week 14": len(team_frame[team_frame["Week_Name"] == "Week 14"]),
                 "home": len(team_frame[team_frame["Home_Team"] == team]),
                 "away": len(team_frame[team_frame["Away_Team"] == team]),
-                "Vs Team 1": len(team_frame[team_frame["Away_Team"] == "Team 1"]) + len(team_frame[team_frame["Home_Team"] == "Team 1"]),
-                "Vs Team 2": len(team_frame[team_frame["Away_Team"] == "Team 2"]) + len(team_frame[team_frame["Home_Team"] == "Team 2"]),
-                "Vs Team 3": len(team_frame[team_frame["Away_Team"] == "Team 3"]) + len(team_frame[team_frame["Home_Team"] == "Team 3"]),
-                "Vs Team 4": len(team_frame[team_frame["Away_Team"] == "Team 4"]) + len(team_frame[team_frame["Home_Team"] == "Team 4"]),
-                "Vs Team 5": len(team_frame[team_frame["Away_Team"] == "Team 5"]) + len(team_frame[team_frame["Home_Team"] == "Team 5"]),
-                "Vs Team 6": len(team_frame[team_frame["Away_Team"] == "Team 6"]) + len(team_frame[team_frame["Home_Team"] == "Team 6"]),
-                "Vs Team 7": len(team_frame[team_frame["Away_Team"] == "Team 7"]) + len(team_frame[team_frame["Home_Team"] == "Team 7"]),
-                "Vs Team 8": len(team_frame[team_frame["Away_Team"] == "Team 8"]) + len(team_frame[team_frame["Home_Team"] == "Team 8"]),
-                "Vs Team 9": len(team_frame[team_frame["Away_Team"] == "Team 9"]) + len(team_frame[team_frame["Home_Team"] == "Team 9"]),
-                "Vs Team 10": len(team_frame[team_frame["Away_Team"] == "Team 10"]) + len(team_frame[team_frame["Home_Team"] == "Team 10"]),
-                "Vs Team 11": len(team_frame[team_frame["Away_Team"] == "Team 11"]) + len(team_frame[team_frame["Home_Team"] == "Team 11"]),
-                "Vs Team 12": len(team_frame[team_frame["Away_Team"] == "Team 12"]) + len(team_frame[team_frame["Home_Team"] == "Team 12"]),
-                "Vs Team 13": len(team_frame[team_frame["Away_Team"] == "Team 13"]) + len(team_frame[team_frame["Home_Team"] == "Team 13"]),
-                "Vs Team 14": len(team_frame[team_frame["Away_Team"] == "Team 14"]) + len(team_frame[team_frame["Home_Team"] == "Team 14"]),
+                "Vs Team 1": len(team_frame[team_frame["Away_Team"] == "Team 1"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 1"]),
+                "Vs Team 2": len(team_frame[team_frame["Away_Team"] == "Team 2"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 2"]),
+                "Vs Team 3": len(team_frame[team_frame["Away_Team"] == "Team 3"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 3"]),
+                "Vs Team 4": len(team_frame[team_frame["Away_Team"] == "Team 4"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 4"]),
+                "Vs Team 5": len(team_frame[team_frame["Away_Team"] == "Team 5"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 5"]),
+                "Vs Team 6": len(team_frame[team_frame["Away_Team"] == "Team 6"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 6"]),
+                "Vs Team 7": len(team_frame[team_frame["Away_Team"] == "Team 7"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 7"]),
+                "Vs Team 8": len(team_frame[team_frame["Away_Team"] == "Team 8"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 8"]),
+                "Vs Team 9": len(team_frame[team_frame["Away_Team"] == "Team 9"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 9"]),
+                "Vs Team 10": len(team_frame[team_frame["Away_Team"] == "Team 10"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 10"]),
+                "Vs Team 11": len(team_frame[team_frame["Away_Team"] == "Team 11"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 11"]),
+                "Vs Team 12": len(team_frame[team_frame["Away_Team"] == "Team 12"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 12"]),
+                "Vs Team 13": len(team_frame[team_frame["Away_Team"] == "Team 13"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 13"]),
+                "Vs Team 14": len(team_frame[team_frame["Away_Team"] == "Team 14"])
+                + len(team_frame[team_frame["Home_Team"] == "Team 14"]),
                 "TI": len(team_frame[team_frame["location"] == "TI"]),
                 "SF": len(team_frame[team_frame["location"] == "SF"]),
             }
+
+            # display(dataFrame.query('Salary  <= 100000 & Age < 40 & JOB.str.startswith("C").values'))
+
+            # a = len(team_frame.query("location == 'TI' and Day_of_Week in ('Saturday', 'Sunday')"))
+            # # a = team_frame.query("location = 'TI' & Day_of_Week in ('Saturday', 'Sunday')")
+
+            mydata["TI_WEEKEND"] = len(team_frame.query("location == 'TI' and Day_of_Week in ('Saturday', 'Sunday')"))
 
             for field in extract_field_names(cFrame):
                 try:
@@ -222,7 +243,9 @@ def generate_schedules(cFrame):
             print(team_frame)
 
 
-def reserve_slots(frame, day_of_week=None, date=None, field=None, start=None, end=None, division=None, home_team=None, away_team=None):
+def reserve_slots(
+    frame, day_of_week=None, date=None, field=None, start=None, end=None, division=None, home_team=None, away_team=None
+):
     """Reserve slots for a given day,field, and time"""
     logger.info(f"Reserving  slots for {division}")
 
@@ -250,3 +273,31 @@ def reserve_slots(frame, day_of_week=None, date=None, field=None, start=None, en
     if len(frame) == 0:
         logger.warning("No matching slots found for reservation request")
     return frame
+
+
+def check_consecutive(frame, division, min_diff=2):
+    """Check if there are any consecutive games for any given team in a given division"""
+    division_frame = filter_by_division(frame, division)
+    all_teams = extract_teams(division_frame)
+
+    for team in all_teams:
+        team_frame = rows_with_team(division_frame, team)
+        # print(team_frame)
+
+        day_series = team_frame.Day_of_Year.values.astype(int)
+        day_series.sort()
+
+        least_diff = None
+        for i in range(len(day_series) - 1):
+            diff = abs(day_series[i] - day_series[i + 1])
+            if not least_diff:
+                least_diff = diff
+            if diff < least_diff:
+                least_diff = diff
+
+        # Diff of 1 means consecutive games, Diff of 0 means same day games!
+        if least_diff < 2:
+            logger.warning(f"Found back to back consecutive games for {team} in {division}.  No go.")
+            return 100
+
+    return 0

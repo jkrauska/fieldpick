@@ -39,9 +39,9 @@ def faceoffs(teams):
 
 # Repeating cycle of faceoffs when # games > faceoffs
 def faceoffs_repeated(teams, games=None):
-    cycle = faceoffs(teams)
+    one_faceoff_rotation = faceoffs(teams)
     if games:
-        cycles = cycle * (games // len(cycle) + 1)
+        cycles = one_faceoff_rotation * (games // len(one_faceoff_rotation) + 1)
         return cycles[:games]
     else:
         return cycle

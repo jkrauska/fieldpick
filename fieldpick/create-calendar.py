@@ -1,4 +1,4 @@
-from helpers import add_time_slots, fort_scott, tepper_ketcham, weekdays
+from helpers import add_time_slots, fort_scott, tepper_ketcham, tuesday_thursday
 import pandas as pd
 import logging
 from frametools import save_frame
@@ -101,7 +101,8 @@ cFrame = add_time_slots(
 # Sunset 19:15 on 3/13/23
 cFrame = add_time_slots(
     fields=tepper_ketcham,
-    days_of_week=weekdays,
+    # days_of_week=weekdays,
+    days_of_week=tuesday_thursday,
     start_day="3/13/2023",
     end_day="5/9/2023",
     times=[("17:00", "19:30")],
@@ -140,6 +141,15 @@ cFrame = add_time_slots(
 ##################################################
 # RecPark Weekdays
 
+# cFrame = add_time_slots(
+#     fields=["Kimbell D1 NW", "Kimbell D2 SE", "Kimbell D3 SW"],
+#     days_of_week="Wednesday",
+#     start_day="3/8/2023",
+#     end_day="5/27/2023",
+#     times=[("17:30", "20:00")],
+#     input=cFrame,
+# )
+
 cFrame = add_time_slots(
     fields=["Kimbell D1 NW", "Kimbell D2 SE", "Kimbell D3 SW"],
     days_of_week="Wednesday",
@@ -148,6 +158,7 @@ cFrame = add_time_slots(
     times=[("17:30", "20:00")],
     input=cFrame,
 )
+
 
 cFrame = add_time_slots(
     fields=["McCoppin"],
@@ -231,8 +242,8 @@ cFrame = add_time_slots(
     start_day="3/4/2023",
     end_day="5/22/2023",
     times=[
-        ("13:00", "15:00"),  # 2h
-        ("15:00", "17:30"),  # 2.5h
+        ("13:00", "15:30"),  # 2h
+        ("15:30", "18:00"),  # 2.5h
     ],
     input=cFrame,
 )
@@ -290,6 +301,9 @@ cFrame = add_time_slots(
 cFrame.sort_values(by=["Datestamp"], inplace=True, ignore_index=True)
 
 # print(cFrame)
+
+
+cFrame.loc[cFrame["Datestamp"] < "2023-03-04 14:00", "Notes"] = "Opening Day Ceremony"
 
 
 save_frame(cFrame, "calendar.pkl")

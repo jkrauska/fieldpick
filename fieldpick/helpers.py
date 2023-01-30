@@ -107,6 +107,7 @@ def add_time_slots(
                     Away_Team_Name=None,
                     Game_ID=None,
                     Sunset=sun_info["sunset"].strftime("%H:%M"),
+                    Notes=None,
                 )
                 # adds field data
                 if field not in field_data:
@@ -133,8 +134,8 @@ farm_scott_goode = ["Ft. Scott - South", "Paul Goode Practice"]
 tepper_ketcham = ["Tepper", "Ketcham"]
 ti = tepper_ketcham
 weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-monday_thursday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday", "Sunday"]
-tuesday_thursday = ["Tuesday", "Wednesday", "Thursday", "Saturday", "Sunday"]
+monday_thursday = ["Monday", "Tuesday", "Wednesday", "Thursday"]
+tuesday_thursday = ["Tuesday", "Wednesday", "Thursday"]
 anyday_but_friday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday", "Sunday"]
 
 
