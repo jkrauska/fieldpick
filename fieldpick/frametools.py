@@ -277,6 +277,7 @@ def reserve_slots(
 
 def check_consecutive(frame, division, min_diff=2):
     """Check if there are any consecutive games for any given team in a given division"""
+    # FIXME, this slows the scoring down by 50%!  Need to do this faster..
     division_frame = filter_by_division(frame, division)
     all_teams = extract_teams(division_frame)
 
