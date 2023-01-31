@@ -40,11 +40,11 @@ FSDAYS = [
 ]
 
 FSDAYS.append("3/12/2023")
-FSDAYS.append("3/18/2023")
-FSDAYS.append("3/26/2023")
 FSDAYS.append("4/15/2023")
 FSDAYS.append("4/23/2023")
-FSDAYS.append("4/29/2023")
+# FSDAYS.append("3/18/2023")
+# FSDAYS.append("3/26/2023")
+# FSDAYS.append("4/29/2023")
 
 cFrame = add_time_slots(
     fields="Ft. Scott - North",

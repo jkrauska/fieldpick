@@ -139,18 +139,17 @@ def clear_division(division, cFrame):
 
 
 def score_gamecount(frame, division):
-        variations = []
-        # logger.info(f"Division: {division}")
-        division_frame = filter_by_division(frame, division)
-        all_teams = extract_teams(division_frame)
+    variations = []
+    # logger.info(f"Division: {division}")
+    division_frame = filter_by_division(frame, division)
+    all_teams = extract_teams(division_frame)
 
-        for team in all_teams:
-            team_frame = rows_with_team(division_frame, team)
-            variations.append(len(team_frame))
-        
-        dev = np.std(variations)
-        return dev
+    for team in all_teams:
+        team_frame = rows_with_team(division_frame, team)
+        variations.append(len(team_frame))
 
+    dev = np.std(variations)
+    return dev * 3.0  # scale up the deviation
 
 
 # division	team	Monday	Tuesday	Wednesday	Thursday	Friday	Saturday	Sunday
@@ -231,9 +230,42 @@ def analyze_columns(cFrame):
                 "SF": len(team_frame[team_frame["location"] == "SF"]),
             }
 
-            mydata["TI_WEEKEND"] = len(team_frame.query("location == 'TI' and Day_of_Week in ('Saturday', 'Sunday')"))
+            mydata["TI WeekEND"] = len(team_frame.query("location == 'TI' and Day_of_Week in ('Saturday', 'Sunday')"))
+            mydata["TI WeekDAY"] = len(team_frame.query("location == 'TI' and Day_of_Week not in ('Saturday', 'Sunday')"))
 
-            for field in extract_field_names(cFrame):
+            mydata["SF WeekEND"] = len(team_frame.query("location == 'SF' and Day_of_Week in ('Saturday', 'Sunday')"))
+            mydata["SF WeekDAY"] = len(team_frame.query("location == 'SF' and Day_of_Week not in ('Saturday', 'Sunday')"))
+
+            all_fields = sorted(extract_field_names(cFrame))
+
+            # Manually tweak order
+            friendly_order = [
+                "Paul Goode Practice",
+                "Larsen",
+                "Christopher",
+                "Rossi Park #1",
+                "Ft. Scott - South",
+                "Ft. Scott - North",
+                "Tepper",
+                "Ketcham",
+            ]
+
+            friendly_order.reverse()
+            for field in friendly_order:
+                if field in all_fields:
+                    all_fields.remove(field)
+                    all_fields.insert(0, field)
+                else:
+                    logger.warning(f"Field {field} not found")
+
+            # Place at end
+            for field in ["Balboa - Sweeney", "McCoppin", "Paul Goode Main", "Riordan"]:
+                if field in all_fields:
+
+                    all_fields.remove(field)
+                    all_fields.append(field)
+
+            for field in all_fields:
                 try:
                     mydata[field] = len(team_frame[team_frame["Field"] == field])
                 except KeyError:

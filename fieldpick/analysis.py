@@ -20,3 +20,7 @@ print(f"Loaded {len(cFrame)} slots")
 
 aFrame = analyze_columns(cFrame)
 publish_df_to_gsheet(aFrame, worksheet_name="Analysis")
+
+
+uFrame = cFrame.query("Division != Division")
+publish_df_to_gsheet(uFrame, worksheet_name="Unassigned")

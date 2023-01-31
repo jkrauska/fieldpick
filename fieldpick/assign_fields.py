@@ -2,7 +2,15 @@ import pandas as pd
 
 import logging
 from inputs import division_info
-from frametools import list_teams_for_division, weeks_in_season, save_frame, score_frame, reserve_slots, check_consecutive, score_gamecount
+from frametools import (
+    list_teams_for_division,
+    weeks_in_season,
+    save_frame,
+    score_frame,
+    reserve_slots,
+    check_consecutive,
+    score_gamecount,
+)
 from faceoffs import faceoffs_repeated
 from gsheets import publish_df_to_gsheet
 from datetime import datetime
@@ -14,7 +22,6 @@ from collections import defaultdict
 from random import shuffle, seed
 
 import numpy as np
-
 
 
 logging.basicConfig(
@@ -51,7 +58,6 @@ def main():
     # Iterate over each division
     game_id_counter = 1
 
-
     # Iterate divisions
     for division in division_info.keys():
         division_config = division_info[division]
@@ -66,6 +72,7 @@ def main():
         t0 = datetime.now()
         clean_faceoffs = []
         unused_faceoffs = []
+        unable_score = 0
 
         phases = defaultdict(dict)
 
@@ -91,40 +98,31 @@ def main():
             backup_frame = cFrame.copy()
             backup_game_id_counter = game_id_counter
 
-
             logger.info("#" * 80)
             logger.info(f"# Processing {division:<15} with {len(teams)} teams   Loop {loop_count})")
 
-            # First do weekend games, then do weekeday games
-            for phase in phases.keys():
+            preferred_fields = division_config.get("preferred_fields", [None])
+            preferred_days = division_config.get("preferred_days", [None])
 
-                logger.info(f"## Processing Phase: {phase}")
-                games_per_week_pattern = phases[phase]
+            logger.info(f"\tPreferred days: {preferred_days}")
+            logger.info(f"\tPreferred fields: {preferred_fields}")
 
-                preferred_fields = division_config.get("preferred_fields", [None])
-                preferred_days = division_config.get("preferred_days", [None])
+            # Create a working frame for this division
+            query = "Division != Division and Notes != Notes and Time_Length == @time_length and Field not in @denied_fields"
+            working_frame = cFrame.query(query)
 
-                logger.info(f"\tPreferred days: {preferred_days}")
-                logger.info(f"\tPreferred fields: {preferred_fields}")
+            # Start walking weeks (Sat/Sun ... Mon...Fri)
+            for week in weeks_in_season(cFrame):
 
+                # First do weekend games, then do weekeday games
+                for phase in phases.keys():
 
-
-                # Create a working frame for this division
-                query = "Division != Division and Notes != Notes and Time_Length == @time_length and Field not in @denied_fields"  
-                working_frame = cFrame.query(query)
-
-                # Start walking weeks (Sat/Sun ... Mon...Fri)
-                for week in weeks_in_season(cFrame):
-
-                    # Skip weeks we don't want to schedule intentionally
-                    if week in division_config.get("skip_weeks", []):
-                        logger.info(f"\t⤵ Skipping Week {week}")
-                        continue
+                    logger.info(f"## Processing Phase: {phase}")
+                    games_per_week_pattern = phases[phase]
 
                     # Determine total slots available this week
                     this_week_slots = working_frame.query("Week_Number == @week")
                     count_this_week_slots = len(this_week_slots)
-
 
                     games_to_schedule = games_per_week_pattern[int(week) - 1]
 
@@ -140,15 +138,17 @@ def main():
                     clean_slice = int(count_teams / 2)  # number of pure faceoffs/games before repeating teams
                     clean_faceoffs = faceoffs[:clean_slice]
                     del faceoffs[:clean_slice]
-                    #shuffle(clean_faceoffs)
+                    shuffle(clean_faceoffs)
 
                     # Try each preferred day combination
                     for preferred_days_set in preferred_days:
-                        if games_to_schedule == 0: continue
+                        if games_to_schedule == 0:
+                            continue
 
                         # Try each preferred field combination
                         for preferred_fields_set in preferred_fields:
-                            if games_to_schedule == 0: continue
+                            if games_to_schedule == 0:
+                                continue
 
                             # Build query
                             field_query = "Division != Division"  # division is empty (unused slot)
@@ -170,14 +170,18 @@ def main():
 
                             # Block dedicated TI weekend
                             if dedicated_ti_weekend:
-                                if int(week) == int(dedicated_ti_weekend):
+                                if int(week) == int(dedicated_ti_weekend) and phase == "weekend":
                                     logger.info(f"{division:<15} Dedicated TI Weekend: {dedicated_ti_weekend}")
                                     cs = cs.query("Field in @tepper_ketcham")
-                                else:
-                                    # Only prune if we need to (queries are expensive)
-                                    if preferred_fields_set:
-                                        if "Tepper" in preferred_fields_set or "Ketcham" in preferred_fields_set or preferred_fields_set == [None]:
-                                            cs = cs.query("Field not in @tepper_ketcham")
+                                # else:
+                                #     # Only prune if we need to (queries are expensive)
+                                #     if preferred_fields_set:
+                                #         if (
+                                #             "Tepper" in preferred_fields_set
+                                #             or "Ketcham" in preferred_fields_set
+                                #             or preferred_fields_set == [None]
+                                #         ):
+                                #             cs = cs.query("Field not in @tepper_ketcham")
 
                             candidate_slot_ids = cs.index.tolist()
 
@@ -209,44 +213,45 @@ def main():
                                             # pull another set of clean
                                             clean_faceoffs = faceoffs[:clean_slice]
                                             del faceoffs[:clean_slice]
+                                            shuffle(clean_faceoffs)
                                             (home_team, away_team) = clean_faceoffs.pop(0)
-                                            faceoff_source = "clean"                                        
+                                            faceoff_source = "clean"
                                             # shuffle(clean_faceoffs)
 
                                     ## FIXME: This might be a better place to check for back to backs. (don't even allow it to schedule.. move on, and block if you can't get enough..)
                                     # IT IS ALL SUPER SLOW
-                                    if division in ["Rookie", "Minors AAA", "Minors AA", "Majors"]:
-                                        slot_day = int(row.Day_of_Year)
-                                        slot_day_before = cFrame.query("Day_of_Year == @slot_day - 1 and Division == @division")
-                                        slot_day_after = cFrame.query("Day_of_Year == @slot_day + 1 and Division == @division")
+                                    # Doesn't seem to be catching any??
+                                    # if division in ["Rookie", "Minors AAA", "Minors AA", "Majors"]:
+                                    #     slot_day = int(row.Day_of_Year)
+                                    #     slot_day_before = cFrame.query("Day_of_Year == @slot_day - 1 and Division == @division")
+                                    #     slot_day_after = cFrame.query("Day_of_Year == @slot_day + 1 and Division == @division")
 
-                                        check_home_before = slot_day_before.query("Home_Team == @home_team or Away_Team == @home_team")
-                                        check_away_before = slot_day_before.query("Home_Team == @away_team or Away_Team == @away_team")
+                                    #     check_home_before = slot_day_before.query("Home_Team == @home_team or Away_Team == @home_team")
+                                    #     check_away_before = slot_day_before.query("Home_Team == @away_team or Away_Team == @away_team")
 
-                                        check_home_after = slot_day_after.query("Home_Team == @home_team or Away_Team == @home_team")
-                                        check_away_after = slot_day_after.query("Home_Team == @away_team or Away_Team == @away_team")
+                                    #     check_home_after = slot_day_after.query("Home_Team == @home_team or Away_Team == @home_team")
+                                    #     check_away_after = slot_day_after.query("Home_Team == @away_team or Away_Team == @away_team")
 
-                                        if len(check_home_before) > 0 or len(check_home_after) > 0 or len(check_away_before) > 0 or len(check_away_after) > 0:
-                                            logger.warning(f"⚠️  {division:<15} {home_team} would a back to back game in week {week} - skipping")
-                                            logger.warning(f"back to back DEBUG HB{len(check_home_before)} HA{len(check_home_after)} AB{len(check_away_before)}  AA{len(check_away_after)}")
+                                    #     if len(check_home_before) > 0 or len(check_home_after) > 0 or len(check_away_before) > 0 or len(check_away_after) > 0:
+                                    #         logger.warning(f"⚠️  {division:<15} {home_team} would a back to back game in week {week} - skipping")
+                                    #         logger.warning(f"back to back DEBUG HB{len(check_home_before)} HA{len(check_home_after)} AB{len(check_away_before)}  AA{len(check_away_after)}")
 
-                                            # put team back
-                                            if faceoff_source == "clean":
-                                                clean_faceoffs.append((home_team, away_team))
-                                            elif faceoff_source == "unused":
-                                                unused_faceoffs.append((home_team, away_team))
-                                            continue
-
-
+                                    #         # put team back
+                                    #         if faceoff_source == "clean":
+                                    #             clean_faceoffs.append((home_team, away_team))
+                                    #         elif faceoff_source == "unused":
+                                    #             unused_faceoffs.append((home_team, away_team))
+                                    #         continue
 
                                     # Assign the teams to the slot
                                     game_id_string = f"{short_division_names[division]}-{game_id_counter:03d}"
                                     game_id_counter += 1
-                                    cFrame.loc[slot, 
-                                        ["Division", "Home_Team", "Away_Team", "Game_ID"]
-                                        ] = [ division, home_team, away_team, game_id_string]
-
-
+                                    cFrame.loc[slot, ["Division", "Home_Team", "Away_Team", "Game_ID"]] = [
+                                        division,
+                                        home_team,
+                                        away_team,
+                                        game_id_string,
+                                    ]
 
                                     games_to_schedule -= 1
 
@@ -262,12 +267,10 @@ def main():
                                     continue
 
                     if games_to_schedule > 0:
-                        logger.warning(f"{division:<15} ❌ Unable to schedule {games_to_schedule} games in phase {phase} in week {week}")
-
-
-
-
-
+                        logger.warning(
+                            f"{division:<15} ❌ Unable to schedule {games_to_schedule} games in phase {phase} in week {week}"
+                        )
+                        unable_score += games_to_schedule
 
             # End of division loop
 
@@ -279,33 +282,36 @@ def main():
             day_spread_score = 0
             gamecount_score = 0
 
-
             day_spread_score = check_consecutive(cFrame, division)
             field_score = score_frame(cFrame, division, "Field")
             start_score = score_frame(cFrame, division, "Start")
 
             gamecount_score = score_gamecount(cFrame, division)
 
-            total_score = field_score + start_score + day_spread_score + gamecount_score
+            total_score = field_score + start_score + day_spread_score + gamecount_score + unable_score
+            logger.info(
+                f"DEBUG SCORE {division} FS{field_score:0.2f} SS{start_score:0.2f} DS{day_spread_score:0.2f} GC{gamecount_score:0.2f} UA{unable_score:0.2f}  {total_score}"
+            )
 
             # Track best score
             if total_score < best_score:
                 best_score = total_score
                 best_seed = random_seed
-            
-            logger.info(f"{division:<15}  Current:{random_seed}:{total_score:0.2f}  SCORES Best: {best_seed}:{best_score:0.2f}")
 
-            window = 100
+            # logger.info(f"{division:<15}  Current:{random_seed}:{total_score:0.2f}  SCORES Best: {best_seed}:{best_score:0.2f}")
+
+            window = 50
             if loop_count % window == 0 and loop_count > 0:
                 logger.info(f"Loop {loop_count} of {max_loops}")
                 t1 = datetime.now()
                 logger.info(f"Elapsed time: {t1 - t0}")
                 rate = window / (t1 - t0).total_seconds()
                 logger.warning(f"{division:<15} PERFORMANCE Rate is {rate:0.2f} sims per second")
-                logger.info(f"{division:<15} SCORES Best: {best_seed}:{best_score:0.2f}  Current: {random_seed}:{total_score:0.2f}  trying {max_loops - loop_count} loops")
+                logger.info(
+                    f"{division:<15} SCORES Best: {best_seed}:{best_score:0.2f}  Current: {random_seed}:{total_score:0.2f}  trying {max_loops - loop_count} loops"
+                )
 
                 t0 = t1
-
 
             loop_count += 1
 
@@ -318,6 +324,8 @@ def main():
                 break
             elif loop_count == max_loops:
                 # intentionally set to best result for last run
+                logger.warning(f"{division:<15} Final Best SCORE is {best_seed}:{best_score:0.2f} - breaking early")
+
                 logger.warning(f"{division:<15} RERUNNING Best SCORE for is {best_score:0.2f} with seed {best_seed}")
                 random_seed = best_seed
 
@@ -336,9 +344,10 @@ def main():
                 # Revert to empty frame
                 cFrame = backup_frame.copy()
                 game_id_counter = backup_game_id_counter
-            
+
             # Last catch.. If you think the score is really good enough, go ahead and finish early
             if best_score < 1.1:
+                logger.warning(f"{division:<15} Final Best SCORE is {best_seed}:{best_score:0.2f} - breaking early")
                 loop_count = max_loops
                 random_seed = best_seed
 
@@ -346,19 +355,15 @@ def main():
                 cFrame = backup_frame.copy()
                 game_id_counter = backup_game_id_counter
 
-
-
-
+        save_frame(cFrame, f"calendar-{division}.pkl")
         # break
 
     save_frame(cFrame, "calendar.pkl")
     publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
+
 
 if __name__ == "__main__":
     # Run the main function
     main()
 
     # Save the frame
-
-
-
