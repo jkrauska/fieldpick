@@ -141,7 +141,9 @@ anyday_but_friday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday", "
 
 short_division_names = {
     "Farm - Lower": "FML",
+    "Lower Farm": "FML",
     "Farm - Upper": "FMU",
+    "Upper Farm": "FMU",
     "Rookie": "RK",
     "Minors AA": "AA",
     "Minors AAA": "AAA",

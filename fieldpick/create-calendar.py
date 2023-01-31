@@ -21,47 +21,41 @@ cFrame = pd.DataFrame()
 ##################################################
 ### Fort Scott
 # Saturdays 3/11 -- 5/27 (every other week situation)
+
+
+FSDAYS = [
+    "3/5/2023",
+    "3/11/2023",
+    "3/19/2023",
+    "3/25/2023",
+    "4/2/2023",
+    "4/8/2023",
+    "4/16/2023",
+    "4/22/2023",
+    "4/30/2023",
+    "5/7/2023",
+    "5/14/2023",
+    "5/20/2023",
+    "5/27/2023",
+]
+
+
+FSDAYS.append("3/12/2023")
+
+
 cFrame = add_time_slots(
     fields="Ft. Scott - North",
     days_of_week=["Saturday", "Sunday"],
-    only_days=[
-        "3/5/2023",
-        "3/11/2023",
-        "3/19/2023",
-        "3/25/2023",
-        "4/2/2023",
-        "4/8/2023",
-        "4/16/2023",
-        "4/22/2023",
-        "4/30/2023",
-        "5/7/2023",
-        "5/14/2023",
-        "5/20/2023",
-        "5/27/2023",
-    ],
-    times=[("09:00", "11:30"), ("11:30", "14:00")],
+    only_days=FSDAYS,
+    times=[("09:00", "11:30"), ("11:30", "14:00")],  # 2.5 h slots
     input=cFrame,
 )
 
 cFrame = add_time_slots(
     fields="Ft. Scott - South",
     days_of_week=["Saturday", "Sunday"],
-    only_days=[
-        "3/5/2023",
-        "3/11/2023",
-        "3/19/2023",
-        "3/25/2023",
-        "4/2/2023",
-        "4/8/2023",
-        "4/16/2023",
-        "4/22/2023",
-        "4/30/2023",
-        "5/7/2023",
-        "5/14/2023",
-        "5/20/2023",
-        "5/27/2023",
-    ],
-    times=[("09:30", "11:30"), ("12:00", "14:00")],
+    only_days=FSDAYS,
+    times=[("09:30", "11:30"), ("12:00", "14:00")],  # 2 h slots
     input=cFrame,
 )
 
@@ -140,15 +134,6 @@ cFrame = add_time_slots(
 )
 ##################################################
 # RecPark Weekdays
-
-# cFrame = add_time_slots(
-#     fields=["Kimbell D1 NW", "Kimbell D2 SE", "Kimbell D3 SW"],
-#     days_of_week="Wednesday",
-#     start_day="3/8/2023",
-#     end_day="5/27/2023",
-#     times=[("17:30", "20:00")],
-#     input=cFrame,
-# )
 
 cFrame = add_time_slots(
     fields=["Kimbell D1 NW", "Kimbell D2 SE", "Kimbell D3 SW"],

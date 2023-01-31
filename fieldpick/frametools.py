@@ -4,6 +4,7 @@ import logging
 from natsort import natsorted
 from collections import defaultdict
 from inputs import division_info
+from functools import cache
 
 import numpy as np
 
@@ -146,11 +147,11 @@ def analyze_columns(cFrame):
     """Analyze the columns of a calendar dataframe"""
     logger.info("Analyzing columns")
     for division in division_info.keys():
-        logger.info(f"Division: {division}")
+        # logger.info(f"Division: {division}")
         division_frame = filter_by_division(cFrame, division)
         all_teams = extract_teams(division_frame)
         for team in all_teams:
-            logger.info(f"Team: {team}")
+            # logger.info(f"Team: {team}")
             team_frame = rows_with_team(division_frame, team)
             mydata = {
                 "Division": division,
@@ -277,28 +278,28 @@ def reserve_slots(
 
 def check_consecutive(frame, division, min_diff=2):
     """Check if there are any consecutive games for any given team in a given division"""
-    # FIXME, this slows the scoring down by 50%!  Need to do this faster..
+    # FIXME, this function slows the scoring down by 50%!  Need to do this faster..
     division_frame = filter_by_division(frame, division)
     all_teams = extract_teams(division_frame)
 
+    result = 0
+
     for team in all_teams:
         team_frame = rows_with_team(division_frame, team)
-        # print(team_frame)
 
         day_series = team_frame.Day_of_Year.values.astype(int)
+
         day_series.sort()
 
-        least_diff = None
         for i in range(len(day_series) - 1):
             diff = abs(day_series[i] - day_series[i + 1])
-            if not least_diff:
-                least_diff = diff
-            if diff < least_diff:
-                least_diff = diff
 
-        # Diff of 1 means consecutive games, Diff of 0 means same day games!
-        if least_diff < 2:
-            logger.warning(f"Found back to back consecutive games for {team} in {division}.  No go.")
-            return 100
+            # early exit if we find a diff of 1 (speedup?)
+            if diff < 1:
+                logger.info(f"{division} {team} Found same day games. ({diff}) week {i+1} No go.")
+                result += 100
+            elif diff < 2:
+                logger.info(f"{division} {team} Found back to back consecutive games. ({diff}) week {i+1}  and week {i+2} No go.")
+                result += 10
 
-    return 0
+    return result
