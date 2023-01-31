@@ -32,49 +32,35 @@ blackout_days = [date_string_to_datetime(item) for item in blackout_dates]
 
 
 division_info = {
-    # "Challenger": {
-    #     "teams": 4,
-    #     "games": 2,
-    #     "games_per_week": 2,
-    #     "playoffs": None,
-    #     "preferred_days": ["Sunday"],
-    #     "preferred_fields": [["Riordan"],["Tepper"],["McCoppin"]],
-    # },
     "Tee Ball": {
-        "teams": 14,
-        "games": 7,
-        "games_per_week": 7,
+        "teams": 14,      # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "weekend_pattern": [0, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 0],
         "preferred_days": ["Saturday"],
         "time_length": "90",
         "preferred_fields": [["Larsen", "Paul Goode Practice"]],
-        "skip_weeks": ["1", "6", "13"],
         "random_seed": 1588,
         "max_loops": 1,
     },
     "Lower Farm": {
-        "teams": 12,
-        "games": 6,
-        "games_per_week": 6,
+        "teams": 12,      # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "weekend_pattern": [6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 0],
         "preferred_days": ["Sunday"],
         "time_length": "120",
-        "skip_weeks": ["6", "13"],
         "preferred_fields": [
             ["Larsen", "Paul Goode Practice"],
             ["Larsen", "Paul Goode Practice", "Ft. Scott - South", "Christopher"],
         ],
-        "random_seed": 534,
-        "max_loops": 1,
+        "random_seed": 600,
+        "max_loops": 600,
     },
     "Upper Farm": {
-        "teams": 14,
-        "games": 7,
-        "games_per_week": 7,
+        "teams": 14,      # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "weekend_pattern": [7, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 0],
         "preferred_days": [
             ["Sunday"],
             ["Saturday"],
         ],
         "time_length": "120",
-        "skip_weeks": ["6", "13"],
         "preferred_fields": [
             [
                 "Larsen",
@@ -84,15 +70,13 @@ division_info = {
                 "Rossi Park #1",
             ],
         ],
-        "random_seed": 676,
-        "max_loops": 1000,
+        "random_seed": 1582,
+        "max_loops": 600,
     },
     "Rookie": {
-        "teams": 14,
-        "games": 7,
-        "games_per_week": 7,  # 1  2  3  4  5  6  7  8  9  10 11 12 13
-        "games_per_week_pattern": [2, 6, 8, 7, 7, 6, 8, 7, 8, 7, 8, 7, 8],
-        "midweek_start": 2,  # Midweek games start on week 2 due to DST
+        "teams": 14,      # 1  2  3  4  TI E  7  8  9  10 11 12 13
+        "weekend_pattern": [2, 6, 6, 6, 7, 0, 6, 6, 6, 0, 0, 0, 0],
+        "weekday_pattern": [0, 0, 2, 1, 0, 0, 1, 1, 2, 0, 0, 0, 0],
         "preferred_days": [
             [
                 "Saturday",
@@ -102,7 +86,6 @@ division_info = {
         ],
         "dedicated_ti_weekend": 5,
         "preferred_fields": [
-            ["Kimbell D3 SW"],
             [
                 "Rossi Park #1",
                 "Ft. Scott - North",
@@ -112,18 +95,14 @@ division_info = {
             ["Rossi Park #1", "South Sunset D2 South", "Ft. Scott - North", "Ft. Scott - South", "Kimbell D3 SW"],
             [None],
         ],
-        "skip_weeks": ["6", "10", "11", "12", "13"],
         "time_length": "150",
-        "random_seed": 1200,  # 1.729 with seed 1936
-        "max_loops": 1000,
+        "random_seed": 1790,  # 1.729 with seed 1936
+        "max_loops": 800,
     },
     "Minors AA": {
-        "teams": 10,
-        "games": 11,
-        "games_per_week": 5,  # 1  2  3  4  5  6  7  8  9  10 11 12 13
-        "games_per_week_pattern": [3, 6, 6, 7, 6, 4, 6, 7, 6, 7, 6, 7, 6],
-        "skip_weeks": ["10", "11", "12", "13"],
-        "midweek_start": 2,  # Midweek games start on week 2 due to DST
+        "teams": 10,      # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "weekend_pattern": [2, 5, 5, 5, 5, 0, 5, 5, 5, 0, 0, 0, 0],
+        "weekday_pattern": [0, 1, 1, 2, 1, 4, 1, 1, 2, 0, 0, 0, 0],
         "dedicated_ti_weekend": 7,
         "time_length": "150",
         "random_seed": 9980,
@@ -131,15 +110,13 @@ division_info = {
         "denied_fields": ["Kimbell D3 SW"],
     },
     "Minors AAA": {
-        "teams": 8,
-        "games": 8,
-        "games_per_week": 4,  # 1  2  3  4  5  6  7  8  9  10 11 12 13
-        "games_per_week_pattern": [3, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6, 6],
-        "skip_weeks": ["10", "11", "12", "13"],
-        "midweek_start": 2,
+        "teams": 8,       # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "weekend_pattern": [2, 4, 4, 4, 4, 0, 4, 4, 4, 0, 0, 0, 0],
+        "weekday_pattern": [0, 0, 2, 2, 2, 4, 2, 2, 2, 0, 0, 0, 0],
+        "dedicated_ti_weekend": 8,
         "time_length": "150",
         "random_seed": 567,  # 1.040 with seed 567
-        "max_loops": 1,
+        "max_loops": 800,
         "denied_fields": ["Kimbell D3 SW"],
     },
     "Majors": {
@@ -149,10 +126,9 @@ division_info = {
             ["Saturday", "Sunday", "Tuesday"],
             [None],
         ],
-        "teams": 10,
-        "skip_weeks": ["10", "11", "12", "13"],
-        "games_per_week": 10,  # 1    2   3  4    5  6  7  8  9  10 11 12 13
-        "games_per_week_pattern": [10, 10, 10, 10, 10, 7, 10, 10, 10, 10, 10, 10, 10],
+        "teams": 10,      # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "weekend_pattern": [5, 5, 5, 5, 5, 0, 5, 5, 5, 0, 0, 0, 0],
+        "weekday_pattern": [5, 4, 4, 4, 4, 5, 4, 4, 4, 0, 0, 0, 0],
         "time_length": "150",
         "random_seed": 292,  # 1.579 with seed 292
         "max_loops": 1,

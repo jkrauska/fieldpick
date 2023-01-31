@@ -51,10 +51,14 @@ def score_frame(frame, division, column):
 
     list_of_deviations = []
 
-    logger.info(f"Scoring {division} slots")
+    logger.info(f"Scoring {division} slots based on {column}")
 
     slots_to_score = filter_by_division(frame, division)
     logger.info(f"Scoring {len(slots_to_score)} slots")
+
+    if len(slots_to_score) == 0:
+        return 0
+
     all_teams = extract_teams(slots_to_score)
 
     variations = defaultdict(list)
@@ -134,6 +138,21 @@ def clear_division(division, cFrame):
     return cFrame
 
 
+def score_gamecount(frame, division):
+        variations = []
+        # logger.info(f"Division: {division}")
+        division_frame = filter_by_division(frame, division)
+        all_teams = extract_teams(division_frame)
+
+        for team in all_teams:
+            team_frame = rows_with_team(division_frame, team)
+            variations.append(len(team_frame))
+        
+        dev = np.std(variations)
+        return dev
+
+
+
 # division	team	Monday	Tuesday	Wednesday	Thursday	Friday	Saturday	Sunday
 # total	home	away	turf	grass
 # TI	SF	M-F-TI	SS-TI	M-F-SF	SS-SF
@@ -211,11 +230,6 @@ def analyze_columns(cFrame):
                 "TI": len(team_frame[team_frame["location"] == "TI"]),
                 "SF": len(team_frame[team_frame["location"] == "SF"]),
             }
-
-            # display(dataFrame.query('Salary  <= 100000 & Age < 40 & JOB.str.startswith("C").values'))
-
-            # a = len(team_frame.query("location == 'TI' and Day_of_Week in ('Saturday', 'Sunday')"))
-            # # a = team_frame.query("location = 'TI' & Day_of_Week in ('Saturday', 'Sunday')")
 
             mydata["TI_WEEKEND"] = len(team_frame.query("location == 'TI' and Day_of_Week in ('Saturday', 'Sunday')"))
 
