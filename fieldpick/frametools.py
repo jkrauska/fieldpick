@@ -279,15 +279,42 @@ def analyze_columns(cFrame):
 
 def generate_schedules(cFrame):
     """Analyze the columns of a calendar dataframe"""
-    logger.info("Analyzing columns")
+    division_frames = {}
+    logger.info("Generating schedules")
     for division in extract_divisions(cFrame):
-        logger.info(f"Division: {division}")
+
+        #logger.info(f"Division: {division}")
+        if not division:
+            continue
         division_frame = filter_by_division(cFrame, division)
         all_teams = extract_teams(division_frame)
+        team_frames = []
         for team in all_teams:
-            logger.info(f"Team: {team}")
-            team_frame = rows_with_team(division_frame, team)
-            print(team_frame)
+            #logger.info(f"Team: {team}")
+
+            tf = cFrame.query(f"Division == '{division}' and (Home_Team == '{team}' or Away_Team == '{team}')")
+
+            team_frames.append(tf)
+
+            # Split out layout for formatting...
+            empty_frame = pd.DataFrame(
+                columns=[
+                    "Home_Team",
+                    "Away_Team",
+                    "Division",                ]
+            )
+
+            empty_frame["Home_Team"] = "JOELTEST"
+            empty_frame["Away_Team"] = team
+            empty_frame["Division"] = division
+
+            team_frames.append(empty_frame)
+
+        division_frames[division] = pd.concat(team_frames, ignore_index=True)
+        
+
+    return division_frames
+
 
 
 def reserve_slots(

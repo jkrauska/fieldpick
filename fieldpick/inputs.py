@@ -44,7 +44,7 @@ division_info = {
             ["Larsen", "Paul Goode Practice"],
             ["Larsen", "Paul Goode Practice", "Ft. Scott - South", "Christopher"],
         ],
-        "random_seed": 1575,
+        "random_seed": 1582,
         "max_loops": 10,
     },
     "Upper Farm": {
@@ -64,7 +64,7 @@ division_info = {
                 "Rossi Park #1",
             ],
         ],
-        "random_seed": 1875,
+        "random_seed": 1879,
         "max_loops": 10,
     },
     "Rookie": {
@@ -91,7 +91,7 @@ division_info = {
         ],
         "time_length": "150",
         "random_seed": 3127,  # 1.729 with seed 1936
-        "max_loops": 2000,
+        "max_loops": 10,
     },
     "Minors AA": {
         "preferred_fields": [
@@ -108,8 +108,10 @@ division_info = {
         "weekday_pattern": [0, 1, 1, 2, 2, 4, 2, 1, 2, 0, 0, 0, 0],
         "dedicated_ti_weekend": 7,
         "time_length": "150",
-        "random_seed": 9980,
-        "max_loops": 2000,
+        #"random_seed": 10511,
+
+        "random_seed": 10511,
+        "max_loops": 200,
         "denied_fields": ["Kimbell D3 SW"],
     },
     "Minors AAA": {
@@ -121,13 +123,18 @@ division_info = {
             ],
             [None],
         ],
+        "preferred_days": [
+            ["Saturday", "Sunday"],
+            ["Wednesday", "Thursday", "Friday"],
+            ["Saturday", "Sunday", "Tuesday"],
+        ],
         "teams": 8,  # 1  2  3  4  5  E  7  8  9  10 11 12 13
         "weekend_pattern": [3, 4, 4, 4, 4, 0, 4, 4, 4, 0, 0, 0, 0],
         "weekday_pattern": [0, 0, 2, 2, 2, 4, 2, 2, 2, 0, 0, 0, 0],
         "dedicated_ti_weekend": 8,
         "time_length": "150",
-        "random_seed": 567,  # 1.040 with seed 567
-        "max_loops": 2000,
+        "random_seed": 1975,  # 1.040 with seed 567
+        "max_loops": 200,
         "denied_fields": ["Kimbell D3 SW"],
     },
     "Majors": {
@@ -142,7 +149,7 @@ division_info = {
         ],
         "preferred_days": [
             ["Saturday", "Sunday"],
-            ["Tuesday", "Wednesday", "Thursday"],
+            ["Tuesday", "Wednesday", "Friday"],
             ["Saturday", "Sunday", "Tuesday"],
         ],
         "teams": 10,  # 1  2  3  4  5  E  7  8  9  10 11 12 13
@@ -150,7 +157,7 @@ division_info = {
         "weekday_pattern": [5, 4, 4, 4, 4, 5, 4, 4, 4, 0, 0, 0, 0],
         "time_length": "150",
         "random_seed": 292,  # 1.579 with seed 292
-        "max_loops": 2000,
+        "max_loops": 200,
         "denied_fields": ["Kimbell D3 SW", "Ft. Scott - South"],
     },
     "Juniors": {"teams": 8, "games": 14, "skip_weeks": ["11", "12", "13"], "time_length": "180", "playoffs": None},

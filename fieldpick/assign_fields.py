@@ -134,6 +134,10 @@ def main():
                             f"{division:<15} ⚠️  There are fewer slots available than games to schedule in Week {week} ({count_this_week_slots} < {games_to_schedule})"
                         )
 
+                    if games_to_schedule == 0:
+                        logger.info(f"{division:<15} No games to schedule in Phase {phase} Week {week}")
+                        continue
+
                     # Try only grabbing clean faceoffs (no repeats)
                     clean_slice = int(count_teams / 2)  # number of pure faceoffs/games before repeating teams
                     clean_faceoffs = faceoffs[:clean_slice]
@@ -246,9 +250,11 @@ def main():
                                     # Assign the teams to the slot
                                     game_id_string = f"{short_division_names[division]}-{game_id_counter:03d}"
                                     game_id_counter += 1
-                                    cFrame.loc[slot, ["Division", "Home_Team", "Away_Team", "Game_ID"]] = [
+                                    cFrame.loc[slot, ["Division", "Home_Team", "Home_Team_Name", "Away_Team", "Away_Team_Name", "Game_ID"]] = [
                                         division,
                                         home_team,
+                                        home_team,
+                                        away_team,
                                         away_team,
                                         game_id_string,
                                     ]
