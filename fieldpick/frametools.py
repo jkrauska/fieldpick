@@ -376,3 +376,103 @@ def check_consecutive(frame, division, min_diff=2):
                 result += 10
 
     return result
+
+def swap_rows_by_slot(frame, slot1, slot2):
+    if frame.loc[slot1, "Game_ID"] is None:
+        logger.warning(f"Slot {slot1} does not have a game assigned")
+        return
+    elif frame.loc[slot2, "Game_ID"] is None:
+        logger.warning(f"Slot {slot2} does not have a game assigned")
+        return
+    else:
+        logger.info(f"Swapping slots {slot1} and {slot2}")
+
+        temp = frame.loc[slot1].copy()
+
+        frame.loc[slot1, [
+            "Division", 
+            "Home_Team", "Home_Team_Name", 
+            "Away_Team", "Away_Team_Name", 
+            "Notes"]] = [
+            frame.loc[slot2, "Division"],
+            frame.loc[slot2, "Home_Team"],
+            frame.loc[slot2, "Home_Team_Name"],
+            frame.loc[slot2, "Away_Team"],
+            frame.loc[slot2, "Away_Team_Name"],
+            f"Swapped teams with {slot2}."
+        ]
+
+        frame.loc[slot2, [
+            "Division", 
+            "Home_Team", "Home_Team_Name", 
+            "Away_Team", "Away_Team_Name", 
+            "Notes"]] = [
+            temp.Division,
+            temp.Home_Team,
+            temp.Home_Team_Name,
+            temp.Away_Team,
+            temp.Away_Team_Name,
+            f"Swapped teams with {slot1}."
+        ]
+
+
+def game_id_to_slot(frame, game_id):
+    return frame[frame["Game_ID"] == game_id].index[0]
+
+def swap_rows_by_game_id(frame, game_id1, game_id2, dest=None):
+    slot1 = game_id_to_slot(frame, game_id1)
+    slot2 = game_id_to_slot(frame, game_id2)
+
+    if dest:
+        # check if dst slot already has an expected team (swap already done)
+        if frame.loc[slot2, "Home_Team"] == dest or frame.loc[slot2, "Away_Team"] == dest:
+            logger.info(f"Not swapping rows -- Slot {slot2} already has {dest} assigned")
+            return
+    swap_rows_by_slot(frame, slot1, slot2)
+
+def balance_home_away(frame):
+    """Balance home and away games"""
+    for division in extract_divisions(frame):
+        #logger.info(f"Division: {division}")
+        if not division: continue
+
+        #if division != "Tee Ball": continue  # Only balance Tee Ball
+
+        division_frame = filter_by_division(frame, division)
+
+        home = division_frame["Home_Team"]
+        home_counts = home.value_counts()
+        home_dev = home_counts.astype(float).std()
+        top_home = next(iter(home_counts.to_dict()))
+
+
+        if home_dev < 0.3:
+            #logger.info(f"Deviation: {home_dev} - skipping")
+            continue
+ 
+        away = division_frame["Away_Team"]
+        away_counts = away.value_counts()
+        away_counts.astype(float).std()
+
+        away_counts_dict = list(away_counts.to_dict().keys())
+
+        if len(away_counts_dict) < 2:
+            #logger.info("not enough away teams to flip - skipping")
+            continue
+
+        for check_team in away_counts_dict:
+            possible_flip = division_frame.query(f"Home_Team == '{top_home}' and Away_Team == '{check_team}'")
+            if len(possible_flip) == 0:
+                #logger.info(f"No faceoff found between home: {top_home} and away: {check_team}")
+                continue
+            else:
+                flip_index = possible_flip.index[0]
+                #logger.info(f"Match between home:{top_home} and away:{check_team} found - flipping")
+                flip_away = check_team
+                break
+
+        frame.loc[flip_index, [
+            "Home_Team", "Home_Team_Name", 
+            "Away_Team", "Away_Team_Name"]] = [
+                flip_away, flip_away, 
+                top_home, top_home]

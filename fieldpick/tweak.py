@@ -1,6 +1,6 @@
 import pandas as pd
 import logging
-from frametools import filter_by_division, extract_divisions, analyze_columns
+from frametools import analyze_columns, swap_rows_by_game_id, balance_home_away
 from gsheets import publish_df_to_gsheet
 from helpers import short_division_names
 
@@ -92,6 +92,8 @@ def move_row(frame, slot, new_slot):
         clear_row(frame, slot)
 
 
+
+
 # Manual Fixes
 ##  Rookie
 assign_row(cFrame, 106, "Rookie", "Team 6", "Team 7")
@@ -113,6 +115,7 @@ assign_row(cFrame,  492, "Minors AA", "Team 8", "Team 7")
 assign_row(cFrame,  310, "Minors AA", "Team 10", "Team 5")
 assign_row(cFrame,  162, "Minors AA", "Team 10", "Team 9")
 
+assign_row(cFrame,  444, "Minors AA", "Team 8", "Team 5")
 
 
 ## AAA 
@@ -120,70 +123,55 @@ assign_row(cFrame,  20, "Minors AAA", "Team 8", "Team 5")
 assign_row(cFrame,  37, "Minors AAA", "Team 5", "Team 1")
 assign_row(cFrame,  103, "Minors AAA", "Team 7", "Team 4")
 
-assign_row(cFrame,  166, "Minors AAA", "Team 3", "Team 2")
+assign_row(cFrame,  166, "Minors AAA", "Team 2", "Team 6")
 #move_row(cFrame,  170,  173)
-
 #move_row(cFrame,  459,  445)
+assign_row(cFrame,  438, "Minors AAA", "Team 3", "Team 7")
+
+
 
 ## Majors
 logger.info("Fixing Majors")
 assign_row(cFrame,  235, "Majors", "Team 10", "Team 2")
 assign_row(cFrame,  287, "Majors", "Team 1", "Team 6")
+#move_row(cFrame,  449,  444)
 
+
+
+# UF Swaps
+# FMU-139	FMU-138	6
+# FMU-148	FMU-144	4
+# FMU-156	FMU-157	1
+# FMU-152	FMU-153	2
+# FMU-151	FMU-155	7
+# FMU-164	FMU-159	1
+# FMU-169	FMU-165	7
+# FMU-173	FMU-174	7
+# FMU-181	FMU-184	7
+# FMU-193	FMU-196	7
+# FMU-205	FMU-202	7
+# FMU-212	FMU-211	1
+swap_rows_by_game_id(cFrame, "FMU-142", "FMU-137", dest="Team 7")
+swap_rows_by_game_id(cFrame, "FMU-139", "FMU-138", dest="Team 6")
+swap_rows_by_game_id(cFrame, "FMU-148", "FMU-144", dest="Team 4")
+swap_rows_by_game_id(cFrame, "FMU-156", "FMU-157", dest="Team 1")
+swap_rows_by_game_id(cFrame, "FMU-152", "FMU-153", dest="Team 2")
+swap_rows_by_game_id(cFrame, "FMU-151", "FMU-155", dest="Team 7")
+swap_rows_by_game_id(cFrame, "FMU-164", "FMU-159", dest="Team 1")
+swap_rows_by_game_id(cFrame, "FMU-169", "FMU-165", dest="Team 7")
+swap_rows_by_game_id(cFrame, "FMU-173", "FMU-174", dest="Team 7")
+swap_rows_by_game_id(cFrame, "FMU-181", "FMU-184", dest="Team 7")
+swap_rows_by_game_id(cFrame, "FMU-193", "FMU-196", dest="Team 7")
+swap_rows_by_game_id(cFrame, "FMU-205", "FMU-202", dest="Team 7")
+swap_rows_by_game_id(cFrame, "FMU-212", "FMU-211", dest="Team 1")
 
 #sys.exit(0)
 
-def balance_home_away(frame):
-    """Balance home and away games"""
-    for division in extract_divisions(frame):
-        #logger.info(f"Division: {division}")
-        if not division: continue
 
-        #if division != "Tee Ball": continue  # Only balance Tee Ball
-
-        division_frame = filter_by_division(frame, division)
-
-        home = division_frame["Home_Team"]
-        home_counts = home.value_counts()
-        home_dev = home_counts.astype(float).std()
-        top_home = next(iter(home_counts.to_dict()))
-
-
-        if home_dev < 0.3:
-            #logger.info(f"Deviation: {home_dev} - skipping")
-            continue
- 
-        away = division_frame["Away_Team"]
-        away_counts = away.value_counts()
-        away_counts.astype(float).std()
-
-        away_counts_dict = list(away_counts.to_dict().keys())
-
-        if len(away_counts_dict) < 2:
-            #logger.info("not enough away teams to flip - skipping")
-            continue
-
-        for check_team in away_counts_dict:
-            possible_flip = division_frame.query(f"Home_Team == '{top_home}' and Away_Team == '{check_team}'")
-            if len(possible_flip) == 0:
-                #logger.info(f"No faceoff found between home: {top_home} and away: {check_team}")
-                continue
-            else:
-                flip_index = possible_flip.index[0]
-                #logger.info(f"Match between home:{top_home} and away:{check_team} found - flipping")
-                flip_away = check_team
-                break
-
-        frame.loc[flip_index, [
-            "Home_Team", "Home_Team_Name", 
-            "Away_Team", "Away_Team_Name"]] = [
-                flip_away, flip_away, 
-                top_home, top_home]
 
 
     
 for i in range(100):
-    #logger.info('*'*80) 
     balance_home_away(cFrame)
 
 
