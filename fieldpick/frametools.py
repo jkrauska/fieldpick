@@ -5,6 +5,8 @@ from natsort import natsorted
 from collections import defaultdict
 from inputs import division_info
 from functools import cache
+from helpers import short_division_names
+
 
 import numpy as np
 
@@ -128,14 +130,15 @@ def filter_by_division(frame, division):
     return frame[frame["Division"] == division]
 
 
-def clear_division(division, cFrame):
+def clear_division(frame, division):
     """Clear a division from a calendar dataframe"""
     logger.info(f"Clearing division {division}")
-    cFrame.loc[cFrame["Division"] == division, "Home_Team"] = None
-    cFrame.loc[cFrame["Division"] == division, "Away_Team"] = None
-    cFrame.loc[cFrame["Division"] == division, "Division"] = None
+    frame.loc[frame["Division"] == division, "Home_Team"] = None
+    frame.loc[frame["Division"] == division, "Away_Team"] = None
+    frame.loc[frame["Division"] == division, "Game_ID"] = None
+    frame.loc[frame["Division"] == division, "Division"] = None
 
-    return cFrame
+    return frame
 
 
 def score_gamecount(frame, division):
@@ -372,17 +375,17 @@ def check_consecutive(frame, division, min_diff=2):
                 logger.info(f"{division} {team} Found same day games. ({diff}) week {i+1} No go.")
                 result += 100
             elif diff < 2:
-                logger.info(f"{division} {team} Found back to back consecutive games. ({diff}) week {i+1}  and week {i+2} No go.")
+                logger.info(f"{division} {team} Found back to back consecutive games. ({diff}) week {i+1}  and week {i+2} No go.   days {day_series[i]} and {day_series[i+1]}")
                 result += 10
 
     return result
 
-def swap_rows_by_slot(frame, slot1, slot2):
-    if frame.loc[slot1, "Game_ID"] is None:
-        logger.warning(f"Slot {slot1} does not have a game assigned")
+def swap_rows_by_slot(frame, slot1, slot2, safe=True):
+    if frame.loc[slot1, "Game_ID"] is None and safe:
+        logger.warning(f"Cannot Swap - Slot {slot1} does not have a game assigned")
         return
-    elif frame.loc[slot2, "Game_ID"] is None:
-        logger.warning(f"Slot {slot2} does not have a game assigned")
+    elif frame.loc[slot2, "Game_ID"] is None and safe:
+        logger.warning(f"Cannot Swap Slot {slot2} does not have a game assigned")
         return
     else:
         logger.info(f"Swapping slots {slot1} and {slot2}")
@@ -476,3 +479,33 @@ def balance_home_away(frame):
             "Away_Team", "Away_Team_Name"]] = [
                 flip_away, flip_away, 
                 top_home, top_home]
+
+
+def assign_row(frame, slot, division, home_team, away_team, safe=True):
+
+    logger.info(f"Assigning {division} {home_team} vs {away_team} to slot {slot}")
+
+    # Get the next available id
+    game_ids = frame[frame['Game_ID'].notnull()]["Game_ID"].astype(str).str.split("-").str[1].astype(int)
+    game_id = game_ids.max() + 1
+
+    #game_id = 428
+
+    game_id_string = f"{short_division_names[division]}-{game_id:03d}"
+
+
+    if frame.loc[slot, "Game_ID"] is not None and safe:
+        logger.warning(f"Slot {slot} already has a game assigned")
+    else:
+        logger.info(f"Assigning {game_id_string} to slot {slot}")
+        frame.loc[slot, ["Division", 
+        "Home_Team", "Home_Team_Name", 
+        "Away_Team", "Away_Team_Name", 
+        "Game_ID"]] = [
+            division,
+            home_team,
+            home_team,
+            away_team,
+            away_team,
+            game_id_string
+        ]

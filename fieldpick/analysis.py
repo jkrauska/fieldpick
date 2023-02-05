@@ -40,4 +40,4 @@ for division, division_frame in divisionFrames.items():
     division_frame = division_frame.drop(columns=drop_columns)
     publish_df_to_gsheet(division_frame, worksheet_name=f"{division}")
     logger.info("Sleeping for 10 second to avoid rate limit")
-    # time.sleep(10)
+    time.sleep(10)
