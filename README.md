@@ -84,10 +84,10 @@ These are guidelines and not to be considered official policy of Little League.
 ### Minors AAA
 - No Mondays, No Tuesdays
 
-
 ### Majors
 - More TI Weekdays
 - No Mondays, No Thursdays
+- Before and after Challenger on Tepper on Sundays
 
 ## Special Divisions
 
@@ -107,12 +107,23 @@ These are guidelines and not to be considered official policy of Little League.
 Not currently scheduled
 
 
-## Field Notes
+## Field and Timing Notes
 
 See inputs.py for specs like field size and turf vs grass, etc.
+
+Be mindful of sunset times. (is looked up in schedule creation tool)
+
+Some fields (Kimbell/South Sunset) have lights.
+
+TI fields can go until 7pm (19:00) on weekends after the time change.
+(4 games/day)
+09:00-11:30
+11:30-14:00
+14:00-16:30
+16:30-19:00
 
 Fields without fences are more appropriate for younger divisions.
 
 Fields where the outfields are often used by other sports or casual use (eg. Rossi) are more appropriate for younger divisions.
 
-Normally we "pre-carve" up these fields for lower divisions in to shorter time slots approprite for the division.
+Normally we "pre-carve" up these fields for lower divisions in to shorter time slots appropriate for the division.
