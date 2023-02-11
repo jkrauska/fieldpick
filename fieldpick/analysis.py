@@ -19,7 +19,9 @@ save_file = "data/calendar.pkl"
 cFrame = pd.read_pickle(save_file)
 print(f"Loaded {len(cFrame)} slots")
 
-publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
+
+# publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
+
 
 
 aFrame = analyze_columns(cFrame)

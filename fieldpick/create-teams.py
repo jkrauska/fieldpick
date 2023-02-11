@@ -9,6 +9,7 @@ logger = logging.getLogger()
 tFrame = pd.DataFrame()
 
 for division in division_info:
+    logger.info(f"Division: {division}")
     logger.info(f"Generating {division_info[division]['teams']} teams for {division}")
     for i in range(division_info[division]["teams"]):
         new_row = pd.DataFrame(

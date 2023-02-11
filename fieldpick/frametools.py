@@ -1,10 +1,9 @@
 import os
-
+import time
 import logging
 from natsort import natsorted
 from collections import defaultdict
 from inputs import division_info
-from functools import cache
 from helpers import short_division_names
 
 
@@ -47,6 +46,10 @@ def save_frame(frame, save_file):
     logger.info(f"Saving {len(frame)} rows to disk: data/{save_file}")
     frame.to_pickle(f"data/{save_file}")
 
+    # backup
+    time_str = time.strftime("%Y%m%d-%H%M%S")
+    frame.to_pickle(f"{save_file}_{time_str}.pkl")
+    
 
 def score_frame(frame, division, column):
     """Evaluate a column in a dataframe and return a score"""
@@ -84,6 +87,10 @@ def rows_with_team(frame, team):
     """Return a dataframe with rows that match a team"""
     return frame[(frame["Home_Team"] == team) | (frame["Away_Team"] == team)]
 
+
+def rows_unused(frame):
+    """Return a dataframe with rows that are unused"""
+    return frame.query("Division != Division")
 
 def score_frame_home(frame, division):
     """Evaluate a column in a dataframe and return a score"""
@@ -167,13 +174,47 @@ def analyze_columns(cFrame):
 
     """Analyze the columns of a calendar dataframe"""
     logger.info("Analyzing columns")
-    for division in division_info.keys():
+    divisions = list(division_info.keys()) + ["UNUSED - W1-9",  "TOTALS - W1-W9", "UNUSED - ALL", "TOTALS"]
+    for division in divisions:
         # logger.info(f"Division: {division}")
-        division_frame = filter_by_division(cFrame, division)
-        all_teams = extract_teams(division_frame)
+        if division == "UNUSED - W1-9":
+            cleanFrame = cFrame[cFrame["Week_Number"] != "UNKNOWN"].copy()
+            division_frame = rows_unused(cleanFrame)
+            division_frame[pd.to_numeric(division_frame["Week_Number"]) < 10]
+            all_teams = ["UNUSED"]
+        elif division == "UNUSED - ALL":
+            division_frame = rows_unused(cFrame)
+            all_teams = ["UNUSED"]
+        elif division == "TOTALS - W1-W9":
+            division_frame = cFrame
+            all_teams = ["TOTALS"]
+        elif division == "TOTALS":
+            division_frame = cFrame
+            all_teams = ["TOTALS"]
+        else:
+            division_frame = filter_by_division(cFrame, division)
+            all_teams = extract_teams(division_frame)
+
         for team in all_teams:
             # logger.info(f"Team: {team}")
-            team_frame = rows_with_team(division_frame, team)
+            if division == "UNUSED - W1-9":
+                cleanFrame = cFrame[cFrame["Week_Number"] != "UNKNOWN"].copy()
+                division_frame = rows_unused(cleanFrame)
+                division_frame = division_frame[pd.to_numeric(division_frame["Week_Number"]) < 10]
+                team_frame = division_frame
+            elif division == "UNUSED - ALL":
+                division_frame = rows_unused(cFrame)
+                team_frame = division_frame
+            elif division == "TOTALS - W1-W9":
+                cleanFrame = cFrame[cFrame["Week_Number"] != "UNKNOWN"].copy()
+                division_frame = cleanFrame
+                division_frame = division_frame[pd.to_numeric(division_frame["Week_Number"]) < 10]
+                team_frame = division_frame
+
+            elif division == "TOTALS":
+                team_frame = cFrame
+            else:
+                team_frame = rows_with_team(division_frame, team)
             mydata = {
                 "Division": division,
                 "Team": team,
@@ -233,6 +274,9 @@ def analyze_columns(cFrame):
                 "SF": len(team_frame[team_frame["location"] == "SF"]),
             }
 
+            mydata["WeekEND"] = len(team_frame.query("Day_of_Week in ('Saturday', 'Sunday')"))
+            mydata["WeekDAY"] = len(team_frame.query("Day_of_Week not in ('Saturday', 'Sunday')"))
+
             mydata["TI WeekEND"] = len(team_frame.query("location == 'TI' and Day_of_Week in ('Saturday', 'Sunday')"))
             mydata["TI WeekDAY"] = len(team_frame.query("location == 'TI' and Day_of_Week not in ('Saturday', 'Sunday')"))
 
@@ -264,7 +308,6 @@ def analyze_columns(cFrame):
             # Place at end
             for field in ["Balboa - Sweeney", "McCoppin", "Paul Goode Main", "Riordan"]:
                 if field in all_fields:
-
                     all_fields.remove(field)
                     all_fields.append(field)
 
@@ -314,10 +357,30 @@ def generate_schedules(cFrame):
             team_frames.append(empty_frame)
 
         division_frames[division] = pd.concat(team_frames, ignore_index=True)
-        
 
     return division_frames
 
+
+
+def generate_team_schedules(cFrame, output="frame"):
+    """Analyze the columns of a calendar dataframe"""
+    division_frames = defaultdict(dict)
+    logger.info("Generating schedules")
+    for division in extract_divisions(cFrame):
+
+        #logger.info(f"Division: {division}")
+        if not division:
+            continue
+        division_frame = filter_by_division(cFrame, division)
+        all_teams = extract_teams(division_frame)
+        team_frames = []
+        for team in all_teams:
+
+            tf = cFrame.query(f"Division == '{division}' and (Home_Team == '{team}' or Away_Team == '{team}')")
+
+            division_frames[division][team] = tf
+
+    return division_frames
 
 
 def reserve_slots(
@@ -350,6 +413,72 @@ def reserve_slots(
     if len(frame) == 0:
         logger.warning("No matching slots found for reservation request")
     return frame
+
+def check_three_five(frame, division):
+    """Check if there are any 3/5 games for any given team in a given division"""
+    division_frame = filter_by_division(frame, division)
+    all_teams = extract_teams(division_frame)
+
+    result = 0
+
+    for team in all_teams:
+        team_frame = rows_with_team(division_frame, team)
+        day_series = team_frame.Day_of_Year.values.astype(int)
+
+        day_series.sort()
+        # print(day_series)
+
+
+
+        for i in range(len(day_series) - 2):
+            # print(i, len(day_series))
+            three_games = abs(day_series[i+2] - day_series[i]) + 1
+            if three_games < 6:
+                print(f"Division: {division}   Team: {team}")
+                print(f"Has three games in {three_games} days!   value = {three_games}")
+                print(day_series[i], day_series[i + 1], day_series[i + 2])
+    return result
+
+
+def check_three_six(frame, division):
+    """Check if there are any 3/5 games for any given team in a given division"""
+    division_frame = filter_by_division(frame, division)
+    all_teams = extract_teams(division_frame)
+    result = 0
+
+    for team in all_teams:
+        team_frame = rows_with_team(division_frame, team)
+        day_series = team_frame.Day_of_Year.values.astype(int)
+        day_series.sort()
+
+
+        for i in range(len(day_series) - 2):
+            # print(i, len(day_series))
+            three_games = abs(day_series[i+2] - day_series[i]) + 1
+            if three_games < 7:
+                print(f"Division: {division} \tTeam: {team}\tHas three games in {three_games} days   {day_series[i]}-{day_series[i + 1]}-{day_series[i+2]}")
+    return result  
+
+
+
+def check_three_seven(frame, division):
+    """Check if there are any 3/5 games for any given team in a given division"""
+    division_frame = filter_by_division(frame, division)
+    all_teams = extract_teams(division_frame)
+    result = 0
+
+    for team in all_teams:
+        team_frame = rows_with_team(division_frame, team)
+        day_series = team_frame.Day_of_Year.values.astype(int)
+        day_series.sort()
+
+
+        for i in range(len(day_series) - 2):
+            # print(i, len(day_series))
+            three_games = abs(day_series[i+2] - day_series[i]) + 1
+            if three_games < 8:
+                print(f"Division: {division} \tTeam: {team}\tHas three games in {three_games} days   {day_series[i]}-{day_series[i + 1]}-{day_series[i+2]}")
+    return result  
 
 
 def check_consecutive(frame, division, min_diff=2):
@@ -396,26 +525,29 @@ def swap_rows_by_slot(frame, slot1, slot2, safe=True):
             "Division", 
             "Home_Team", "Home_Team_Name", 
             "Away_Team", "Away_Team_Name", 
+            "Game_ID",
             "Notes"]] = [
             frame.loc[slot2, "Division"],
             frame.loc[slot2, "Home_Team"],
             frame.loc[slot2, "Home_Team_Name"],
             frame.loc[slot2, "Away_Team"],
             frame.loc[slot2, "Away_Team_Name"],
-            f"Swapped teams with {slot2}."
+            frame.loc[slot2, "Game_ID"],
+            f"Swapped with {slot2}."
         ]
 
         frame.loc[slot2, [
             "Division", 
             "Home_Team", "Home_Team_Name", 
-            "Away_Team", "Away_Team_Name", 
+            "Away_Team", "Away_Team_Name", "Game_ID",
             "Notes"]] = [
             temp.Division,
             temp.Home_Team,
             temp.Home_Team_Name,
             temp.Away_Team,
             temp.Away_Team_Name,
-            f"Swapped teams with {slot1}."
+            temp.Game_ID,
+            f"Swapped with {slot1}."
         ]
 
 

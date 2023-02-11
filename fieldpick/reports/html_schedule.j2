@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+            <style>
+            @page {
+                @bottom-center {
+                    content:url(reports/footer.png);
+                }
+            }
+        </style>
+</head>
+<body>
+    <div>
+    <img src="reports/SFLLSpringLetter.png" style="width: 100%;" alt="SFLL Logo">
+    </div>
+    <h2>!!!DRAFT!!!  {{ division_name }} {{ team_name }} Schedule</h2>
+     {{ division_data }}
+</body>
+</html>

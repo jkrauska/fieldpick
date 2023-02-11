@@ -34,6 +34,7 @@ division_info = {
         "preferred_fields": [["Larsen", "Paul Goode Practice"]],
         "random_seed": 1737,
         "max_loops": 10,
+
     },
     "Lower Farm": {
         "teams": 12,  # 1  2  3  4  5  E  7  8  9  10 11 12 13
@@ -89,11 +90,19 @@ division_info = {
             ["Rossi Park #1", "South Sunset D2 South", "Ft. Scott - North", "Ft. Scott - South", "Kimbell D3 SW"],
             [None],
         ],
+        "games": 11,
+        "day_off": "Friday",
+        "ti_weekday": 0,
+
+
         "time_length": "150",
         "random_seed": 3127,  # 1.729 with seed 1936
         "max_loops": 10,
     },
     "Minors AA": {
+        "games": 12,
+        "day_off": "Wednesday",
+        "ti_weekday": 2,
         "preferred_fields": [
             [
                 "Rossi Park #1",
@@ -115,6 +124,11 @@ division_info = {
         "denied_fields": ["Kimbell D3 SW"],
     },
     "Minors AAA": {
+        "games": 12,
+        "day_off": "Tuesday",
+        "ti_weekday": 3,
+
+
         "preferred_fields": [
             [
                 "Rossi Park #1",
@@ -135,9 +149,13 @@ division_info = {
         "time_length": "150",
         "random_seed": 1975,  # 1.040 with seed 567
         "max_loops": 200,
-        "denied_fields": ["Kimbell D3 SW"],
+        "denied_fields": ["Kimbell D3 SW", "Ft. Scott - South"],
     },
     "Majors": {
+        "games": 15,
+        "day_off": "Thursday",
+        "ti_weekday": 4,
+
         "preferred_fields": [
             [
                 "Kimbell D1 NW",
@@ -158,9 +176,13 @@ division_info = {
         "time_length": "150",
         "random_seed": 292,  # 1.579 with seed 292
         "max_loops": 200,
-        "denied_fields": ["Kimbell D3 SW", "Ft. Scott - South"],
+        "denied_fields": ["Kimbell D3 SW", "Ft. Scott - South", "Rossi Park #1"],
     },
-    "Juniors": {"teams": 8, "games": 14, "skip_weeks": ["11", "12", "13"], "time_length": "180", "playoffs": None},
+    "Juniors": {
+        "teams": 7, "games": 9, "skip_weeks": ["11", "12", "13"], "time_length": "180", 
+        "denied_fields": ["Riordan"],
+        "playoffs": None,
+    }
 }
 
 # https://sfrecpark.org/525/Individual-Field-Maps

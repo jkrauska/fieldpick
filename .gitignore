@@ -5,4 +5,7 @@ data/*.pkl
 .venv
 fieldpick/data/*.pkl
 data/*.pkl
+data/archive/*
 *.log
+*.pdf
+.DS_Store

@@ -140,16 +140,20 @@ anyday_but_friday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday", "
 
 
 short_division_names = {
-    "Farm - Lower": "FML",
+    "Tee Ball": "TB",
     "Lower Farm": "FML",
-    "Farm - Upper": "FMU",
+    # "Farm - Upper": "FMU",
     "Upper Farm": "FMU",
     "Rookie": "RK",
     "Minors AA": "AA",
     "Minors AAA": "AAA",
     "Majors": "MAJ",
+    "Challenger": "CHL",
     "Juniors": "JRS",
     "Seniors": "SRS",
     "Softball": "SFT",
-    "Tee Ball": "TB",
+
 }
+
+# 
+    # "Farm - Lower": "FML",

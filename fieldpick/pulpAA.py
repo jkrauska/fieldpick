@@ -46,9 +46,9 @@ tFrame = pd.read_pickle(save_file)
 ############################################################################################################
 ### PULP STUFF
 
-division = "Majors"
-day_off = "Thursday"
-games_per_team = 15
+division = "Minors AA"
+day_off = "Wednesday"
+games_per_team = 11
 
 game_total = 10 * games_per_team / 2
 teams = list_teams_for_division(division, tFrame)
@@ -69,6 +69,7 @@ slot_mask = correct_time & non_blocked & minors_or_none
 working_slots = cleanFrame[slot_mask]
 
 print(f"Usable Slots: {len(working_slots)}")
+print(f"Games total {game_total}")
 
 # Extract series we need from working_slots
 days_of_week = working_slots["Day_of_Week"].unique()
@@ -88,7 +89,12 @@ prob = LpProblem("League scheduling", LpMinimize)
 # objective minimize games played
 prob += lpSum([slots_vars]), "Number of games played should be minimized"  # Odd objective function?
 
+
+############################################################################################################
+#### BOILERPLATES
+
 # Total number of games
+
 prob += lpSum([slots_vars[i] for i in slots_vars]) == game_total, "Total number of games played"
 
 # Set games per team
@@ -113,7 +119,6 @@ for j in teams:
             prob += (
                 lpSum([slots_vars[i, j, k] for i in slot_ids]) + lpSum([slots_vars[i, k, j] for i in slot_ids])
             ) >= 1, f"Total_games_per_team_{j}_{k}"
-
 
 # No team can play more than 1 game per day
 for day in days_of_year:
@@ -190,8 +195,10 @@ for week in weeks:
             f"Max_games_per_week_{week}_team_{j}",
         )
 
+############################################################################################################
 
-# Minimize weekday games
+
+# # Minimize weekday games
 weekdays = ["Monday", "Tuesday", "Thursday", "Friday"]
 weekday_slots = working_slots[working_slots["Day_of_Week"].isin(weekdays)].index
 for j in teams:
@@ -205,18 +212,18 @@ for j in teams:
     )
 
 
-# Everyone plays Kimbell at least once
-kimbell = ["Kimbell D1 NW", "Kimbell D2 SE"]
-kimbell_slots = working_slots[working_slots["Field"].isin(kimbell)].index
-for j in teams:
-    prob += (
-        (
-            lpSum([slots_vars[i, j, k] for i in kimbell_slots] for k in teams)  # home team on kimbell
-            + lpSum([slots_vars[i, k, j] for i in kimbell_slots] for k in teams) # away team on kimbell
-        )
-        >= 1,
-        f"get_kimbell_team_{j}",
-    )
+# # # Everyone plays Kimbell at least once
+# kimbell = ["Kimbell D1 NW", "Kimbell D2 SE"]
+# kimbell_slots = working_slots[working_slots["Field"].isin(kimbell)].index
+# for j in teams:
+#     prob += (
+#         (
+#             lpSum([slots_vars[i, j, k] for i in kimbell_slots] for k in teams)  # home team on kimbell
+#             + lpSum([slots_vars[i, k, j] for i in kimbell_slots] for k in teams) # away team on kimbell
+#         )
+#         >= 1,
+#         f"get_kimbell_team_{j}",
+#     )
 
 ti_slots = working_slots[working_slots["location"] == "TI"].index
 for j in teams:
@@ -225,26 +232,26 @@ for j in teams:
             lpSum([slots_vars[i, j, k] for i in ti_slots] for k in teams)  # home team on ti
             + lpSum([slots_vars[i, k, j] for i in ti_slots] for k in teams) # away team on ti
         )
-        >= 6,
+        >= 4,
         f"get_ti_team_{j}",
     )
 
 
 
-tuesday_slots = working_slots[working_slots["Day_of_Week"] == "Tuesday"].index
-for j in teams:
-    prob += (
-        (
-            lpSum([slots_vars[i, j, k] for i in tuesday_slots] for k in teams)  # home team on tuesday
-            + lpSum([slots_vars[i, k, j] for i in tuesday_slots] for k in teams) # away team on tuesday
-        )
-        >= 2,
-        f"get_tuesday_team_{j}",
-    )
+# # tuesday_slots = working_slots[working_slots["Day_of_Week"] == "Tuesday"].index
+# # for j in teams:
+# #     prob += (
+# #         (
+# #             lpSum([slots_vars[i, j, k] for i in tuesday_slots] for k in teams)  # home team on tuesday
+# #             + lpSum([slots_vars[i, k, j] for i in tuesday_slots] for k in teams) # away team on tuesday
+# #         )
+# #         >= 2,
+# #         f"get_tuesday_team_{j}",
+# #     )
 
 
-# Majors off "Ft. Scott - South"" and "Rossi Park #1"
-skip_fields = ["Ft. Scott - South", "Rossi Park #1", "Kimbell D3 SW"]
+# # Majors off "Ft. Scott - South"" and "Rossi Park #1"
+skip_fields = ["Kimbell D3 SW"]
 fss_slots = working_slots[working_slots["Field"].isin(skip_fields)].index
 #fss_slots = working_slots[working_slots["Field"] == "Ft. Scott - South"].index
 for j in teams:
@@ -258,29 +265,64 @@ for j in teams:
     )
 
 
+# # even weekends
+weekends = ["Saturday", "Sunday"]
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
+for j in teams:
+    prob += (
+        (
+            lpSum([slots_vars[i, j, k] for i in weekend_slots] for k in teams)  # home team on tepper weekend
+            + lpSum([slots_vars[i, k, j] for i in weekend_slots] for k in teams) # away team on tepper weekend
+        )
+        >= 5,
+        f"get_weekend_team_{j}",
+    )
+
+
+# # even weekends
+weekends = ["Saturday", "Sunday"]
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
+for j in teams:
+    prob += (
+        (
+            lpSum([slots_vars[i, j, k] for i in weekend_slots] for k in teams)  # home team on tepper weekend
+            + lpSum([slots_vars[i, k, j] for i in weekend_slots] for k in teams) # away team on tepper weekend
+        )
+        <= 7,
+        f"get_weekend_team_min_{j}",
+    )
 
 # Solve (quietly)
-prob.solve(PULP_CBC_CMD(msg=0))
+# prob.solve(PULP_CBC_CMD(msg=0))
+prob.solve()
+
+if prob.status != 1:
+    print("No solution found")
+    print(prob.status)
+    sys.exit(1)
+
 
 clear_division(cFrame, division)
 
 check_count = Counter()
 for v in prob.variables():
-    if v.varValue > 0:
-        # gross text parsing
-        d = v.name.replace("Slot_", "").replace(",_", ",").replace("'", "").replace("(", "").replace(")", "")
-        (id, home, away) = d.split(",")
-        id = int(id)
-        home = home.replace("_", " ")
-        away = away.replace("_", " ")
+    if v.varValue:
 
-        # Apply change
-        #print(f"Slot {id} Home: {home} Away: {away}")
-        #assign_row(cFrame, id, division, home, away, safe=False)
+        if v.varValue > 0:
+            # gross text parsing
+            d = v.name.replace("Slot_", "").replace(",_", ",").replace("'", "").replace("(", "").replace(")", "")
+            (id, home, away) = d.split(",")
+            id = int(id)
+            home = home.replace("_", " ")
+            away = away.replace("_", " ")
 
-        check_count[home] += 1
-        check_count[away] += 1
-        check_count["total"] += 1
+            # Apply change
+            #print(f"Slot {id} Home: {home} Away: {away}")
+            #assign_row(cFrame, id, division, home, away, safe=False)
+
+            check_count[home] += 1
+            check_count[away] += 1
+            check_count["total"] += 1
 
 
 for foo in check_count:
@@ -290,23 +332,28 @@ if check_count["total"] > game_total:
     print("Too many games???")
     sys.exit(1)
 
+elif check_count["total"] < game_total:
+    print("Too few games???")
+    sys.exit(1)
+
 
 for v in prob.variables():
-    if v.varValue > 0:
-        # gross text parsing
-        d = v.name.replace("Slot_", "").replace(",_", ",").replace("'", "").replace("(", "").replace(")", "")
-        (id, home, away) = d.split(",")
-        id = int(id)
-        home = home.replace("_", " ")
-        away = away.replace("_", " ")
+    if v.varValue:
+        if v.varValue > 0:
+            # gross text parsing
+            d = v.name.replace("Slot_", "").replace(",_", ",").replace("'", "").replace("(", "").replace(")", "")
+            (id, home, away) = d.split(",")
+            id = int(id)
+            home = home.replace("_", " ")
+            away = away.replace("_", " ")
 
-        # Apply change
-        print(f"Slot {id} Home: {home} Away: {away}")
-        assign_row(cFrame, id, division, home, away, safe=False)
+            # Apply change
+            print(f"Slot {id} Home: {home} Away: {away}")
+            assign_row(cFrame, id, division, home, away, safe=False)
 
-        check_count[home] += 1
-        check_count[away] += 1
-        check_count["total"] += 1
+            check_count[home] += 1
+            check_count[away] += 1
+            check_count["total"] += 1
 
 
 
@@ -317,9 +364,7 @@ for i in range(100):
 
 
 save_frame(cFrame, "calendar.pkl")
-import time
-timestr = time.strftime("%Y%m%d-%H%M%S")
-save_frame(cFrame, f"calendar_{timestr}.pkl")
+
 
 
 publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
