@@ -9,13 +9,31 @@
                     content:url(reports/footer.png);
                 }
             }
+        .right-aligned {
+            float: right;
+
+            margin-left: 10px;
+            height: 100px;
+        }
+        .right-aligned-old {
+            float: right;
+            margin-left: 10px;
+            width: 10%
+        }
+
+        
         </style>
 </head>
 <body>
     <div>
     <img src="reports/SFLLSpringLetter.png" style="width: 100%;" alt="SFLL Logo">
     </div>
-    <h2>!!!DRAFT!!!  {{ division_name }} {{ team_name }} Schedule</h2>
+
+<img src="reports/{{ team_name }}.png" class="right-aligned" alt="Team Logo"> 
+    <h2>{{ division_name }} Division<br>{{ team_name }} - ({{ team_number }}) Schedule  </h2>
+
      {{ division_data }}
+
+     Version: {{ now }}
 </body>
 </html>

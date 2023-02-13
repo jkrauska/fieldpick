@@ -187,8 +187,11 @@ def move_row(frame, slot, new_slot):
 # FMU-222 and RK-326  get FMU to Sat only
 #swap_rows_by_game_id(cFrame, "FMU-222", "RK-326", dest="Team 2")
 
-cFrame.loc[185, "End"] = "12:00"
-cFrame.loc[185, "Time_Length"] = 150
+# TB-021 TB-016
+swap_rows_by_game_id(cFrame, "TB-021", "TB-016", dest="Team 4")
+
+# cFrame.loc[185, "End"] = "12:00"
+# cFrame.loc[185, "Time_Length"] = 150
 
 
 

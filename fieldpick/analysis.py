@@ -36,8 +36,8 @@ import time
 divisionFrames = generate_schedules(cFrame)
 for division, division_frame in divisionFrames.items():
     drop_columns = [
-        'Week_Number', 'Time_Length', 'Day_of_Year', 'Division', "Home_Team", "Away_Team",
-        'Notes',	'location',	'size',	'type',	'infield']
+        'Week_Number', 'Time_Length', 'Day_of_Year', 'Division', "Datestamp", "Home_Team", "Away_Team",
+        'Notes',	'location',	'size',	'type',	'infield', 'Sunset']
 
     division_frame = division_frame.drop(columns=drop_columns)
     publish_df_to_gsheet(division_frame, worksheet_name=f"{division}")

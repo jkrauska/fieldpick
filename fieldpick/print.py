@@ -1,6 +1,9 @@
 import pandas as pd
 import logging
 
+# Suppress warning
+pd.options.mode.chained_assignment = None
+
 
 logging.getLogger("weasyprint").setLevel(logging.ERROR)
 
@@ -9,7 +12,11 @@ from frametools import generate_team_schedules
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
 import os
+import datetime
+from inputs import team_names
 
+
+now=datetime.datetime.now()
 
 
 logging.basicConfig(
@@ -75,9 +82,11 @@ for division in divisionFrames.keys():
 
         template_vars = {
             "title": f"{division} Schedule",
-            "team_name": f"{team}",
+            "team_name": f"{team_names[division][team]}",
+            "team_number": f"{team}",
             "division_name": f"{division}",
             "division_data": team_frame.to_html(index=False),
+            "now": now,
         }
         html_out = template.render(template_vars)
         html_pages.append(html_out)

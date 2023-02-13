@@ -42,19 +42,21 @@ print(f"Loaded {len(cFrame)} slots")
 tidy = (pd.isna(cFrame["Division"]) == True)
 slot_mask = tidy
 
-# Clear gameid
-slots_to_clear = cFrame[slot_mask].index
+# # Clear gameid
+# slots_to_clear = cFrame[slot_mask].index
 
-for i in slots_to_clear:
-    cFrame.loc[i, "Game_ID"] = None
+# for i in slots_to_clear:
+#     cFrame.loc[i, "Game_ID"] = None
 
-# Clear division
-clear_division(cFrame, "Majors")
+# # Clear division
+# clear_division(cFrame, "Majors")
 
 
 save_frame(cFrame, "calendar.pkl")
 publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
 aFrame = analyze_columns(cFrame)
+
+
 publish_df_to_gsheet(aFrame, worksheet_name="Analysis")
 uFrame = cFrame.query("Division != Division")
 publish_df_to_gsheet(uFrame, worksheet_name="Unassigned")
