@@ -77,17 +77,24 @@ These are guidelines and not to be considered official policy of Little League.
 - No Mondays, No Fridays
 - No TI Weekday
 - Ft. Scott - South	Ft. Scott - North	Tepper	Ketcham	Kimbell D1 NW
+- At least one game on TI
 
 ### Minors AA
 - No Mondays, No Wednesdays
+- Every weekend and every one week day every other week
+- Every weekend and every one week day every other week
+- At least one game on TI
+
 
 ### Minors AAA
 - No Mondays, No Tuesdays
+- Every weekend and every one week day every other week
 
 ### Majors
-- More TI Weekdays
+- More TI Weekdays (predominantly on TI in general)
 - No Mondays, No Thursdays
 - Before and after Challenger on Tepper on Sundays
+- Shoot for every weekend and one day during the week
 
 ## Special Divisions
 
@@ -96,6 +103,10 @@ These are guidelines and not to be considered official policy of Little League.
 - 180 minute slots
 - No TI
 - Often PA will handle this schedule, but fields are set by time and size
+- Spring 2023
+-- 7 team (odd #, which is trickier to accommodate)
+-- Had to allow back to back (one team per weekend sat/sun) to get 10 games per team
+
 
 ### Challenger
 - Dedicated Tepper 2pm Sundays
@@ -104,12 +115,31 @@ These are guidelines and not to be considered official policy of Little League.
 
 
 ### Softball
-Not currently scheduled
+Not currently scheduled (2023)
 
 
 ## Field and Timing Notes
 
+
+### Fields 
+
 See inputs.py for specs like field size and turf vs grass, etc.
+
+Balance Tepper and Ketcham on TI per team. 
+
+Fields without fences are more appropriate for younger divisions.
+
+Fields where the outfields are often used by other sports or casual use (eg. Rossi) are more appropriate for younger divisions.
+
+Normally we "pre-carve" up these fields for lower divisions in to shorter time slots appropriate for the division.
+
+### Timing
+
+No Back to back games. (two days in a row) (exception for Juniors)
+
+No more than 3 games in 5 consecutive days.
+
+IDEAL: No more than 3 games in 6 consecutive days.
 
 Be mindful of sunset times. (is looked up in schedule creation tool)
 
@@ -122,8 +152,20 @@ TI fields can go until 7pm (19:00) on weekends after the time change.
 14:00-16:30
 16:30-19:00
 
-Fields without fences are more appropriate for younger divisions.
+Typically we don't play on Easter weekend.
 
-Fields where the outfields are often used by other sports or casual use (eg. Rossi) are more appropriate for younger divisions.
+Typically we schedule a day at a Giants game. (Saturday before Easter in 2023)
 
-Normally we "pre-carve" up these fields for lower divisions in to shorter time slots appropriate for the division.
+Typically we don't play on Memorial Day weekend.
+
+
+### Field Start vs Game Start
+
+Field start is when we officially have access to the field.
+Game start is when the first pitch should be thrown.
+
+Field time is when the prior team should be off and new teams should take the fields for warmups. (Usually one team infield, one outfield and then swapped.)
+
+For TB to Farm (90 and 120 min time slots), we start the game 15m after Field Start.
+
+For Rookie and up (150 min time slots), we start the game 30m after Field Start.
