@@ -42,8 +42,9 @@ template = env.get_template("fieldpick/reports/html_schedule.j2")
 divisionFrames = generate_team_schedules(cFrame)
 for division in divisionFrames.keys():
 
-    # if division != "Majors":
+    # if division != "Juniors":
     #     continue
+    #if division != "Challenger": continue   
 
 
     html_pages = []
@@ -75,10 +76,14 @@ for division in divisionFrames.keys():
             "Day_of_Week": "Day",
             "Home_Team_Name": "Home",
             "Away_Team_Name": "Away",
+            "Start": "Field Start",
+            "Game_Start": "Game Start",
         }
         team_frame.rename(rename_columns, axis=1, inplace=True)
 
         # print(team_frame)
+
+        team_name = team_names[division][team]
 
         template_vars = {
             "title": f"{division} Schedule",
@@ -89,6 +94,18 @@ for division in divisionFrames.keys():
             "now": now,
         }
         html_out = template.render(template_vars)
+
+        # Write to file
+        base_url = os.path.dirname(os.path.realpath(__file__))
+        html = HTML(string=html_out, base_url=base_url).render(stylesheets=["fieldpick/reports/style.css"])
+
+        if not os.path.exists(division):
+            os.makedirs(division)
+        #os.mkdir(division)
+        html.write_pdf(f"{division}/{division}_{team_name}_SFLL_Spring_2023_Schedule.pdf")
+
+
+
         html_pages.append(html_out)
 
 
@@ -100,6 +117,6 @@ for division in divisionFrames.keys():
     for page in pdf_pages[1:]:
         page_one.pages.extend(page.pages)
 
-    page_one.write_pdf(f"Schedule_{division}.pdf")
+    page_one.write_pdf(f"SFLL_Spring_2023_Schedule_{division}.pdf")
 
 

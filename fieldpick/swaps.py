@@ -188,14 +188,42 @@ def move_row(frame, slot, new_slot):
 #swap_rows_by_game_id(cFrame, "FMU-222", "RK-326", dest="Team 2")
 
 # TB-021 TB-016
-swap_rows_by_game_id(cFrame, "TB-021", "TB-016", dest="Team 4")
+# swap_rows_by_game_id(cFrame, "TB-021", "TB-016", dest="Team 4")
 
 # cFrame.loc[185, "End"] = "12:00"
 # cFrame.loc[185, "Time_Length"] = 150
 
 
+# NASH 02-14
+# RK-301 with RK-305
+# RK-348 with RK-352
+# RK-350 with RK-351
+# RK-360 with RK-363
+#swap_rows_by_game_id(cFrame, "RK-301", "RK-305", dest="Team 13")
+# swap_rows_by_game_id(cFrame, "RK-348", "RK-352", dest="Team 2")
+# swap_rows_by_game_id(cFrame, "RK-350", "RK-351", dest="Team 4")
+# swap_rows_by_game_id(cFrame, "RK-360", "RK-363", dest="Team 2")
+# # FML-103 with FML-106
+# swap_rows_by_game_id(cFrame, "FML-103", "FML-106", dest="Team 5")
+
+# MAJ-664 MAJ-665 Team 10
+#swap_rows_by_game_id(cFrame, "MAJ-664", "MAJ-665", dest="Team 10")
+# MAJ-667 MAJ-666 Team 10
+# swap_rows_by_game_id(cFrame, "MAJ-667", "MAJ-666", dest="Team 10")
+
+
+# AA-417 AA-418
+#swap_rows_by_game_id(cFrame, "AA-417", "AA-418", dest="Team 4")
+# AA-456 AA-453 Team 1
+#swap_rows_by_game_id(cFrame, "AA-456", "AA-453", dest="Team 1")
+
+
+
 
 save_frame(cFrame, "calendar.pkl")
+
+
+sys.exit(1)
 publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
 
 

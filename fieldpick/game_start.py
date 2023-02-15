@@ -11,10 +11,12 @@ from frametools import (
 )
 from gsheets import publish_df_to_gsheet
 from helpers import short_division_names
-from inputs import division_info
+from inputs import division_info, team_names
 import re
 from pulp import *
 from collections import Counter
+
+import datetime as dt
 
 
 from frametools import (
@@ -38,43 +40,31 @@ cFrame = pd.read_pickle(save_file)
 print(f"Loaded {len(cFrame)} slots")
 
 
-# Data cleanup
-tidy = (pd.isna(cFrame["Division"]) == True)
-slot_mask = tidy
 
-slots_to_clear = cFrame[slot_mask].index
+#cFrame.insert(5, "Game_Start", 0)
+
+for slot in cFrame.index:
+    field_start = cFrame.loc[slot, "Start"]
+    field_start_dt = dt.datetime.strptime(field_start, '%H:%M')
+
+    Time_Length = cFrame.loc[slot, "Time_Length"]
+    if Time_Length == "90" or Time_Length == "120":
+        game_start = field_start_dt + dt.timedelta(minutes=15)
+    else:
+        game_start = field_start_dt + dt.timedelta(minutes=30)
+
+    cFrame.loc[slot, "Game_Start"] = game_start.strftime('%H:%M')
 
 
-
-for i in slots_to_clear:
-    # Home_Team	Home_Team_Name	Away_Team	Away_Team_Name
-    cFrame.loc[i, "Home_Team"] = None
-    cFrame.loc[i, "Home_Team_Name"] = None
-    cFrame.loc[i, "Away_Team"] = None
-    cFrame.loc[i, "Away_Team_Name"] = None
-
-    cFrame.loc[i, "Game_ID"] = f"NONE-9{i:03d}"
-
-    
-
+    #print(cFrame.loc[slot])
 
 
 
-# # Clear gameid
-# slots_to_clear = cFrame[slot_mask].index
-
-# for i in slots_to_clear:
-#     cFrame.loc[i, "Game_ID"] = None
-
-# # Clear division
-# clear_division(cFrame, "Majors")
-
+#sys.exit(1)
 
 save_frame(cFrame, "calendar.pkl")
 publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
-aFrame = analyze_columns(cFrame)
-
-
-publish_df_to_gsheet(aFrame, worksheet_name="Analysis")
-uFrame = cFrame.query("Division != Division")
-publish_df_to_gsheet(uFrame, worksheet_name="Unassigned")
+# aFrame = analyze_columns(cFrame)
+# publish_df_to_gsheet(aFrame, worksheet_name="Analysis")
+# uFrame = cFrame.query("Division != Division")
+# publish_df_to_gsheet(uFrame, worksheet_name="Unassigned")

@@ -508,26 +508,28 @@ team_names = {
         "Team 9": "Giants",
         },
     "Minors AA": {
-        # AA Minors Team 1	Red Sox
-        # AA Minors Team 10	Diamondbacks
-        # AA Minors Team 2	Pirates
-        # AA Minors Team 3	Giants
-        # AA Minors Team 4	Angles
-        # AA Minors Team 5	Cubs
-        # AA Minors Team 6	Phillies
-        # AA Minors Team 7	Athletics
-        # AA Minors Team 8	Royals
-        # AA Minors Team 9	White Sox
-        "Team 1": "Red Sox",
-        "Team 10": "Diamondbacks",
-        "Team 2": "Pirates",
-        "Team 3": "Giants",
-        "Team 4": "Angels",
+        ## HOWARD Email
+
+        # “Team 1”: “Diamondbacks”,
+        # “Team 2”: “Athletics”,
+        # “Team 3”: “Red Sox”,
+        # “Team 4”: “Giants”,
+        # “Team 5”: “Cubs”,
+        # “Team 6”: “Royals”,
+        # “Team 7”: “Phillies”,
+        # “Team 8”: “White Sox”,
+        # “Team 9”: “Pirates”,
+        # “Team 10”: “Angels”,
+        "Team 1": "Diamondbacks",
+        "Team 2": "Athletics",
+        "Team 3": "Red Sox",
+        "Team 4": "Giants",
         "Team 5": "Cubs",
-        "Team 6": "Phillies",
-        "Team 7": "Athletics",
-        "Team 8": "Royals",
-        "Team 9": "White Sox",
+        "Team 6": "Royals",
+        "Team 7": "Phillies",
+        "Team 8": "White Sox",
+        "Team 9": "Pirates",
+        "Team 10": "Angels",
     },
 
     "Minors AAA": {
@@ -591,5 +593,8 @@ team_names = {
         "Team 6": "Athletics",
         "Team 7": "Phillies",
     },
+    "Challenger": {
+        "Challenger": "Challenger",
+    }
 }
 
