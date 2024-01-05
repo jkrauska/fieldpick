@@ -8,48 +8,45 @@ def date_string_to_datetime(date):
     return datetime.strptime(date, "%m/%d/%Y")
 
 
-start_date = date_string_to_datetime("3/4/2023")
+start_date = date_string_to_datetime("3/2/2024")
 
 week_split_data = {}
 for week in range(1, 20):
     week_split_data[f"Week {week}"] = start_date + timedelta(7) * (week - 1)
-# print(week_split_data)
+    #print(f"Week {week} - {week_split_data[f'Week {week}']}")
+
 
 blackout_dates = [
-    "4/8/2023",  # Easter Weekend (+Giants)
-    "4/9/2023",  # Easter Weekend
-    "5/27/2023",  # Memorial Day Weekend
-    "5/28/2023",
-    "5/29/2023",
+    "4/7/2024",  # Giants
+    "3/30/2024",  # Easter Weekend
+    "3/31/2024",  # Easter Weekend
+    "5/25/2024",  # Memorial Day Weekend
+    "5/26/2024",
+    "5/27/2024",
 ]
 # Datetime conversion for blackouts
 blackout_days = [date_string_to_datetime(item) for item in blackout_dates]
 
 division_info = {
     "Tee Ball": {
-        "teams": 14,  # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "teams": 12,
         "weekend_pattern": [0, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 0],
         "preferred_days": ["Saturday"],
         "time_length": "90",
-        "preferred_fields": [["Larsen", "Paul Goode Practice"]],
         "random_seed": 1737,
         "max_loops": 10,
 
     },
     "Lower Farm": {
-        "teams": 12,  # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "teams": 12,
         "weekend_pattern": [6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 0],
         "preferred_days": ["Sunday"],
         "time_length": "120",
-        "preferred_fields": [
-            ["Larsen", "Paul Goode Practice"],
-            ["Larsen", "Paul Goode Practice", "Ft. Scott - South", "Christopher"],
-        ],
         "random_seed": 1582,
         "max_loops": 10,
     },
     "Upper Farm": {
-        "teams": 14,  # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "teams": 12,
         "weekend_pattern": [7, 7, 7, 7, 7, 0, 7, 7, 7, 7, 7, 7, 0],
         "preferred_days": [
             ["Sunday"],
@@ -57,6 +54,7 @@ division_info = {
         ],
         "time_length": "120",
         "preferred_fields": [
+            ["Ft. Scott - North", "Larsen", "Laurel Hill", "Ft. Scott - South", "Eureka"],
             [
                 "Larsen",
                 "Paul Goode Practice",
@@ -69,7 +67,7 @@ division_info = {
         "max_loops": 10,
     },
     "Rookie": {
-        "teams": 14,  # 1  2  3  4  TI E  7  8  9  10 11 12 13
+        "teams": 10,  # 1  2  3  4  TI E  7  8  9  10 11 12 13
         "weekend_pattern": [2, 6, 6, 6, 7, 0, 6, 6, 6, 0, 0, 0, 0],
         "weekday_pattern": [0, 0, 2, 1, 0, 0, 2, 1, 2, 0, 0, 0, 0],
         "preferred_days": [
@@ -100,7 +98,7 @@ division_info = {
         "max_loops": 10,
     },
     "Minors AA": {
-        "games": 12,
+        "games": 10,
         "day_off": "Wednesday",
         "ti_weekday": 2,
         "preferred_fields": [
@@ -112,7 +110,7 @@ division_info = {
             ],
             [None],
         ],
-        "teams": 10,  # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "teams": 10,
         "weekend_pattern": [2, 5, 5, 5, 5, 0, 5, 5, 5, 0, 0, 0, 0],
         "weekday_pattern": [0, 1, 1, 2, 2, 4, 2, 1, 2, 0, 0, 0, 0],
         "dedicated_ti_weekend": 7,
@@ -124,7 +122,7 @@ division_info = {
         "denied_fields": ["Kimbell D3 SW"],
     },
     "Minors AAA": {
-        "games": 12,
+        "games": 10,
         "day_off": "Tuesday",
         "ti_weekday": 3,
 
@@ -142,7 +140,7 @@ division_info = {
             ["Wednesday", "Thursday", "Friday"],
             ["Saturday", "Sunday", "Tuesday"],
         ],
-        "teams": 8,  # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "teams": 10,
         "weekend_pattern": [3, 4, 4, 4, 4, 0, 4, 4, 4, 0, 0, 0, 0],
         "weekday_pattern": [0, 0, 2, 2, 2, 4, 2, 2, 2, 0, 0, 0, 0],
         "dedicated_ti_weekend": 8,
@@ -170,7 +168,7 @@ division_info = {
             ["Tuesday", "Wednesday", "Friday"],
             ["Saturday", "Sunday", "Tuesday"],
         ],
-        "teams": 10,  # 1  2  3  4  5  E  7  8  9  10 11 12 13
+        "teams": 10,
         "weekend_pattern": [5, 5, 5, 5, 5, 0, 5, 5, 5, 0, 0, 0, 0],
         "weekday_pattern": [5, 4, 4, 4, 4, 5, 4, 4, 4, 0, 0, 0, 0],
         "time_length": "150",
@@ -179,7 +177,7 @@ division_info = {
         "denied_fields": ["Kimbell D3 SW", "Ft. Scott - South", "Rossi Park #1"],
     },
     "Juniors": {
-        "teams": 7, "games": 9, "skip_weeks": ["11", "12", "13"], "time_length": "180", 
+        "teams": 6, "games": 9, "skip_weeks": ["11", "12", "13"], "time_length": "180", 
         "denied_fields": ["Riordan"],
         "playoffs": None,
     }
@@ -188,201 +186,213 @@ division_info = {
 # https://sfrecpark.org/525/Individual-Field-Maps
 field_info = {
     "Christopher": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "grass",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
     },
     "Crocker Amazon D3": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
     "Crocker Amazon D4": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
     "Crocker Amazon D5": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
-    "Eureka": {"location": "SF", "size": "46/60", "type": "grass", "infield": "dirt"},
-    "Ft. Scott - North": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "grass",
+    "Eureka": {"Region": "SF", "Size": "46/60", "Type": "grass", "Infield":  "dirt"},
+    "Fort Scott - North Diamond": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
     },
-    "Ft. Scott - South": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+    "Fort Scott - South Diamond": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
     "Generic SFRPD Field": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
     "Holly Park": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
-    "Ketcham": {"location": "TI", "size": "46/60", "type": "grass", "infield": "dirt"},
-    "Kimbell D1 NW": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "turf",
-        "infield": "turf",
+    "Ketcham - Field 1": {"Region": "TI", "Size": "46/60", "Type": "grass", "Infield":  "dirt"},
+    "Kimbell - Diamond 1": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "turf",
+        "Infield":  "turf",
     },
-    "Kimbell D2 SE": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "turf",
-        "infield": "turf",
+    "Kimbell - Diamond 2": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "turf",
+        "Infield":  "turf",
     },
-    "Kimbell D3 SW": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "turf",
-        "infield": "turf",
+    "Kimbell - Diamond 3": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "turf",
+        "Infield":  "turf",
     },
     "Lang D1": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "turf",
-        "infield": "turf",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "turf",
+        "Infield":  "turf",
     },
-    "Larsen": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "grass",
+    "Larsen - Field 1": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
+    },
+    "Laurel Hill - Field 1": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
     },
     "Louis Sutter  D1": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
     "Louis Sutter  D2": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
     "McCoppin": {
-        "location": "SF",
-        "size": "60/90",
-        "type": "grass",
-        "infield": "grass",
+        "Region": "SF",
+        "Size": "60/90",
+        "Type": "grass",
+        "Infield":  "grass",
     },
     "Moscone D1": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "grass",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
     },
     "Moscone D2": {
-        "location": "SF",
-        "size": "60/90",
-        "type": "grass",
-        "infield": "grass",
+        "Region": "SF",
+        "Size": "60/90",
+        "Type": "grass",
+        "Infield":  "grass",
     },
     "Moscone D3": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "grass",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
     },
     "Moscone D4": {
-        "location": "SF",
-        "size": "60/90",
-        "type": "grass",
-        "infield": "grass",
+        "Region": "SF",
+        "Size": "60/90",
+        "Type": "grass",
+        "Infield":  "grass",
     },
     "Palega D2": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "grass",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
     },
-    "Paul Goode Main": {
-        "location": "SF",
-        "size": "60/90",
-        "type": "turf",
-        "infield": "turf",
+    "Paul Goode - Main": {
+        "Region": "SF",
+        "Size": "60/90",
+        "Type": "turf",
+        "Infield":  "turf",
     },
-    "Paul Goode Practice": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "turf",
-        "infield": "turf",
+    "Paul Goode - Practice": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "turf",
+        "Infield":  "turf",
     },
     "Potrero D2": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
-    "Rossi Park #1": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "grass",
+    "Rossi - Field 1": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
     },
-    "South Sunset D1 North": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "turf",
-        "infield": "turf",
+    "Rossi - Field 2": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
     },
-    "South Sunset D2 South": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "turf",
-        "infield": "turf",
+    "South Sunset - Diamond 1": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "turf",
+        "Infield":  "turf",
+    },
+    "South Sunset - Diamond 2": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "turf",
+        "Infield":  "turf",
     },
     "Silver Terrace D1": {
-        "location": "SF",
-        "size": "60/90",
-        "type": "turf",
-        "infield": "turf",
+        "Region": "SF",
+        "Size": "60/90",
+        "Type": "turf",
+        "Infield":  "turf",
     },
     "Silver Terrace D2": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "turf",
-        "infield": "turf",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "turf",
+        "Infield":  "turf",
     },
     "Sunset Rec": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "dirt",
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "dirt",
     },
-    "Balboa - Sweeney": {"location": "SF", "size": "60/90", "type": "grass", "infield": "grass"},
-    "Tepper": {"location": "TI", "size": "46/60", "type": "grass", "infield": "grass"},
-    "Riordan": {"location": "SF", "size": "60/90", "type": "turf", "infield": "turf"},
-    "West Sunset #3": {
-        "location": "SF",
-        "size": "46/60",
-        "type": "grass",
-        "infield": "grass",
+    "Balboa - Sweeney": {"Region": "SF", "Size": "60/90", "Type": "grass", "Infield":  "grass"},
+    "Tepper - Field 1": {"Region": "TI", "Size": "46/60", "Type": "grass", "Infield":  "grass"},
+    "Riordan": {"Region": "SF", "Size": "60/90", "Type": "turf", "Infield":  "turf"},
+    "West Sunset - Field 3": {
+        "Region": "SF",
+        "Size": "46/60",
+        "Type": "grass",
+        "Infield":  "grass",
     },
     "West Sunset #1": {
-        "location": "SF",
-        "size": "60/90",
-        "type": "grass",
-        "infield": "grass",
+        "Region": "SF",
+        "Size": "60/90",
+        "Type": "grass",
+        "Infield":  "grass",
     },
 }
 

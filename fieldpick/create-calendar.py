@@ -19,279 +19,596 @@ cFrame = pd.DataFrame()
 
 
 ##################################################
-### Fort Scott
-# Saturdays 3/11 -- 5/27 (every other week situation)
-
-
-FSDAYS = [
-    "3/5/2023",
-    "3/11/2023",
-    "3/19/2023",
-    "3/25/2023",
-    "4/2/2023",
-    "4/8/2023",
-    "4/16/2023",
-    "4/22/2023",
-    "4/30/2023",
-    "5/7/2023",
-    "5/14/2023",
-    "5/20/2023",
-    "5/27/2023",
-]
-
-FSDAYS.append("3/12/2023")
-FSDAYS.append("4/15/2023")
-FSDAYS.append("4/23/2023")
-# FSDAYS.append("3/18/2023")
-# FSDAYS.append("3/26/2023")
-# FSDAYS.append("4/29/2023")
+# Tee Ball
 
 cFrame = add_time_slots(
-    fields="Ft. Scott - North",
-    days_of_week=["Saturday", "Sunday"],
-    only_days=FSDAYS,
-    times=[("09:00", "11:30"), ("11:30", "14:00")],  # 2.5 h slots
-    input=cFrame,
-)
-
-cFrame = add_time_slots(
-    fields="Ft. Scott - South",
-    days_of_week=["Saturday", "Sunday"],
-    only_days=FSDAYS,
-    times=[("09:30", "11:30"), ("12:00", "14:00")],  # 2 h slots
-    input=cFrame,
-)
-
-
-# Tuesday/Thursday
-cFrame = add_time_slots(
-    fields=fort_scott,  ## FIXME: BOTH fields on just FSN?
-    days_of_week=["Tuesday", "Thursday"],
-    start_day="3/14/2023",
-    end_day="5/30/2023",
-    times=[("17:00", "19:30")],
-    input=cFrame,
-)
-
-##################################################
-### Tepper/Ketcham
-
-cFrame = add_time_slots(
-    fields=tepper_ketcham,
-    days_of_week=["Saturday"],
-    start_day="3/4/2023",
-    end_day="5/5/2023",
-    times=[("09:00", "11:30"), ("11:30", "14:00"), ("14:00", "16:30")],
-    input=cFrame,
-)
-
-cFrame = add_time_slots(
-    fields=tepper_ketcham,
-    days_of_week=["Sunday"],
-    start_day="3/4/2023",
-    end_day="5/5/2023",
-    times=[("09:00", "11:30"), ("11:30", "14:00"), ("14:00", "16:30")],
-    input=cFrame,
-)
-
-# Monday-Friday after DST change (3/12/23)
-# Sunset 19:15 on 3/13/23
-cFrame = add_time_slots(
-    fields=tepper_ketcham,
-    # days_of_week=weekdays,
-    days_of_week=tuesday_thursday,
-    start_day="3/13/2023",
-    end_day="5/9/2023",
-    times=[("17:00", "19:30")],
-    input=cFrame,
-)
-
-##################################################
-## Paul Goode
-cFrame = add_time_slots(
-    fields=["Paul Goode Practice"],
+    locations=["Paul Goode"],
+    fields=["Practice"],
+    intended_division="Tee Ball",
     days_of_week="Saturday",
-    start_day="3/11/2023",
-    end_day="5/27/2023",
-    times=[("11:00", "12:30"), ("12:30", "14:00")],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[("09:00", "10:30"), ("10:30", "12:00")],
     input=cFrame,
 )
-
-# carved for 2h on Sundays
-cFrame = add_time_slots(
-    fields="Paul Goode Practice",
-    days_of_week="Sunday",
-    start_day="2/25/2023",
-    end_day="5/27/2023",
-    times=[("09:00", "11:00")],
-    input=cFrame,
-)
-
-cFrame = add_time_slots(
-    fields="Paul Goode Main",
-    days_of_week="Sunday",
-    start_day="2/25/2023",
-    end_day="5/27/2023",
-    times=[("15:00", "18:00")],
-    input=cFrame,
-)
-##################################################
-# RecPark Weekdays
-
-cFrame = add_time_slots(
-    fields=["Kimbell D1 NW", "Kimbell D2 SE", "Kimbell D3 SW"],
-    days_of_week="Wednesday",
-    start_day="3/8/2023",
-    end_day="5/27/2023",
-    times=[("17:30", "20:00")],
-    input=cFrame,
-)
-
-
-cFrame = add_time_slots(
-    fields=["McCoppin"],
-    days_of_week="Tuesday",
-    start_day="3/7/2023",
-    end_day="5/27/2023",
-    times=[("17:30", "20:30")],  # needs to be hard set to 3h to avoid being used by Rookie/Minors...
-    input=cFrame,
-)
-
-cFrame = add_time_slots(
-    fields=["South Sunset D2 South"],
-    days_of_week=["Tuesday", "Thursday", "Friday"],
-    start_day="3/7/2023",
-    end_day="5/27/2023",
-    times=[("17:30", "20:00")],
-    input=cFrame,
-)
-
-cFrame = add_time_slots(
-    fields=["South Sunset D1 North"],
-    days_of_week=["Friday"],
-    start_day="3/7/2023",
-    end_day="5/27/2023",
-    times=[("17:30", "20:00")],
-    input=cFrame,
-)
-
-##################################################
-# RecPark Weekends
 
 # tee 1.5h on Saturdays
 cFrame = add_time_slots(
-    fields=["Larsen"],
+    locations=["Larsen"],
+    fields=["Field 1"],
+    intended_division="Tee Ball",
     days_of_week=["Saturday"],
-    start_day="3/4/2023",
-    end_day="5/22/2023",
+    start_day="3/2/2024",
+    end_day="5/19/2024",
     times=[
         ("09:00", "10:30"),
         ("10:30", "12:00"),
         ("12:00", "13:30"),
         ("13:30", "15:00"),
-        ("15:00", "16:30"),
-    ],
-    input=cFrame,
-)
-
-# farm 2h on sundays
-cFrame = add_time_slots(
-    fields=["Larsen", "Christopher"],
-    days_of_week=["Sunday"],
-    start_day="3/4/2023",
-    end_day="5/22/2023",
-    times=[
-        ("09:00", "11:00"),
-        ("11:00", "13:00"),
-        ("13:00", "15:00"),
-        ("15:00", "17:00"),
-    ],
-    input=cFrame,
-)
-
-
-# 2h slots (farm)
-cFrame = add_time_slots(
-    fields=["Rossi Park #1"],
-    days_of_week=["Sunday"],
-    start_day="3/4/2023",
-    end_day="5/22/2023",
-    times=[
-        ("09:00", "11:00"),
-        ("11:00", "13:00"),
-    ],
-    input=cFrame,
-)
-
-# 2.5h slots (rookie)
-cFrame = add_time_slots(
-    fields=["Rossi Park #1"],
-    days_of_week=["Saturday", "Sunday"],
-    start_day="3/4/2023",
-    end_day="5/22/2023",
-    times=[
-        ("13:00", "15:30"),  # 2h
-        ("15:30", "18:00"),  # 2.5h
-    ],
-    input=cFrame,
-)
-
-
-# Large fields (Juniors)
-cFrame = add_time_slots(
-    fields=["Balboa - Sweeney"],
-    days_of_week=["Saturday"],
-    start_day="3/4/2023",
-    end_day="5/22/2023",
-    times=[
-        ("09:00", "12:00"),
-        ("12:00", "15:00"),
-    ],
-    input=cFrame,
-)
-
-cFrame = add_time_slots(
-    fields=["McCoppin"],
-    days_of_week=["Sunday"],
-    start_day="3/4/2023",
-    end_day="5/22/2023",
-    times=[
-        ("09:00", "12:00"),
-    ],
-    input=cFrame,
-)
-
-# Challenger @ Riordan
-cFrame = add_time_slots(
-    fields=["Riordan"],
-    days_of_week=["Sunday"],
-    only_days=[
-        "3/5/2023",
-        "3/19/2023",
-        "3/26/2023",
-        "4/2/2023",
-        "4/9/2023",
-        "4/16/2023",
-        "4/23/2023",
-        "4/30/2023",
-        "5/7/2023",
-        "5/14/2023",
-        "5/21/2023",
-    ],
-    times=[
-        ("13:30", "16:30"),
     ],
     input=cFrame,
 )
 
 ##################################################
-# Cleanup
+# Lower Farm
+cFrame = add_time_slots(
+    locations=["Fort Scott"],
+    fields=["South Diamond"],
+    intended_division="Lower Farm",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("08:00", "10:00"),
+        ("10:00", "12:00"),
+        ("12:00", "14:00"),
+    ],  # 2 h slots
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Larsen"],
+    fields=["Field 1"],
+    intended_division="Lower Farm",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("09:00", "11:00"),
+        ("11:00", "13:00"),
+        ("13:00", "15:00"),
+    ],
+    input=cFrame,
+)
+
+##################################################
+# Upper Farm
+
+cFrame = add_time_slots(
+    locations=["Fort Scott"],
+    fields=["North Diamond"],
+    intended_division="Upper Farm",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("08:00", "10:00"),
+        ("10:00", "12:00"),
+        ("12:00", "14:00"),
+    ],  # 2 h slots
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Laurel Hill"],
+    fields=["Field 1"],
+    intended_division="Upper Farm",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("09:00", "11:00"),
+        ("11:00", "13:00"),
+        ("13:00", "15:00"),
+    ],
+    input=cFrame,
+)
+
+##################################################
+# Rookie
+cFrame = add_time_slots(
+    locations=["Tepper"],
+    fields=["Field 1"],
+    intended_division="Rookie",
+    days_of_week=["Saturday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[("14:00", "16:30")],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Rossi"],
+    fields=["Field 1"],
+    intended_division="Rookie",
+    days_of_week=["Saturday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("09:00", "11:30"),
+        ("11:30", "14:00"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Ketcham"],
+    fields=["Field 1"],
+    intended_division="Rookie",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("11:00", "13:30"),
+        ("13:30", "16:00"),
+    ],
+    input=cFrame,
+)
+
+# Weds
+cFrame = add_time_slots(
+    locations=["Kimbell"],
+    fields=["Diamond 2"],
+    intended_division="Rookie",
+    days_of_week=["Wednesday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Kimbell"],
+    fields=["Diamond 3"],
+    intended_division="Rookie",
+    days_of_week=["Wednesday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+
+# Thurs
+cFrame = add_time_slots(
+    locations=["South Sunset"],
+    fields=["Diamond 2"],
+    intended_division="Rookie",
+    days_of_week=["Thursday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+
+# Friday
+cFrame = add_time_slots(
+    locations=["South Sunset"],
+    fields=["Diamond 2"],
+    intended_division="Rookie",
+    days_of_week=["Friday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+
+
+
+##################################################
+# AA Minors
+
+# Sat
+cFrame = add_time_slots(
+    locations=["Tepper"],
+    fields=["Field 1"],
+    intended_division="Minors AA",
+    days_of_week=["Saturday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[("16:30", "19:00")],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Ketcham"],
+    fields=["Field 1"],
+    intended_division="Minors AA",
+    days_of_week=["Saturday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[("16:30", "19:00")],
+    input=cFrame,
+)
+
+# Sunday
+cFrame = add_time_slots(
+    locations=["Ketcham"],
+    fields=["Field 1"],
+    intended_division="Minors AA",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[("08:30", "11:00")],
+    input=cFrame,
+)
+
+
+cFrame = add_time_slots(
+    locations=["Rossi"],
+    fields=["Field 1"],
+    intended_division="Minors AA",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("09:00", "11:30"),
+        ("11:30", "14:00"),
+    ],
+    input=cFrame,
+)
+
+# Weds and Thurs inherited from Rookie
+
+# Friday
+cFrame = add_time_slots(
+    locations=["South Sunset"],
+    fields=["Diamond 1"],
+    intended_division="Minors AA",
+    days_of_week=["Friday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+
+##################################################
+# AAA Minors
+
+# Saturday
+cFrame = add_time_slots(
+    locations=["Tepper"],
+    fields=["Field 1"],
+    intended_division="Minors AAA",
+    days_of_week=["Saturday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[("11:30", "14:00")],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Ketcham"],
+    fields=["Field 1"],
+    intended_division="Minors AAA",
+    days_of_week=["Saturday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("11:30", "14:00"),
+        ("14:00", "16:30"),
+    ],
+    input=cFrame,
+)
+
+# Sunday
+cFrame = add_time_slots(
+    locations=["Tepper"],
+    fields=["Field 1"],
+    intended_division="Minors AAA",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[("09:00", "11:30")],
+    input=cFrame,
+)
+
+
+cFrame = add_time_slots(
+    locations=["Ketcham"],
+    fields=["Field 1"],
+    intended_division="Minors AAA",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("16:00", "18:30"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Ketcham", "Tepper"],
+    fields=["Field 1"],
+    intended_division="Minors AAA",
+    days_of_week=["Tuesday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+
+
+cFrame = add_time_slots(
+    locations=["South Sunset"],
+    fields=["Diamond 2"],
+    intended_division="Minors AAA",
+    days_of_week=["Tuesday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+
+
+##################################################
+# Majors
+
+# Sat
+cFrame = add_time_slots(
+    locations=["Tepper"],
+    fields=["Field 1"],
+    intended_division="Majors",
+    days_of_week=["Saturday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[("09:00", "11:30")],
+    input=cFrame,
+)
+cFrame = add_time_slots(
+    locations=["Ketcham"],
+    fields=["Field 1"],
+    intended_division="Majors",
+    days_of_week=["Saturday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[("09:00", "11:30")],
+    input=cFrame,
+)
+
+# Sunday
+cFrame = add_time_slots(
+    locations=["Tepper"],
+    fields=["Field 1"],
+    intended_division="Majors",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("11:30", "14:00"),
+        ("16:00", "18:30"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["West Sunset"],
+    fields=["Field 3"],
+    intended_division="Majors",
+    days_of_week=["Sunday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("09:00", "11:30"),
+    ],
+    input=cFrame,
+)
+
+# Weds
+cFrame = add_time_slots(
+    locations=["Tepper"],
+    fields=["Field 1"],
+    intended_division="Majors",
+    days_of_week=["Wednesday", "Thursday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+cFrame = add_time_slots(
+    locations=["Ketcham"],
+    fields=["Field 1"],
+    intended_division="Majors",
+    days_of_week=["Wednesday", "Thursday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+cFrame = add_time_slots(
+    locations=["Kimbell"],
+    fields=["Diamond 1"],
+    intended_division="Majors",
+    days_of_week=["Wednesday"],
+    start_day="3/2/2024",
+    end_day="5/19/2024",
+    times=[
+        ("17:30", "20:00"),
+    ],
+    input=cFrame,
+)
+
+
+##################################################
+
+
+
+##################################################
+# Completely erase 4/06 and redo it.
+
+fixDate = "4/6/2024"
+cFrame = cFrame[cFrame["Date"] != "2024-04-06"]
+
+cFrame = add_time_slots(
+    locations=["Paul Goode"],
+    fields=["Practice"],
+    intended_division="Rookie",
+    days_of_week="Saturday",
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[("09:00", "11:30")],
+    input=cFrame,
+)
+cFrame = add_time_slots(
+    locations=["Larsen"],
+    fields=["Field 1"],
+    intended_division="Rookie",
+    days_of_week=["Saturday"],
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[
+        ("09:00", "11:30"),
+        ("11:30", "14:00"),
+    ],
+    input=cFrame,
+)
+cFrame = add_time_slots(
+    locations=["Rossi"],
+    fields=["Field 1"],
+    intended_division="Rookie",
+    days_of_week=["Saturday"],
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[
+        ("09:00", "11:30"),
+        ("11:30", "14:00"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Rossi"],
+    fields=["Field 1"],
+    intended_division="Minors AA",
+    days_of_week=["Saturday"],
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[
+        ("14:00", "16:30"),
+        ("16:30", "19:00"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Fort Scott"],
+    fields=["South Diamond"],
+    intended_division="Minors AA",
+    days_of_week=["Saturday"],
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[
+        ("14:00", "16:30"),
+        ("16:30", "19:00"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Ketcham"],
+    fields=["Field 1"],
+    intended_division="Minors AA",
+    days_of_week=["Saturday"],
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[
+        ("14:00", "16:30"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Tepper"],
+    fields=["Field 1"],
+    intended_division="Minors AAA",
+    days_of_week=["Saturday"],
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[
+        ("11:30", "14:00"),
+        ("14:00", "16:30"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Ketcham"],
+    fields=["Field 1"],
+    intended_division="Minors AAA",
+    days_of_week=["Saturday"],
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[
+        ("11:30", "14:00"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Fort Scott"],
+    fields=["North Diamond"],
+    intended_division="Minors AAA",
+    days_of_week=["Saturday"],
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[
+        ("14:00", "16:30"),
+        ("16:30", "19:00"),
+    ],
+    input=cFrame,
+)
+
+cFrame = add_time_slots(
+    locations=["Tepper", "Ketcham"],
+    fields=["Field 1"],
+    intended_division="Majors",
+    days_of_week=["Saturday"],
+    start_day=fixDate,
+    end_day=fixDate,
+    times=[
+        ("09:00", "11:30"),
+    ],
+    input=cFrame,
+)
+
+# ##################################################
+# # Cleanup
 cFrame.sort_values(by=["Datestamp"], inplace=True, ignore_index=True)
 
-# print(cFrame)
-
-
-cFrame.loc[cFrame["Datestamp"] < "2023-03-04 14:00", "Notes"] = "Opening Day Ceremony"
+# Add Notes to early opening day slots to avoid scheduling
+opening_day = cFrame["Date"] == "2024-03-09"
+before_noon_starts = ["08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30"]
+before_noon_slots = cFrame["Start"].isin(before_noon_starts)
+opening_day_slots = opening_day & before_noon_slots
+cFrame.loc[opening_day_slots, "Notes"] = "Opening Day Ceremony"
 
 
 save_frame(cFrame, "calendar.pkl")

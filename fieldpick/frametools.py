@@ -5,12 +5,15 @@ from natsort import natsorted
 from collections import defaultdict
 from inputs import division_info
 from helpers import short_division_names
-
-
 import numpy as np
-
 import pandas as pd
+import sys
 
+logging.basicConfig(
+    format="%(asctime)s %(levelname)s\t%(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    level=logging.INFO,
+)
 logger = logging.getLogger()
 
 # helper functions for working with dataframes
@@ -18,8 +21,13 @@ logger = logging.getLogger()
 
 def list_teams_for_division(division, tFrame):
     """Return a list of teams for a given division"""
-    return tFrame[tFrame["Division"] == division]["Team"].tolist()
+    teams = tFrame[tFrame["Division"] == division]["Team"].tolist()
+    if len(teams) < 1:
+        print(f"Division {division} has no teams")
+        sys.exit(1)
+    print(f"Teams: ({len(teams)} - {teams}")
 
+    return teams
 
 def weeks_in_season(cFrame):
     """Return a list of weeks in the season"""
@@ -37,18 +45,37 @@ def make_data_dir():
     if not os.path.exists("data"):
         os.makedirs("data")
 
+def load_frame(save_file):
+    logger.info(f"Loading frame from {save_file}")
+    myFrame = pd.read_pickle(save_file)
+    print(f"Loaded {len(myFrame)} slots")
+    return myFrame
 
 def save_frame(frame, save_file):
     """Save a dataframe to a pickle file"""
     if not os.path.exists("data"):
         os.makedirs("data")
 
-    logger.info(f"Saving {len(frame)} rows to disk: data/{save_file}")
-    frame.to_pickle(f"data/{save_file}")
+    file_path = f"data/{save_file}"
 
-    # backup
-    time_str = time.strftime("%Y%m%d-%H%M%S")
-    frame.to_pickle(f"{save_file}_{time_str}.pkl")
+
+    # Check if the file exists and read it
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
+            existing_content = pd.read_pickle(file_path)
+    else:
+        existing_content = None
+
+    if existing_content.equals(frame):
+        logger.info(f"Skipping save of {file_path} - no changes")
+        return
+    else:
+        logger.info(f"Saving {len(frame)} rows to disk: {file_path}")
+        frame.to_pickle(f"{file_path}")
+
+        # backup
+        time_str = time.strftime("%Y%m%d-%H%M%S")
+        frame.to_pickle(f"{file_path}_{time_str}")
     
 
 def score_frame(frame, division, column):
@@ -129,7 +156,7 @@ def extract_day_of_week(frame):
 
 def extract_field_names(frame):
     """Extract a unique list of days of the week from a calendar dataframe"""
-    return frame["Field"].unique().tolist()
+    return frame["Full_Field"].unique().tolist()
 
 
 def filter_by_division(frame, division):
@@ -162,12 +189,17 @@ def score_gamecount(frame, division):
     return dev * 3.0  # scale up the deviation
 
 
+def sum_versus(team_frame, versus):
+    home_and_away = [team_frame["Home_Team"], team_frame["Away_Team"]]
+    return sum(col.astype(str).str.contains(versus).sum() for col in home_and_away)
+    
+
 # division	team	Monday	Tuesday	Wednesday	Thursday	Friday	Saturday	Sunday
 # total	home	away	turf	grass
 # TI	SF	M-F-TI	SS-TI	M-F-SF	SS-SF
 # Tepper	Ketcham	Ft. Scott	Kimbell	SouthSunset	Paul Goode	Tepper Home	Tepper Away
 # Week 1	Week 2	Week 3	Week 4	Week 5	Week 6	Week 7	Week 8	Week 9	Week 10	Week 11	Week 12	Week 13	Week 14	Week 15
-# vs Team 1	vs Team 2	vs Team 3	vs Team 4	vs Team 5	vs Team 6	vs Team 7	vs Team 8	vs Team 9	vs Team 10	vs Team 11	vs Team 12	vs Team 13	vs Team 14
+# vs Team 01	vs Team 02	vs Team 03	vs Team 04	vs Team 05	vs Team 06	vs Team 07	vs Team 08	vs Team 09	vs Team 10	vs Team 11	vs Team 12	vs Team 13	vs Team 14
 # vs RESERVED_
 def analyze_columns(cFrame):
     output = pd.DataFrame()
@@ -215,6 +247,8 @@ def analyze_columns(cFrame):
                 team_frame = cFrame
             else:
                 team_frame = rows_with_team(division_frame, team)
+
+
             mydata = {
                 "Division": division,
                 "Team": team,
@@ -227,11 +261,11 @@ def analyze_columns(cFrame):
                 "Thursday": len(team_frame[team_frame["Day_of_Week"] == "Thursday"]),
                 "Friday": len(team_frame[team_frame["Day_of_Week"] == "Friday"]),
                 "Week 1": len(team_frame[team_frame["Week_Name"] == "Week 1"]),
-                "Week 2": len(team_frame[team_frame["Week_Name"] == "Week 2"]),
+                "Week 2 - Opening": len(team_frame[team_frame["Week_Name"] == "Week 2"]),
                 "Week 3": len(team_frame[team_frame["Week_Name"] == "Week 3"]),
                 "Week 4": len(team_frame[team_frame["Week_Name"] == "Week 4"]),
-                "Week 5": len(team_frame[team_frame["Week_Name"] == "Week 5"]),
-                "Week 6": len(team_frame[team_frame["Week_Name"] == "Week 6"]),
+                "Week 5 - Easter": len(team_frame[team_frame["Week_Name"] == "Week 5"]),
+                "Week 6 - Giants": len(team_frame[team_frame["Week_Name"] == "Week 6"]),
                 "Week 7": len(team_frame[team_frame["Week_Name"] == "Week 7"]),
                 "Week 8": len(team_frame[team_frame["Week_Name"] == "Week 8"]),
                 "Week 9": len(team_frame[team_frame["Week_Name"] == "Week 9"]),
@@ -242,68 +276,62 @@ def analyze_columns(cFrame):
                 "Week 14": len(team_frame[team_frame["Week_Name"] == "Week 14"]),
                 "home": len(team_frame[team_frame["Home_Team"] == team]),
                 "away": len(team_frame[team_frame["Away_Team"] == team]),
-                "Vs Team 1": len(team_frame[team_frame["Away_Team"] == "Team 1"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 1"]),
-                "Vs Team 2": len(team_frame[team_frame["Away_Team"] == "Team 2"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 2"]),
-                "Vs Team 3": len(team_frame[team_frame["Away_Team"] == "Team 3"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 3"]),
-                "Vs Team 4": len(team_frame[team_frame["Away_Team"] == "Team 4"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 4"]),
-                "Vs Team 5": len(team_frame[team_frame["Away_Team"] == "Team 5"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 5"]),
-                "Vs Team 6": len(team_frame[team_frame["Away_Team"] == "Team 6"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 6"]),
-                "Vs Team 7": len(team_frame[team_frame["Away_Team"] == "Team 7"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 7"]),
-                "Vs Team 8": len(team_frame[team_frame["Away_Team"] == "Team 8"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 8"]),
-                "Vs Team 9": len(team_frame[team_frame["Away_Team"] == "Team 9"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 9"]),
-                "Vs Team 10": len(team_frame[team_frame["Away_Team"] == "Team 10"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 10"]),
-                "Vs Team 11": len(team_frame[team_frame["Away_Team"] == "Team 11"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 11"]),
-                "Vs Team 12": len(team_frame[team_frame["Away_Team"] == "Team 12"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 12"]),
-                "Vs Team 13": len(team_frame[team_frame["Away_Team"] == "Team 13"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 13"]),
-                "Vs Team 14": len(team_frame[team_frame["Away_Team"] == "Team 14"])
-                + len(team_frame[team_frame["Home_Team"] == "Team 14"]),
-                "TI": len(team_frame[team_frame["location"] == "TI"]),
-                "SF": len(team_frame[team_frame["location"] == "SF"]),
+                "Vs 01": sum_versus(team_frame,"_01"),
+                "Vs 02": sum_versus(team_frame,"_02"),
+                "Vs 03": sum_versus(team_frame,"_03"),
+                "Vs 04": sum_versus(team_frame,"_04"),
+                "Vs 05": sum_versus(team_frame,"_05"),
+                "Vs 06": sum_versus(team_frame,"_06"),
+                "Vs 07": sum_versus(team_frame,"_07"),
+                "Vs 08": sum_versus(team_frame,"_08"),
+                "Vs 09": sum_versus(team_frame,"_09"),
+                "Vs 10": sum_versus(team_frame,"_10"),
+                "Vs 11": sum_versus(team_frame,"_11"),
+                "Vs 12": sum_versus(team_frame,"_12"),
+                "TI": len(team_frame[team_frame["Region"] == "TI"]),
+                "SF": len(team_frame[team_frame["Region"] == "SF"]),
             }
 
             mydata["WeekEND"] = len(team_frame.query("Day_of_Week in ('Saturday', 'Sunday')"))
             mydata["WeekDAY"] = len(team_frame.query("Day_of_Week not in ('Saturday', 'Sunday')"))
 
-            mydata["TI WeekEND"] = len(team_frame.query("location == 'TI' and Day_of_Week in ('Saturday', 'Sunday')"))
-            mydata["TI WeekDAY"] = len(team_frame.query("location == 'TI' and Day_of_Week not in ('Saturday', 'Sunday')"))
+            mydata["TI WeekEND"] = len(team_frame.query("Region == 'TI' and Day_of_Week in ('Saturday', 'Sunday')"))
+            mydata["TI WeekDAY"] = len(team_frame.query("Region == 'TI' and Day_of_Week not in ('Saturday', 'Sunday')"))
 
-            mydata["SF WeekEND"] = len(team_frame.query("location == 'SF' and Day_of_Week in ('Saturday', 'Sunday')"))
-            mydata["SF WeekDAY"] = len(team_frame.query("location == 'SF' and Day_of_Week not in ('Saturday', 'Sunday')"))
+            mydata["SF WeekEND"] = len(team_frame.query("Region == 'SF' and Day_of_Week in ('Saturday', 'Sunday')"))
+            mydata["SF WeekDAY"] = len(team_frame.query("Region == 'SF' and Day_of_Week not in ('Saturday', 'Sunday')"))
+            mydata["Early Starts"] = len(team_frame.query("Start in ('08:00', '08:30', '09:00', '09:30')"))
 
             all_fields = sorted(extract_field_names(cFrame))
 
             # Manually tweak order
             friendly_order = [
-                "Paul Goode Practice",
-                "Larsen",
-                "Christopher",
-                "Rossi Park #1",
-                "Ft. Scott - South",
-                "Ft. Scott - North",
-                "Tepper",
-                "Ketcham",
+                "Paul Goode - Practice",
+                "Larsen - Field 1",
+                "Fort Scott - South Diamond",
+                "Fort Scott - North Diamond",
+                "Laurel Hill - Field 1",
+                "Kimbell - Diamond 3",
+                "Kimbell - Diamond 2",
+                "Kimbell - Diamond 1",
+                "Tepper - Field 1",
+                "Ketcham - Field 1",
+                "West Sunset - Field 3"
+
             ]
 
             friendly_order.reverse()
+            seen_fields = []
             for field in friendly_order:
                 if field in all_fields:
                     all_fields.remove(field)
                     all_fields.insert(0, field)
                 else:
-                    logger.warning(f"Field {field} not found")
+                    seen_fields.append(field)
+                    if field not in seen_fields:
+                        logger.warning(f"Field {field} not found")
+                        seen_fields.append(field)
+
 
             # Place at end
             for field in ["Balboa - Sweeney", "McCoppin", "Paul Goode Main", "Riordan"]:
@@ -313,9 +341,9 @@ def analyze_columns(cFrame):
 
             for field in all_fields:
                 try:
-                    mydata[field] = len(team_frame[team_frame["Field"] == field])
+                    mydata[field] = len(team_frame[team_frame["Full_Field"] == field])
                 except KeyError:
-                    logger.info(f"Field {field} not found")
+                    # logger.info(f"Field {field} not found")
                     mydata[field] = 0
 
             mydf = pd.DataFrame(mydata, index=[0])
@@ -414,34 +442,9 @@ def reserve_slots(
         logger.warning("No matching slots found for reservation request")
     return frame
 
-def check_three_five(frame, division):
-    """Check if there are any 3/5 games for any given team in a given division"""
-    division_frame = filter_by_division(frame, division)
-    all_teams = extract_teams(division_frame)
 
-    result = 0
-
-    for team in all_teams:
-        team_frame = rows_with_team(division_frame, team)
-        day_series = team_frame.Day_of_Year.values.astype(int)
-
-        day_series.sort()
-        # print(day_series)
-
-
-
-        for i in range(len(day_series) - 2):
-            # print(i, len(day_series))
-            three_games = abs(day_series[i+2] - day_series[i]) + 1
-            if three_games < 6:
-                print(f"Division: {division}   Team: {team}")
-                print(f"Has three games in {three_games} days!   value = {three_games}")
-                print(day_series[i], day_series[i + 1], day_series[i + 2])
-    return result
-
-
-def check_three_six(frame, division):
-    """Check if there are any 3/5 games for any given team in a given division"""
+def check_three_six(frame, division, size=6):
+    """Check if there are 3 games in Y days for any given team in a given division"""
     division_frame = filter_by_division(frame, division)
     all_teams = extract_teams(division_frame)
     result = 0
@@ -451,34 +454,12 @@ def check_three_six(frame, division):
         day_series = team_frame.Day_of_Year.values.astype(int)
         day_series.sort()
 
-
         for i in range(len(day_series) - 2):
-            # print(i, len(day_series))
-            three_games = abs(day_series[i+2] - day_series[i]) + 1
-            if three_games < 7:
-                print(f"Division: {division} \tTeam: {team}\tHas three games in {three_games} days   {day_series[i]}-{day_series[i + 1]}-{day_series[i+2]}")
+            spread = abs(day_series[i+2] - day_series[i]) + 1
+            if spread < size+1:
+                print(f"Division: {division} \tTeam: {team}\t: Found three games in {spread} days:   {day_series[i]}-{day_series[i + 1]}-{day_series[i+2]}")
     return result  
 
-
-
-def check_three_seven(frame, division):
-    """Check if there are any 3/5 games for any given team in a given division"""
-    division_frame = filter_by_division(frame, division)
-    all_teams = extract_teams(division_frame)
-    result = 0
-
-    for team in all_teams:
-        team_frame = rows_with_team(division_frame, team)
-        day_series = team_frame.Day_of_Year.values.astype(int)
-        day_series.sort()
-
-
-        for i in range(len(day_series) - 2):
-            # print(i, len(day_series))
-            three_games = abs(day_series[i+2] - day_series[i]) + 1
-            if three_games < 8:
-                print(f"Division: {division} \tTeam: {team}\tHas three games in {three_games} days   {day_series[i]}-{day_series[i + 1]}-{day_series[i+2]}")
-    return result  
 
 
 def check_consecutive(frame, division, min_diff=2):
@@ -615,11 +596,11 @@ def balance_home_away(frame):
 
 def assign_row(frame, slot, division, home_team, away_team, safe=True):
 
-    logger.info(f"Assigning {division} {home_team} vs {away_team} to slot {slot}")
+    # logger.info(f"Assigning {division} {home_team} vs {away_team} to slot {slot}")
 
     # Get the next available id
     game_ids = frame[frame['Game_ID'].notnull()]["Game_ID"].astype(str).str.split("-").str[1].astype(int)
-    game_id = game_ids.max() + 1
+    game_id = game_ids.max() + 1 if len(game_ids) > 0 else 1
 
     #game_id = 428
 
@@ -629,7 +610,7 @@ def assign_row(frame, slot, division, home_team, away_team, safe=True):
     if frame.loc[slot, "Game_ID"] is not None and safe:
         logger.warning(f"Slot {slot} already has a game assigned")
     else:
-        logger.info(f"Assigning {game_id_string} to slot {slot}")
+        #logger.info(f"Assigning {game_id_string} to slot {slot}")
         frame.loc[slot, ["Division", 
         "Home_Team", "Home_Team_Name", 
         "Away_Team", "Away_Team_Name", 

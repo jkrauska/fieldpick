@@ -5,7 +5,7 @@ import logging
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-spreadsheet_key = "1-8GnEEN36eI2c7dF3i9bonyHTkRhmFtLghY7_8gjCgE"
+spreadsheet_key = "1q6kRg6AbFQuV0HELl8APzy4-Mel4EyfIn12up6tGPKs"
 
 
 def publish_df_to_gsheet(df, spreadsheet_key=spreadsheet_key, worksheet_name="Full Schedule"):

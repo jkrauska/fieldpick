@@ -5,11 +5,11 @@ from frametools import analyze_columns, generate_schedules
 from gsheets import publish_df_to_gsheet
 
 
-logging.basicConfig(
-    format="%(asctime)s %(levelname)s\t%(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S",
-    level=logging.INFO,
-)
+# logging.basicConfig(
+#     format="%(asctime)s %(levelname)s\t%(message)s",
+#     datefmt="%Y-%m-%d %H:%M:%S",
+#     level=logging.INFO,
+# )
 logger = logging.getLogger()
 
 
@@ -23,7 +23,6 @@ print(f"Loaded {len(cFrame)} slots")
 publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
 
 
-
 aFrame = analyze_columns(cFrame)
 publish_df_to_gsheet(aFrame, worksheet_name="Analysis")
 
@@ -33,13 +32,15 @@ publish_df_to_gsheet(uFrame, worksheet_name="Unassigned")
 import time
 # time.sleep(3)
 
+sys.exit(0)
 divisionFrames = generate_schedules(cFrame)
 for division, division_frame in divisionFrames.items():
     drop_columns = [
         'Week_Number', 'Time_Length', 'Day_of_Year', 'Division', "Datestamp", "Home_Team", "Away_Team",
         'Notes',	'location',	'size',	'type',	'infield', 'Sunset']
-
-    division_frame = division_frame.drop(columns=drop_columns)
+    for col in drop_columns:
+        if col in division_frame.columns:
+            division_frame = division_frame.drop(columns=col)
     publish_df_to_gsheet(division_frame, worksheet_name=f"{division}")
     logger.info("Sleeping for 10 second to avoid rate limit")
     time.sleep(10)

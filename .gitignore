@@ -4,7 +4,8 @@ __pycache__
 data/*.pkl
 .venv
 fieldpick/data/*.pkl
-data/*.pkl
+data/*.pkl*
+pklback/*
 data/archive/*
 *.log
 *.pdf
