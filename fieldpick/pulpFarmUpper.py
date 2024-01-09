@@ -131,7 +131,7 @@ prob = limit_games_per_week(prob, weeks, working_slots, slots_vars, teams, limit
 
 prob = minimum_games_per_team(prob, teams, slots_vars, slot_ids, min_games=9)
 
-prob = early_starts(prob, teams, slots_vars, early_slots, min=1, max=5)
+prob = early_starts(prob, teams, slots_vars, early_slots, min=3, max=5)
 
 # Balance fields
 for field in field_ratios:

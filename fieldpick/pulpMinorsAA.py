@@ -27,6 +27,7 @@ from pulpFunctions import (
     minimum_games_per_team,
     maximum_games_per_team,
     min_weekends,
+    min_weekday,
     solveMe,
 )
 
@@ -125,7 +126,7 @@ prob = limit_games_per_week(prob, weeks, working_slots, slots_vars, teams, limit
 prob = minimum_games_per_team(prob, teams, slots_vars, slot_ids, min_games=11)
 prob = maximum_games_per_team(prob, teams, slots_vars, slot_ids, max_games=12)
 
-prob = early_starts(prob, teams, slots_vars, early_slots, min=1, max=5)
+prob = early_starts(prob, teams, slots_vars, early_slots, min=2, max=5)
 
 # Balance fields
 prob = balance_fields(prob, teams, games_per_team, working_slots, slots_vars, fudge=1)
@@ -135,6 +136,24 @@ prob = field_limits(prob, teams, working_slots, slots_vars, "Tepper - Field 1", 
 prob = field_limits(prob, teams, working_slots, slots_vars, "Ketcham - Field 1", min=1, max=5, variation="KETCHAM_MIN")
 
 #prob = min_weekends(prob, teams, working_slots, slots_vars, min=7)
+prob = min_weekday(prob, teams, working_slots, slots_vars, weekday="Saturday", min=1)
+
+
+# Prefer tepper on weekends
+tepper = ["Tepper - Field 1", "Ketcham - Field 1"]
+tepper_slots = working_slots[working_slots["Full_Field"].isin(tepper)].index
+tepper_weekend_slots = tepper_slots
+for j in teams:
+    prob += (
+        (
+            lpSum([slots_vars[i, j, k] for i in tepper_weekend_slots] for k in teams)  # home team on tepper weekend
+            + lpSum([slots_vars[i, k, j] for i in tepper_weekend_slots] for k in teams) # away team on tepper weekend
+        )
+        <= 5,
+        f"get_tepper_min_team_{j}",
+    )
+
+
 
 prob = solveMe(prob, working_slots)
 clear_division(cFrame, division)

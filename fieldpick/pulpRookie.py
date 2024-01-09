@@ -138,7 +138,22 @@ prob = field_limits(prob, teams, working_slots, slots_vars, "Ketcham - Field 1",
 prob = min_weekends(prob, teams, working_slots, slots_vars, min=7)
 
 prob = min_weekday(prob, teams, working_slots, slots_vars, weekday="Friday", min=1)
-prob = max_weekday(prob, teams, working_slots, slots_vars, weekday="Friday", max=1)
+# prob = max_weekday(prob, teams, working_slots, slots_vars, weekday="Friday", max=1)
+
+
+# # Prefer tepper on weekends
+# tepper = ["Tepper - Field 1", "Ketcham - Field 1"]
+# tepper_slots = working_slots[working_slots["Full_Field"].isin(tepper)].index
+# tepper_weekend_slots = tepper_slots
+# for j in teams:
+#     prob += (
+#         (
+#             lpSum([slots_vars[i, j, k] for i in tepper_weekend_slots] for k in teams)  # home team on tepper weekend
+#             + lpSum([slots_vars[i, k, j] for i in tepper_weekend_slots] for k in teams) # away team on tepper weekend
+#         )
+#         >= 3,
+#         f"get_tepper_min_team_{j}",
+#     )
 
 
 prob = solveMe(prob, working_slots)

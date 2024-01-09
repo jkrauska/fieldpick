@@ -20,7 +20,7 @@ cFrame = pd.read_pickle(save_file)
 print(f"Loaded {len(cFrame)} slots")
 
 
-publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
+#publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
 
 
 aFrame = analyze_columns(cFrame)
@@ -32,15 +32,18 @@ publish_df_to_gsheet(uFrame, worksheet_name="Unassigned")
 import time
 # time.sleep(3)
 
-sys.exit(0)
 divisionFrames = generate_schedules(cFrame)
 for division, division_frame in divisionFrames.items():
     drop_columns = [
-        'Week_Number', 'Time_Length', 'Day_of_Year', 'Division', "Datestamp", "Home_Team", "Away_Team",
-        'Notes',	'location',	'size',	'type',	'infield', 'Sunset']
+        'Week_Number', 'Time_Length', 'Intended_Division',
+          'Day_of_Year', 'Division', "Datestamp", 
+          "Home_Team", "Away_Team",
+        'Notes','Location',	'Field', 'Size',	
+        'Type',	'Infield', 'Sunset', 'Region'
+        ]
     for col in drop_columns:
         if col in division_frame.columns:
             division_frame = division_frame.drop(columns=col)
     publish_df_to_gsheet(division_frame, worksheet_name=f"{division}")
     logger.info("Sleeping for 10 second to avoid rate limit")
-    time.sleep(10)
+    time.sleep(3)

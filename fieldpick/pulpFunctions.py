@@ -3,12 +3,16 @@ import sys
 import logging
 import math
 
+
 logging.basicConfig(
     format="%(asctime)s %(levelname)s\t%(message)s",
     datefmt="%Y-%m-%d %H:%M:%S",
     level=logging.INFO,
 )
 logger = logging.getLogger()
+
+WEEKDAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+
 
 # Common constraints for all divisions
 def common_constraints(prob, slots_vars, teams, slot_ids, working_slots):
@@ -22,9 +26,14 @@ def common_constraints(prob, slots_vars, teams, slot_ids, working_slots):
     # Limit consecutive games
     prob = no_back_to_back(prob, days_of_year, working_slots, slots_vars, teams)
     prob = limit_3_in_5(prob, days_of_year, working_slots, slots_vars, teams)
+    prob = limit_3_in_6(prob, days_of_year, working_slots, slots_vars, teams)
+
 
     # Limit games per day
     prob = limit_games_per_day(prob, days_of_year, working_slots, slots_vars, teams, limit=1)
+
+    # Limit games per week
+    prob = limit_weekday_games_per_week(prob, teams, working_slots, slots_vars, limit=1)
 
     return prob
 
@@ -115,6 +124,40 @@ def limit_3_in_5(prob, days_of_year, working_slots, slots_vars, teams):
                 f"Max_three_five_{day}_team_{j}",
         )
     return prob
+
+def limit_3_in_6(prob, days_of_year, working_slots, slots_vars, teams):
+    # 3 games in 6 days
+    for day in days_of_year:
+        this_day = working_slots[working_slots["Day_of_Year"] == day].index
+        next_day = working_slots[working_slots["Day_of_Year"] == str(int(day) + 1)].index
+        third_day = working_slots[working_slots["Day_of_Year"] == str(int(day) + 2)].index
+        fourth_day = working_slots[working_slots["Day_of_Year"] == str(int(day) + 3)].index
+        fifth_day = working_slots[working_slots["Day_of_Year"] == str(int(day) + 4)].index
+        sixth_day = working_slots[working_slots["Day_of_Year"] == str(int(day) + 5)].index
+        for j in teams:
+            # This is a bogus hack
+            if "02" in j:
+                continue
+            prob += (
+                (
+                    lpSum([slots_vars[i, j, k] for i in this_day for k in teams])  # home team on day
+                    + lpSum([slots_vars[i, k, j] for i in this_day for k in teams])  # away team on day
+                    + lpSum([slots_vars[i, j, k] for i in next_day for k in teams])  # home team on day+1
+                    + lpSum([slots_vars[i, k, j] for i in next_day for k in teams])  # away team on day+1
+                    + lpSum([slots_vars[i, j, k] for i in third_day for k in teams])  # home team on day+2
+                    + lpSum([slots_vars[i, k, j] for i in third_day for k in teams])  # away team on day+2
+                    + lpSum([slots_vars[i, j, k] for i in fourth_day for k in teams])  # home team on day+3
+                    + lpSum([slots_vars[i, k, j] for i in fourth_day for k in teams])  # away team on day+3
+                    + lpSum([slots_vars[i, j, k] for i in fifth_day for k in teams])  # home team on day+4
+                    + lpSum([slots_vars[i, k, j] for i in fifth_day for k in teams])  # home team on day+4
+                    + lpSum([slots_vars[i, j, k] for i in sixth_day for k in teams])  # home team on day+4
+                    + lpSum([slots_vars[i, k, j] for i in sixth_day for k in teams])  # home team on day+4
+                )
+                <= 2,
+                f"Max_three_six_{day}_team_{j}",
+        )
+    return prob
+
 
 def no_back_to_back(prob, days_of_year, working_slots, slots_vars, teams):
     # No team can play back to back games
@@ -228,6 +271,27 @@ def max_weekday(prob, teams, working_slots, slots_vars, weekday="Monday", max=1)
         )
     return prob
 
+
+def limit_weekday_games_per_week(prob, teams, working_slots, slots_vars, limit=1):
+    weeks = working_slots["Week_Name"].unique()
+
+    for week in weeks:
+        thisweek = working_slots[working_slots["Week_Name"] == week].index
+        slots = working_slots[working_slots["Day_of_Week"].isin(WEEKDAYS)].index
+
+        joined = thisweek.intersection(slots)
+        for j in teams:
+            prob += (
+                (
+                    lpSum([slots_vars[i, j, k] for i in joined] for k in teams)
+                    + lpSum([slots_vars[i, k, j] for i in joined] for k in teams)
+                )
+                <= limit,
+                f"Max_{limit}_games_per_week_in_{week}_team_{j}",
+            )
+    return prob
+
+
 def field_limits(prob, teams, working_slots, slots_vars, field, min, max, variation=""):
     # set limits on field counts
     field_slots = working_slots[working_slots["Full_Field"].isin([field])].index
@@ -261,7 +325,6 @@ def balance_fields(prob, teams, games_per_team, working_slots, slots_vars, fudge
         max = math.ceil(field_ratios[field] * games_per_team) + fudge
         prob = field_limits(prob, teams, working_slots, slots_vars, field, min, max)
     return prob
-
 
 def solveMe(prob, working_slots):
     # Solve (quietly)

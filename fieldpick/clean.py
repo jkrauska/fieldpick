@@ -58,18 +58,6 @@ for i in slots_to_clear:
     
 
 
-
-
-# # Clear gameid
-# slots_to_clear = cFrame[slot_mask].index
-
-# for i in slots_to_clear:
-#     cFrame.loc[i, "Game_ID"] = None
-
-# # Clear division
-# clear_division(cFrame, "Majors")
-
-
 save_frame(cFrame, "calendar.pkl")
 publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
 aFrame = analyze_columns(cFrame)

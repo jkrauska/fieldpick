@@ -37,11 +37,9 @@ logging.basicConfig(
 )
 logger = logging.getLogger()
 
-
 # Load data
 cFrame = load_frame("data/calendar.pkl")
 tFrame = load_frame("data/teams.pkl")
-
 pd.set_option("display.max_rows", None)
 
 
@@ -143,6 +141,42 @@ prob = field_limits(prob, teams, working_slots, slots_vars, "Kimbell - Diamond 1
 
 
 prob = min_weekends(prob, teams, working_slots, slots_vars, min=6)
+
+
+# Prefer tepper on weekends
+tepper = ["Tepper - Field 1", "Ketcham - Field 1"]
+tepper_slots = working_slots[working_slots["Full_Field"].isin(tepper)].index
+weekends = ["Saturday", "Sunday"]
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
+tepper_weekend_slots = list(set(tepper_slots).intersection(weekend_slots))
+for j in teams:
+    prob += (
+        (
+            lpSum([slots_vars[i, j, k] for i in tepper_weekend_slots] for k in teams)  # home team on tepper weekend
+            + lpSum([slots_vars[i, k, j] for i in tepper_weekend_slots] for k in teams) # away team on tepper weekend
+        )
+        >= 6,
+        f"get_tepper_weekend_team_{j}",
+    )
+
+
+
+# Prefer tepper on weekends
+tepper = ["Tepper - Field 1", "Ketcham - Field 1"]
+tepper_slots = working_slots[working_slots["Full_Field"].isin(tepper)].index
+tepper_weekend_slots = tepper_slots
+for j in teams:
+    prob += (
+        (
+            lpSum([slots_vars[i, j, k] for i in tepper_weekend_slots] for k in teams)  # home team on tepper weekend
+            + lpSum([slots_vars[i, k, j] for i in tepper_weekend_slots] for k in teams) # away team on tepper weekend
+        )
+        >= 12,
+        f"get_tepper_min_team_{j}",
+    )
+
+
+
 
 prob = solveMe(prob, working_slots)
 clear_division(cFrame, division)

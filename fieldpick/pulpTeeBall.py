@@ -69,7 +69,9 @@ slot_good_for_division = division_same | division_not_set
 
 before_last_week = (pd.to_numeric(cleanFrame["Week_Number"]) <= int(last_week))
 not_day_off = cleanFrame["Day_of_Week"] != day_off
-not_opening_day = cleanFrame["Notes"] != "Opening Day Ceremony"
+
+# No tee ball at all on opening day (different from other divisions)
+not_opening_day = cleanFrame["Date"] != "2024-03-09"
 non_blocked = (not_opening_day & not_day_off & before_last_week)
 
 # Prescribed slots

@@ -337,6 +337,12 @@ field_info = {
         "Type": "grass",
         "Infield":  "dirt",
     },
+    "Riordan - Field 1": {
+        "Region": "SF",
+        "Size": "60/90",
+        "Type": "turf",
+        "Infield":  "turf",
+    },
     "Rossi - Field 1": {
         "Region": "SF",
         "Size": "46/60",

@@ -150,7 +150,6 @@ short_division_names = {
     "Tee Ball": "TB",
     "Tee_Ball": "TB",
     "Lower Farm": "FML",
-    # "Farm - Upper": "FMU",
     "Upper Farm": "FMU",
     "Rookie": "RK",
     "Minors AA": "AA",
@@ -175,6 +174,3 @@ sports_connect_division_names = {
     "Seniors": "Seniors",
     "Softball": "Softball",
 }
-
-# 
-    # "Farm - Lower": "FML",

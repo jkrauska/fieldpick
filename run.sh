@@ -34,15 +34,17 @@ echo "##########################################################################
 python fieldpick/pulpMajors.py
 
 echo "############################################################################################"
+python fieldpick/checks.py
+
+echo "############################################################################################"
 python fieldpick/publish.py
 
 echo "############################################################################################"
 python fieldpick/analysis.py 2>&1 | grep -v DEBUG
 
-exit
 
-python fieldpick/assign_fields.py 2>&1 | tee lastrun.log
+# python fieldpick/assign_fields.py 2>&1 | tee lastrun.log
 
-cp lastrun.log lastrun-$(date +%Y%m%d-%H%M%S).log
+# cp lastrun.log lastrun-$(date +%Y%m%d-%H%M%S).log
 
-python fieldpick/analysis.py 2>&1 
+# python fieldpick/analysis.py 2>&1 

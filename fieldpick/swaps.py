@@ -166,58 +166,6 @@ def move_row(frame, slot, new_slot):
         ]
         clear_row(frame, slot)
 
-# move_row(cFrame, 86, 743)
-# move_row(cFrame, 225, 226)
-
-# #
-
-
-
-# AAA-534	MAJ-652
-#swap_rows_by_game_id(cFrame, "AAA-534", "MAJ-652", dest="Team 7")
-
-# AA-404    AA-405
-# swap_rows_by_game_id(cFrame, "AA-404", "AA-405", dest="Team 3")
-
-# move 394, 384
-# move_row(cFrame, 394, 384)
-
-
-
-# FMU-222 and RK-326  get FMU to Sat only
-#swap_rows_by_game_id(cFrame, "FMU-222", "RK-326", dest="Team 2")
-
-# TB-021 TB-016
-# swap_rows_by_game_id(cFrame, "TB-021", "TB-016", dest="Team 4")
-
-# cFrame.loc[185, "End"] = "12:00"
-# cFrame.loc[185, "Time_Length"] = 150
-
-
-# NASH 02-14
-# RK-301 with RK-305
-# RK-348 with RK-352
-# RK-350 with RK-351
-# RK-360 with RK-363
-#swap_rows_by_game_id(cFrame, "RK-301", "RK-305", dest="Team 13")
-# swap_rows_by_game_id(cFrame, "RK-348", "RK-352", dest="Team 2")
-# swap_rows_by_game_id(cFrame, "RK-350", "RK-351", dest="Team 4")
-# swap_rows_by_game_id(cFrame, "RK-360", "RK-363", dest="Team 2")
-# # FML-103 with FML-106
-# swap_rows_by_game_id(cFrame, "FML-103", "FML-106", dest="Team 5")
-
-# MAJ-664 MAJ-665 Team 10
-#swap_rows_by_game_id(cFrame, "MAJ-664", "MAJ-665", dest="Team 10")
-# MAJ-667 MAJ-666 Team 10
-# swap_rows_by_game_id(cFrame, "MAJ-667", "MAJ-666", dest="Team 10")
-
-
-# AA-417 AA-418
-#swap_rows_by_game_id(cFrame, "AA-417", "AA-418", dest="Team 4")
-# AA-456 AA-453 Team 1
-#swap_rows_by_game_id(cFrame, "AA-456", "AA-453", dest="Team 1")
-
-
 
 
 save_frame(cFrame, "calendar.pkl")
