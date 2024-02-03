@@ -111,7 +111,8 @@ print(f"Usable Slots: {len(working_slots)}")
 combinations = [(s, h, a) for s in slot_ids for h in teams for a in teams]
 slots_vars = LpVariable.dicts("Slot", combinations, cat="Binary")
 
-prob = LpProblem("League_Scheduling", LpMaximize)
+_division = division.replace(" ", "_")
+prob = LpProblem(f"League_Scheduling_{_division}", LpMaximize)
 
 # objective maximize number of slots used
 prob += lpSum([slots_vars]), "Number of games played"
@@ -153,6 +154,19 @@ for j in teams:
         f"get_tepper_min_team_{j}",
     )
 
+# Prefer X 
+location = ["Tepper - Field 1", "Ketcham - Field 1"]
+location_slots = working_slots[working_slots["Full_Field"].isin(tepper)].index
+tepper_weekend_slots = location_slots
+for j in teams:
+    prob += (
+        (
+            lpSum([slots_vars[i, j, k] for i in tepper_weekend_slots] for k in teams)  # home team on tepper weekend
+            + lpSum([slots_vars[i, k, j] for i in tepper_weekend_slots] for k in teams) # away team on tepper weekend
+        )
+        >= 3,
+        f"custom_get_tepper_min_team_{j}",
+    )
 
 
 prob = solveMe(prob, working_slots)

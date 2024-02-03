@@ -2,6 +2,7 @@ from pulp import lpSum, LpStatus, PULP_CBC_CMD
 import sys
 import logging
 import math
+import pickle
 
 
 logging.basicConfig(
@@ -34,6 +35,9 @@ def common_constraints(prob, slots_vars, teams, slot_ids, working_slots):
 
     # Limit games per week
     prob = limit_weekday_games_per_week(prob, teams, working_slots, slots_vars, limit=1)
+
+    # Everyone plays in week 1
+    prob =  everyone_plays_week1(prob, teams, working_slots, slots_vars, limit=1)  
 
     return prob
 
@@ -97,6 +101,25 @@ def limit_faceoffs(prob, slots_vars, teams, slot_ids, limit=1):
                     + lpSum([slots_vars[i, k, j] for i in slot_ids])
                 ) <= limit, f"Total_games_between_team_{j}_and_{k}"
     return prob
+
+
+def everyone_plays_week1(prob, teams, working_slots, slots_vars, limit=1):
+    weeks = ["Week 1"]
+    for week in weeks:
+        thisweek = working_slots[working_slots["Week_Name"] == week].index
+
+        joined = thisweek
+        for j in teams:
+            prob += (
+                (
+                    lpSum([slots_vars[i, j, k] for i in joined] for k in teams)
+                    + lpSum([slots_vars[i, k, j] for i in joined] for k in teams)
+                )
+                >= limit,
+                f"Week_1_play_{limit}_games_team_{j}",
+            )
+    return prob
+
 
 def limit_3_in_5(prob, days_of_year, working_slots, slots_vars, teams):
     # 3 games in 5 days
@@ -327,16 +350,40 @@ def balance_fields(prob, teams, games_per_team, working_slots, slots_vars, fudge
     return prob
 
 def solveMe(prob, working_slots):
+
+    # Load prior solutions
+    prob = load_solution(prob)
+
     # Solve (quietly)
-    print("Solver starting...")
+    logger.info("Solver starting...")
     prob.solve(PULP_CBC_CMD(msg=False))
-    print("Solver finished...")
+    logger.info("Solver finished...")
     # Check the solver status
     if LpStatus[prob.status] == "Infeasible":
-        print("ERROR: The problem is infeasible")
+        logger.info("ERROR: The problem is infeasible")
         dir(prob.status)
         print(working_slots)
         sys.exit(1)
     elif LpStatus[prob.status] == "Optimal":
-        print("An optimal solution has been found")
+        logger.info("An optimal solution has been found")
+
+        save_solution(prob)
+    return prob
+
+def save_solution(prob):
+    solution = {v.name: v.varValue for v in prob.variables()}
+    prob_name = prob.name
+    with open(f"{prob_name}_solution.pkl", "wb") as f:
+        pickle.dump(solution, f)
+
+def load_solution(prob):
+    prob_name = prob.name
+    try:
+        with open(f"{prob_name}_solution.pkl", "rb") as f:
+            solution = pickle.load(f)
+            for v in prob.variables():
+                v.varValue = solution[v.name]
+        logger.info("Prior solution found")
+    except:
+        logger.info("No prior solution found")
     return prob

@@ -1,27 +1,57 @@
 import pandas as pd
 import logging
 import sys
-from frametools import analyze_columns, generate_schedules
+import time
+from frametools import analyze_columns, generate_schedules, load_frame
 from gsheets import publish_df_to_gsheet
 
 
-# logging.basicConfig(
-#     format="%(asctime)s %(levelname)s\t%(message)s",
-#     datefmt="%Y-%m-%d %H:%M:%S",
-#     level=logging.INFO,
-# )
+logging.basicConfig(
+    format="%(asctime)s %(levelname)s\t%(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    level=logging.INFO,
+)
 logger = logging.getLogger()
 
 
 # Load calendar
-logger.info("Loading calendar data")
-save_file = "data/calendar.pkl"
-cFrame = pd.read_pickle(save_file)
-print(f"Loaded {len(cFrame)} slots")
+cFrame = load_frame("data/calendar.pkl")
 
 
-#publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
+scFrame = cFrame.copy()
 
+keep_columns = [
+    'Week_Number',
+    'Home_Team',
+     'Away_Team',
+     'Date',
+     'Start',
+        'End',
+        'Location',
+        'Field',
+        ]
+scFrame = scFrame[keep_columns]
+scFrame.dropna(subset=['Home_Team'], inplace=True)
+
+scFrame.rename(columns={'Week_Number': 'RoundNo'}, inplace=True)
+scFrame.rename(columns={'Home_Team': 'HomeTeam'}, inplace=True)
+scFrame.rename(columns={'Away_Team': 'AwayTeam'}, inplace=True)
+scFrame.rename(columns={'Date': 'MatchDate'}, inplace=True)
+scFrame.rename(columns={'Start': 'StartTime'}, inplace=True)
+scFrame.rename(columns={'End': 'EndTime'}, inplace=True)
+scFrame.index.name = "SortOrder"
+
+
+
+# for col in scFrame.columns:
+#     if col not in keep_columns:
+#         print(col)
+#         scFrame = scFrame.drop(columns=col)
+print(scFrame)
+scFrame.to_csv('sportsConnect.csv', index=True)
+
+
+# sys.exit(1)
 
 aFrame = analyze_columns(cFrame)
 publish_df_to_gsheet(aFrame, worksheet_name="Analysis")

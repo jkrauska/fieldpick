@@ -74,7 +74,6 @@ non_blocked = not_opening_day & not_day_off & before_last_week
 
 
 # Prescribed slots
-divisions = [division, "Minors AA", "Minors AAA"]
 divisions = [division,  "Minors AAA"]
 
 prescribed_fields = cleanFrame["Intended_Division"].isin(divisions)
@@ -110,10 +109,17 @@ print(f"Usable Slots: {len(working_slots)}")
 combinations = [(s, h, a) for s in slot_ids for h in teams for a in teams]
 slots_vars = LpVariable.dicts("Slot", combinations, cat="Binary")
 
-prob = LpProblem("League_Scheduling", LpMaximize)
+_division = division.replace(" ", "_")
+prob = LpProblem(f"League_Scheduling_{_division}", LpMaximize)
 
 # objective maximize number of slots used
-prob += lpSum([slots_vars]), "Number of games played"
+
+desired_field = ["Tepper - Field 1"]
+desired_slots = working_slots[working_slots["Full_Field"].isin(desired_field)].index
+# prob += 2 * lpSum(desired_slots), "Maximize_Tepper_Usage"
+
+prob += lpSum([slots_vars]) + 2 * lpSum(desired_slots), "Max Number of games played"
+
 
 # Common constraints
 prob = common_constraints(prob, slots_vars, teams, slot_ids, working_slots)
@@ -129,7 +135,7 @@ prob = maximum_games_per_team(prob, teams, slots_vars, slot_ids, max_games=15)
 prob = early_starts(prob, teams, slots_vars, early_slots, min=2, max=4)
 
 # # # Balance fields
-prob = balance_fields(prob, teams, games_per_team, working_slots, slots_vars, fudge=1)
+prob = balance_fields(prob, teams, games_per_team, working_slots, slots_vars, fudge=2)
 
 # # Tepper Min
 # prob = field_limits(prob, teams, working_slots, slots_vars, "Tepper - Field 1", min=1, max=5, variation="TEPPER_MIN")
@@ -161,6 +167,7 @@ for j in teams:
 
 
 
+
 # Prefer tepper on weekends
 tepper = ["Tepper - Field 1", "Ketcham - Field 1"]
 tepper_slots = working_slots[working_slots["Full_Field"].isin(tepper)].index
@@ -175,6 +182,16 @@ for j in teams:
         f"get_tepper_min_team_{j}",
     )
 
+
+
+
+# # Use all of your prescribed slots
+# for i in slot_ids:
+#     for j in teams:
+#         prob += (
+#             lpSum([slots_vars[i, j, k] for k in teams]) + lpSum([slots_vars[i, k, j] for k in teams]) >= 1,
+#             f"get_prescribed_slot_{i}_team_{j}",
+#         )
 
 
 

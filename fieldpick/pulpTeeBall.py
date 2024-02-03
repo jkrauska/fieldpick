@@ -24,8 +24,7 @@ from pulpFunctions import (
     limit_faceoffs, 
     limit_games_per_week,
     early_starts, 
-    field_limits,
-    set_field_ratios, 
+    balance_fields,
     solveMe
 )
 
@@ -107,7 +106,8 @@ print(f"Usable Slots: {len(working_slots)}")
 combinations = [(s, h, a) for s in slot_ids for h in teams for a in teams]
 slots_vars = LpVariable.dicts("Slot",   combinations, cat="Binary")
 
-prob = LpProblem("League_Scheduling", LpMaximize)
+_division = division.replace(" ", "_")
+prob = LpProblem(f"League_Scheduling_{_division}", LpMaximize)
 
 # objective maximize number of slots used
 prob += lpSum([slots_vars]), "Number of games played"
@@ -122,11 +122,8 @@ prob = limit_games_per_week(prob, weeks, working_slots, slots_vars, teams, limit
 prob = early_starts(prob, teams, slots_vars, early_slots, min=3, max=4)
 
 # Balance fields
-field_ratios = set_field_ratios(working_slots)
-for field in field_ratios:
-    min = math.floor(field_ratios[field] * games_per_team)
-    max = math.ceil(field_ratios[field] * games_per_team)
-    prob = field_limits(prob, teams, working_slots, slots_vars, field, min, max)
+prob = balance_fields(prob, teams, games_per_team, working_slots, slots_vars, fudge=1)
+
 
 # Solve (quietly)
 prob = solveMe(prob, working_slots)

@@ -21,9 +21,20 @@ cFrame = pd.DataFrame()
 ##################################################
 # Tee Ball
 
+# cFrame = add_time_slots(
+#     locations=["Paul Goode"],
+#     fields=["Practice"],
+#     intended_division="Tee Ball",
+#     days_of_week="Saturday",
+#     start_day="3/2/2024",
+#     end_day="5/19/2024",
+#     times=[("09:00", "10:30"), ("10:30", "12:00")],
+#     input=cFrame,
+# )
+
 cFrame = add_time_slots(
-    locations=["Paul Goode"],
-    fields=["Practice"],
+    locations=["Rossi"],
+    fields=["Field 1"],
     intended_division="Tee Ball",
     days_of_week="Saturday",
     start_day="3/2/2024",
@@ -31,6 +42,7 @@ cFrame = add_time_slots(
     times=[("09:00", "10:30"), ("10:30", "12:00")],
     input=cFrame,
 )
+
 
 # tee 1.5h on Saturdays
 cFrame = add_time_slots(
@@ -135,8 +147,8 @@ cFrame = add_time_slots(
     start_day="3/2/2024",
     end_day="5/19/2024",
     times=[
-        ("09:00", "11:30"),
-        ("11:30", "14:00"),
+        ("12:00", "14:30"),
+        ("14:30", "17:00"),
     ],
     input=cFrame,
 )
@@ -536,16 +548,16 @@ cFrame = add_time_slots(
 fixDate = "4/6/2024"
 cFrame = cFrame[cFrame["Date"] != "2024-04-06"]
 
-cFrame = add_time_slots(
-    locations=["Paul Goode"],
-    fields=["Practice"],
-    intended_division="Rookie",
-    days_of_week="Saturday",
-    start_day=fixDate,
-    end_day=fixDate,
-    times=[("09:00", "11:30")],
-    input=cFrame,
-)
+# cFrame = add_time_slots(
+#     locations=["Paul Goode"],
+#     fields=["Practice"],
+#     intended_division="Rookie",
+#     days_of_week="Saturday",
+#     start_day=fixDate,
+#     end_day=fixDate,
+#     times=[("09:00", "11:30")],
+#     input=cFrame,
+# )
 cFrame = add_time_slots(
     locations=["Larsen"],
     fields=["Field 1"],
@@ -604,7 +616,7 @@ cFrame = add_time_slots(
 cFrame = add_time_slots(
     locations=["Ketcham"],
     fields=["Field 1"],
-    intended_division="Minors AA",
+    intended_division="Rookie",
     days_of_week=["Saturday"],
     start_day=fixDate,
     end_day=fixDate,
@@ -699,6 +711,18 @@ cFrame.loc[
     (week_one) & (weekday) & (ss),
     "Intended_Division",
 ] = "Majors"
+
+
+# Change intended first week midweek to only allow Majors
+week_choice = cFrame["Week_Number"] == "9"
+weekdays = ["Wednesday"]
+weekday = cFrame["Day_of_Week"].isin(weekdays)
+ssfields = ["Kimbell - Diamond 1"]
+ss = cFrame["Full_Field"].isin(ssfields)
+cFrame.loc[
+    (week_choice) & (weekday) & (ss),
+    "Intended_Division",
+] = "Minors AA"
 
 
 # Change intended first week midweek to only allow Majors

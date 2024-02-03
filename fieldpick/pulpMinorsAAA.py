@@ -110,7 +110,8 @@ print(f"Usable Slots: {len(working_slots)}")
 combinations = [(s, h, a) for s in slot_ids for h in teams for a in teams]
 slots_vars = LpVariable.dicts("Slot", combinations, cat="Binary")
 
-prob = LpProblem("League_Scheduling", LpMaximize)
+_division = division.replace(" ", "_")
+prob = LpProblem(f"League_Scheduling_{_division}", LpMaximize)
 
 # objective maximize number of slots used
 prob += lpSum([slots_vars]), "Number of games played"
