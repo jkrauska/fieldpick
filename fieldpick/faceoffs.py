@@ -5,7 +5,8 @@ from itertools import islice
 
 # Round robin scheduling
 # https://stackoverflow.com/questions/32358841/grouping-list-combinations-for-round-robin-tournament
-# itertools.combinations returns the right set of matchups, but in a unusable order
+# itertools.combinations returns the right set of matchups, but in a
+# unusable order
 
 
 def fixtures(teams):
@@ -41,7 +42,8 @@ def faceoffs(teams):
 def faceoffs_repeated(teams, games=None):
     one_faceoff_rotation = faceoffs(teams)
     if games:
-        cycles = one_faceoff_rotation * (games // len(one_faceoff_rotation) + 1)
+        cycles = one_faceoff_rotation * \
+            (games // len(one_faceoff_rotation) + 1)
         return cycles[:games]
     else:
         return cycle

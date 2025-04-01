@@ -2,29 +2,31 @@ import pandas as pd
 import math
 import logging
 from frametools import (load_frame, save_frame,
-    balance_home_away,
-    list_teams_for_division,
-    assign_row,
-    clear_division,
-)
-from inputs import ( division_info)
+                        balance_home_away,
+                        list_teams_for_division,
+                        assign_row,
+                        clear_division,
+                        )
+from inputs import (division_info)
 from pulp import LpProblem, LpVariable, LpMaximize, lpSum, PULP_CBC_CMD, LpStatus
+from pulpFunctions import minimum_games_per_team
 from collections import Counter
 import sys
 
 from pulpFunctions import (
-    one_game_per_slot, 
-    cannot_play_yourself, 
-    limit_faceoffs, 
-    no_back_to_back, 
-    limit_3_in_5, 
-    limit_games_per_day, 
+    one_game_per_slot,
+    cannot_play_yourself,
+    limit_faceoffs,
+    no_back_to_back,
+    limit_3_in_5,
+    limit_games_per_day,
     limit_games_per_week,
     early_starts,
     field_limits,
     minimum_games_per_team,
+    minimum_faceoffs,
     set_field_ratios, solveMe
-                           )
+)
 
 logging.basicConfig(
     format="%(asctime)s %(levelname)s\t%(message)s",
@@ -41,8 +43,8 @@ tFrame = load_frame("data/teams.pkl")
 pd.set_option('display.max_rows', None)
 
 
-############################################################################################################
-### PULP STUFF
+##########################################################################
+# PULP STUFF
 
 division = "Upper Farm"
 teams = list_teams_for_division(division, tFrame)
@@ -51,8 +53,8 @@ duration = "120"
 day_off = "Monday"
 last_week = "12"
 
-games_per_team = 8
-#game_total = 14 * games_per_team / 2
+games_per_team = 10
+# game_total = 14 * games_per_team / 2
 
 # Data cleanup
 cleanFrame = cFrame[cFrame["Week_Number"] != "UNKNOWN"].copy()
@@ -63,7 +65,7 @@ valid_week_number = (pd.isna(cleanFrame["Week_Number"]) == False)
 correct_time = duration_correct & valid_week_number
 
 division_same = cleanFrame["Division"] == division
-division_not_set = (pd.isna(cleanFrame["Division"]) == True)
+division_not_set = (pd.isna(cleanFrame["Division"]))
 slot_good_for_division = division_same | division_not_set
 
 before_last_week = (pd.to_numeric(cleanFrame["Week_Number"]) <= int(last_week))
@@ -98,7 +100,7 @@ early_slots = working_slots[working_slots["Start"].isin(early_times)].index
 field_ratios = set_field_ratios(working_slots)
 
 
-############################################################################################################
+##########################################################################
 
 # Slot Variables
 slot_ids = working_slots.index
@@ -119,18 +121,36 @@ prob = one_game_per_slot(prob, slots_vars, teams, slot_ids)
 prob = cannot_play_yourself(prob, slots_vars, teams, slot_ids)
 
 # Same vs Same
-prob = limit_faceoffs(prob, slots_vars, teams, slot_ids)
+prob = minimum_faceoffs(prob, slots_vars, teams, slot_ids, limit=0)
+prob = limit_faceoffs(prob, slots_vars, teams, slot_ids, limit=1)
 
 # Limit consecutive games
 prob = no_back_to_back(prob, days_of_year, working_slots, slots_vars, teams)
 prob = limit_3_in_5(prob, days_of_year, working_slots, slots_vars, teams)
 
 # Limit games per day and per week
-prob = limit_games_per_day(prob, days_of_year, working_slots, slots_vars, teams, limit=1)
-prob = limit_games_per_week(prob, weeks, working_slots, slots_vars, teams, limit=1)
+prob = limit_games_per_day(
+    prob,
+    days_of_year,
+    working_slots,
+    slots_vars,
+    teams,
+    limit=1)
+prob = limit_games_per_week(
+    prob,
+    weeks,
+    working_slots,
+    slots_vars,
+    teams,
+    limit=1)
 
 
-prob = minimum_games_per_team(prob, teams, slots_vars, slot_ids, min_games=9)
+prob = minimum_games_per_team(
+    prob,
+    teams,
+    slots_vars,
+    slot_ids,
+    min_games=games_per_team)
 
 prob = early_starts(prob, teams, slots_vars, early_slots, min=3, max=5)
 
@@ -138,7 +158,14 @@ prob = early_starts(prob, teams, slots_vars, early_slots, min=3, max=5)
 for field in field_ratios:
     min = math.floor(field_ratios[field] * games_per_team) - 1
     max = math.ceil(field_ratios[field] * games_per_team) + 1
-    prob = field_limits(prob, teams, working_slots, slots_vars, field, min, max)
+    prob = field_limits(
+        prob,
+        teams,
+        working_slots,
+        slots_vars,
+        field,
+        min,
+        max)
 
 
 # Solve (quietly)
@@ -150,11 +177,21 @@ for v in prob.variables():
     if v.varValue:
         if v.varValue > 0:
             # gross text parsing
-            d = v.name.replace("Slot_", "").replace(",_", ",").replace("'", "").replace("(", "").replace(")", "")
+            d = v.name.replace(
+                "Slot_",
+                "").replace(
+                ",_",
+                ",").replace(
+                "'",
+                "").replace(
+                "(",
+                "").replace(
+                    ")",
+                "")
             (id, home, away) = d.split(",")
             id = int(id)
             # Apply change
-            #print(f"Slot {id} Home: {home} Away: {away}")
+            # print(f"Slot {id} Home: {home} Away: {away}")
             assign_row(cFrame, id, division, home, away, safe=False)
 
             check_count[home] += 1
@@ -172,6 +209,3 @@ for i in range(100):
 
 
 save_frame(cFrame, "calendar.pkl")
-
-
-

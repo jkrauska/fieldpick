@@ -1,0 +1,506 @@
+SortOrder,RoundNo,HomeTeam,AwayTeam,MatchDate,StartTime,EndTime,Location,Field
+0,1,TB_04,TB_07,2025-03-01,09:00,10:30,Aptos,Field 1
+1,1,Juniors_AL_02,Juniors_AL_01,2025-03-01,09:00,12:00,Moscone,D4
+2,1,Majors_NL_10,Majors_AL_01,2025-03-01,09:00,11:30,Ketcham,Field 1
+3,1,TB_10,TB_03,2025-03-01,09:00,10:30,Larsen,Field 1
+4,1,AAA_NL_10,AAA_AL_05,2025-03-01,09:00,11:30,Tepper,Field 1
+5,1,Rookie_AL_03,Rookie_AL_01,2025-03-01,10:30,13:00,Aptos,Field 1
+6,1,TB_14,TB_06,2025-03-01,10:30,12:00,Larsen,Field 1
+7,1,TB_13,TB_12,2025-03-01,11:00,12:30,Paul Goode,Practice
+8,1,AAA_NL_06,AAA_AL_02,2025-03-01,11:30,14:00,Ketcham,Field 1
+9,1,Rookie_NL_08,Rookie_NL_07,2025-03-01,11:30,14:00,Tepper,Field 1
+10,1,TB_11,TB_08,2025-03-01,12:00,13:30,Larsen,Field 1
+11,1,TB_05,TB_09,2025-03-01,12:30,14:00,Paul Goode,Practice
+12,1,AA_NL_08,AA_NL_09,2025-03-01,13:00,15:30,Aptos,Field 1
+13,1,TB_02,TB_01,2025-03-01,13:30,15:00,Larsen,Field 1
+14,1,AA_NL_10,AA_AL_04,2025-03-01,14:00,16:30,Tepper,Field 1
+15,1,Rookie_AL_02,Rookie_NL_10,2025-03-01,14:00,16:30,Ketcham,Field 1
+36,1,LF_12,LF_03,2025-03-02,13:00,15:00,Larsen,Field 1
+37,1,LF_10,LF_05,2025-03-02,13:00,15:00,Rossi,Field 1
+38,1,AA_NL_06,AA_AL_01,2025-03-02,14:00,16:30,Ketcham,Field 1
+39,1,Majors_AL_02,Majors_AL_03,2025-03-02,16:00,18:30,Tepper,Field 1
+40,2,Juniors_NL_04,Juniors_AL_01,2025-03-08,09:00,12:00,Moscone,D4
+41,2,Majors_AL_02,Majors_NL_08,2025-03-08,09:00,11:30,Ketcham,Field 1
+42,2,TB_12,TB_04,2025-03-08,09:00,10:30,Aptos,Field 1
+43,2,Majors_NL_06,Majors_AL_01,2025-03-08,09:00,11:30,Tepper,Field 1
+45,2,Rookie_NL_08,Rookie_AL_01,2025-03-08,10:30,13:00,Aptos,Field 1
+46,2,TB_05,TB_01,2025-03-08,10:30,12:00,Larsen,Field 1
+47,2,TB_08,TB_03,2025-03-08,11:00,12:30,Paul Goode,Practice
+48,2,AAA_NL_07,AAA_NL_08,2025-03-08,11:30,14:00,Ketcham,Field 1
+49,2,Rookie_AL_02,Rookie_NL_10,2025-03-08,11:30,14:00,Tepper,Field 1
+50,2,TB_09,TB_13,2025-03-08,12:00,13:30,Larsen,Field 1
+51,2,TB_10,TB_06,2025-03-08,12:30,14:00,Paul Goode,Practice
+52,2,AA_AL_05,AA_NL_10,2025-03-08,13:00,15:30,Aptos,Field 1
+53,2,TB_14,TB_02,2025-03-08,13:30,15:00,Larsen,Field 1
+54,2,AA_NL_06,AA_NL_08,2025-03-08,14:00,16:30,Tepper,Field 1
+55,2,Rookie_NL_07,Rookie_AL_03,2025-03-08,14:00,16:30,Ketcham,Field 1
+56,2,UF_05,UF_02,2025-03-09,08:00,10:00,Fort Scott,South Diamond
+57,2,UF_03,UF_07,2025-03-09,08:00,10:00,Fort Scott,North Diamond
+58,2,AA_AL_04,AA_AL_02,2025-03-09,09:00,11:30,Sunset Rec,Diamond
+59,2,AAA_AL_04,AAA_AL_03,2025-03-09,09:00,11:30,West Sunset,Field 3
+60,2,AAA_AL_02,AAA_AL_01,2025-03-09,09:00,11:30,Ketcham,Field 1
+61,2,LF_04,LF_05,2025-03-09,09:00,11:00,Larsen,Field 1
+62,2,Juniors_AL_03,Juniors_AL_02,2025-03-09,09:00,12:00,Paul Goode,Main
+63,2,LF_11,LF_06,2025-03-09,09:00,11:00,Rossi,Field 1
+64,2,Juniors_NL_06,Juniors_NL_05,2025-03-09,09:00,12:00,West Sunset,Field 1
+65,2,Majors_NL_09,Majors_NL_10,2025-03-09,09:00,11:30,Tepper,Field 1
+66,2,UF_06,UF_11,2025-03-09,10:00,12:00,Fort Scott,North Diamond
+67,2,UF_09,UF_01,2025-03-09,10:00,12:00,Fort Scott,South Diamond
+68,2,LF_12,LF_10,2025-03-09,11:00,13:00,Larsen,Field 1
+69,2,LF_09,LF_07,2025-03-09,11:00,13:00,Rossi,Field 1
+70,2,Rookie_NL_06,Rookie_AL_04,2025-03-09,11:30,14:00,Ketcham,Field 1
+71,2,Rookie_NL_09,Rookie_AL_05,2025-03-09,11:30,14:00,Sunset Rec,Diamond
+72,2,AAA_NL_10,AAA_NL_09,2025-03-09,11:30,14:00,Tepper,Field 1
+73,2,AA_AL_03,AA_AL_01,2025-03-09,11:30,14:00,West Sunset,Field 3
+74,2,UF_10,UF_08,2025-03-09,12:00,14:00,Fort Scott,North Diamond
+75,2,UF_04,UF_12,2025-03-09,12:00,14:00,Fort Scott,South Diamond
+76,2,LF_08,LF_03,2025-03-09,13:00,15:00,Larsen,Field 1
+77,2,LF_02,LF_01,2025-03-09,13:00,15:00,Rossi,Field 1
+78,2,Challenger_01,Challenger_04,2025-03-09,14:00,16:00,Tepper,Field 1
+79,2,AA_NL_07,AA_NL_09,2025-03-09,14:00,16:30,Ketcham,Field 1
+80,2,Challenger_03,Challenger_02,2025-03-09,14:00,16:00,Riordan,Field 1
+81,2,Majors_AL_04,Majors_AL_03,2025-03-09,16:00,18:30,Tepper,Field 1
+82,2,Majors_NL_07,Majors_AL_05,2025-03-09,16:30,19:00,Ketcham,Field 1
+83,2,Juniors_AL_02,Juniors_NL_06,2025-03-11,17:00,20:00,McCoppin,Field 1
+84,2,Majors_NL_08,Majors_NL_07,2025-03-11,17:30,20:00,Tepper,Field 1
+85,2,AAA_NL_07,AAA_NL_06,2025-03-11,17:30,20:00,Ketcham,Field 1
+86,2,Juniors_AL_01,Juniors_NL_05,2025-03-12,17:00,20:00,McCoppin,Field 1
+87,2,Juniors_AL_03,Juniors_NL_04,2025-03-12,17:00,20:00,Crocker Amazon,D2
+88,2,Majors_AL_04,Majors_NL_10,2025-03-12,17:30,20:00,Tepper,Field 1
+89,2,Majors_NL_09,Majors_NL_06,2025-03-12,17:30,20:00,Ketcham,Field 1
+90,2,AA_AL_04,AA_AL_03,2025-03-13,17:30,20:00,Fort Scott,North Diamond
+91,2,AA_AL_02,AA_NL_07,2025-03-13,17:30,20:00,South Sunset,Diamond 1
+92,2,AAA_AL_04,AAA_AL_02,2025-03-13,17:30,20:00,Tepper,Field 1
+93,2,Rookie_AL_02,Rookie_AL_01,2025-03-13,17:30,20:00,Fort Scott,South Diamond
+94,2,Rookie_NL_06,Rookie_NL_09,2025-03-13,17:30,20:00,Balboa,D2
+95,2,AAA_NL_08,AAA_AL_03,2025-03-13,17:30,20:00,Ketcham,Field 1
+96,2,AA_AL_01,AA_NL_10,2025-03-14,17:30,20:00,South Sunset,Diamond 2
+98,2,Majors_AL_03,Majors_AL_01,2025-03-14,17:30,20:00,South Sunset,Diamond 1
+99,2,AAA_AL_01,AAA_AL_05,2025-03-14,17:30,20:00,Fort Scott,North Diamond
+100,3,Juniors_NL_05,Juniors_AL_03,2025-03-15,09:00,12:00,Moscone,D4
+101,3,TB_08,TB_14,2025-03-15,09:00,10:30,Larsen,Field 1
+102,3,Majors_AL_02,Majors_NL_07,2025-03-15,09:00,11:30,Ketcham,Field 1
+103,3,TB_02,TB_13,2025-03-15,09:00,10:30,Aptos,Field 1
+104,3,Majors_NL_08,Majors_AL_04,2025-03-15,09:00,11:30,Tepper,Field 1
+105,3,TB_09,TB_01,2025-03-15,10:30,12:00,Larsen,Field 1
+106,3,Rookie_AL_05,Rookie_NL_06,2025-03-15,10:30,13:00,Aptos,Field 1
+107,3,TB_10,TB_05,2025-03-15,11:00,12:30,Paul Goode,Practice
+108,3,Rookie_NL_10,Rookie_AL_03,2025-03-15,11:30,14:00,Tepper,Field 1
+109,3,AAA_NL_08,AAA_NL_09,2025-03-15,11:30,14:00,Ketcham,Field 1
+110,3,TB_04,TB_03,2025-03-15,12:00,13:30,Larsen,Field 1
+111,3,TB_12,TB_07,2025-03-15,12:30,14:00,Paul Goode,Practice
+112,3,AA_AL_03,AA_NL_06,2025-03-15,13:00,15:30,Aptos,Field 1
+113,3,TB_06,TB_11,2025-03-15,13:30,15:00,Larsen,Field 1
+114,3,AA_AL_04,AA_NL_07,2025-03-15,14:00,16:30,Tepper,Field 1
+116,3,Majors_NL_10,Majors_NL_09,2025-03-15,16:30,19:00,Tepper,Field 1
+117,3,AAA_AL_03,AAA_AL_02,2025-03-15,16:30,19:00,Ketcham,Field 1
+118,3,UF_09,UF_07,2025-03-16,08:00,10:00,Fort Scott,North Diamond
+119,3,UF_11,UF_12,2025-03-16,08:00,10:00,Fort Scott,South Diamond
+120,3,Majors_AL_01,Majors_AL_05,2025-03-16,09:00,11:30,Tepper,Field 1
+121,3,LF_04,LF_10,2025-03-16,09:00,11:00,Larsen,Field 1
+122,3,Juniors_NL_04,Juniors_AL_02,2025-03-16,09:00,12:00,West Sunset,Field 1
+123,3,AA_NL_10,AA_NL_09,2025-03-16,09:00,11:30,Ketcham,Field 1
+124,3,LF_08,LF_06,2025-03-16,09:00,11:00,Rossi,Field 1
+125,3,Rookie_AL_04,Rookie_NL_07,2025-03-16,09:00,11:30,Sunset Rec,Diamond
+126,3,Juniors_AL_01,Juniors_NL_06,2025-03-16,09:00,12:00,Paul Goode,Main
+127,3,AAA_NL_07,AAA_AL_04,2025-03-16,09:00,11:30,West Sunset,Field 3
+128,3,UF_01,UF_10,2025-03-16,10:00,12:00,Fort Scott,South Diamond
+129,3,UF_06,UF_02,2025-03-16,10:00,12:00,Fort Scott,North Diamond
+130,3,LF_02,LF_09,2025-03-16,11:00,13:00,Larsen,Field 1
+131,3,LF_12,LF_07,2025-03-16,11:00,13:00,Rossi,Field 1
+132,3,AAA_NL_10,AAA_AL_01,2025-03-16,11:30,14:00,Ketcham,Field 1
+133,3,AA_NL_08,AA_AL_01,2025-03-16,11:30,14:00,West Sunset,Field 3
+134,3,Rookie_NL_09,Rookie_AL_02,2025-03-16,11:30,14:00,Sunset Rec,Diamond
+135,3,Rookie_NL_08,Rookie_AL_01,2025-03-16,11:30,14:00,Tepper,Field 1
+136,3,UF_05,UF_08,2025-03-16,12:00,14:00,Fort Scott,South Diamond
+137,3,UF_03,UF_04,2025-03-16,12:00,14:00,Fort Scott,North Diamond
+138,3,LF_03,LF_11,2025-03-16,13:00,15:00,Larsen,Field 1
+139,3,LF_05,LF_01,2025-03-16,13:00,15:00,Rossi,Field 1
+140,3,Challenger_03,Challenger_04,2025-03-16,14:00,16:00,Tepper,Field 1
+141,3,Challenger_02,Challenger_01,2025-03-16,14:00,16:00,Riordan,Field 1
+142,3,AA_AL_02,AA_AL_05,2025-03-16,14:00,16:30,Ketcham,Field 1
+143,3,Majors_NL_06,Majors_AL_03,2025-03-16,16:00,18:30,Tepper,Field 1
+144,3,AAA_NL_06,AAA_AL_05,2025-03-16,16:30,19:00,Ketcham,Field 1
+145,3,Juniors_NL_06,Juniors_NL_04,2025-03-18,17:00,20:00,McCoppin,Field 1
+147,3,Majors_NL_07,Majors_AL_02,2025-03-18,17:30,20:00,Tepper,Field 1
+148,3,Juniors_AL_02,Juniors_AL_01,2025-03-19,17:00,20:00,Crocker Amazon,D2
+149,3,Juniors_NL_05,Juniors_AL_03,2025-03-19,17:00,20:00,McCoppin,Field 1
+150,3,Majors_NL_08,Majors_AL_04,2025-03-19,17:30,20:00,Ketcham,Field 1
+151,3,Majors_NL_10,Majors_AL_05,2025-03-19,17:30,20:00,Tepper,Field 1
+152,3,Rookie_AL_03,Rookie_AL_04,2025-03-20,17:30,20:00,Fort Scott,South Diamond
+153,3,AA_NL_07,AA_AL_03,2025-03-20,17:30,20:00,Fort Scott,North Diamond
+154,3,Rookie_AL_05,Rookie_NL_10,2025-03-20,17:30,20:00,Balboa,D2
+155,3,AAA_NL_06,AAA_NL_08,2025-03-20,17:30,20:00,Tepper,Field 1
+157,3,AA_AL_01,AA_AL_05,2025-03-20,17:30,20:00,South Sunset,Diamond 1
+159,3,AA_NL_06,AA_AL_02,2025-03-21,17:30,20:00,South Sunset,Diamond 2
+160,3,Majors_NL_09,Majors_NL_06,2025-03-21,17:30,20:00,South Sunset,Diamond 1
+161,3,AAA_AL_04,AAA_NL_10,2025-03-21,17:30,20:00,Fort Scott,North Diamond
+162,4,Majors_NL_08,Majors_AL_03,2025-03-22,09:00,11:30,Tepper,Field 1
+163,4,AAA_AL_01,AAA_NL_09,2025-03-22,09:00,11:30,Ketcham,Field 1
+164,4,Juniors_AL_03,Juniors_NL_06,2025-03-22,09:00,12:00,Moscone,D4
+165,4,TB_01,TB_12,2025-03-22,09:00,10:30,Larsen,Field 1
+166,4,TB_03,TB_05,2025-03-22,09:00,10:30,Aptos,Field 1
+167,4,TB_08,TB_13,2025-03-22,10:30,12:00,Larsen,Field 1
+169,4,TB_06,TB_02,2025-03-22,11:00,12:30,Paul Goode,Practice
+170,4,AAA_NL_08,AAA_AL_02,2025-03-22,11:30,14:00,Ketcham,Field 1
+171,4,Rookie_AL_03,Rookie_NL_06,2025-03-22,11:30,14:00,Tepper,Field 1
+172,4,TB_14,TB_04,2025-03-22,12:00,13:30,Larsen,Field 1
+173,4,TB_11,TB_10,2025-03-22,12:30,14:00,Paul Goode,Practice
+174,4,Rookie_NL_07,Rookie_AL_02,2025-03-22,13:00,15:30,Aptos,Field 1
+175,4,TB_07,TB_09,2025-03-22,13:30,15:00,Larsen,Field 1
+176,4,AA_NL_10,AA_AL_03,2025-03-22,14:00,16:30,Tepper,Field 1
+177,4,Rookie_NL_09,Rookie_NL_08,2025-03-22,14:00,16:30,Ketcham,Field 1
+178,4,Majors_AL_04,Majors_NL_07,2025-03-22,16:30,19:00,Tepper,Field 1
+179,4,AA_NL_08,AA_NL_07,2025-03-22,16:30,19:00,Ketcham,Field 1
+180,4,UF_03,UF_11,2025-03-23,08:00,10:00,Fort Scott,South Diamond
+181,4,UF_10,UF_05,2025-03-23,08:00,10:00,Fort Scott,North Diamond
+182,4,LF_08,LF_04,2025-03-23,09:00,11:00,Rossi,Field 1
+183,4,Juniors_NL_05,Juniors_AL_02,2025-03-23,09:00,12:00,West Sunset,Field 1
+184,4,AA_NL_06,AA_AL_02,2025-03-23,09:00,11:30,Sunset Rec,Diamond
+185,4,LF_05,LF_12,2025-03-23,09:00,11:00,Larsen,Field 1
+186,4,AAA_AL_03,AAA_NL_07,2025-03-23,09:00,11:30,Ketcham,Field 1
+187,4,Juniors_AL_01,Juniors_NL_04,2025-03-23,09:00,12:00,Paul Goode,Main
+188,4,Majors_NL_09,Majors_AL_01,2025-03-23,09:00,11:30,Tepper,Field 1
+189,4,AAA_NL_10,AAA_NL_06,2025-03-23,09:00,11:30,West Sunset,Field 3
+190,4,UF_06,UF_07,2025-03-23,10:00,12:00,Fort Scott,South Diamond
+191,4,UF_08,UF_12,2025-03-23,10:00,12:00,Fort Scott,North Diamond
+192,4,LF_07,LF_11,2025-03-23,11:00,13:00,Rossi,Field 1
+193,4,LF_06,LF_02,2025-03-23,11:00,13:00,Larsen,Field 1
+194,4,Rookie_AL_05,Rookie_AL_04,2025-03-23,11:30,14:00,Ketcham,Field 1
+195,4,AA_AL_04,AA_AL_05,2025-03-23,11:30,14:00,West Sunset,Field 3
+196,4,Rookie_AL_01,Rookie_NL_10,2025-03-23,11:30,14:00,Sunset Rec,Diamond
+197,4,AA_NL_09,AA_AL_01,2025-03-23,11:30,14:00,Tepper,Field 1
+198,4,UF_04,UF_09,2025-03-23,12:00,14:00,Fort Scott,South Diamond
+199,4,UF_02,UF_01,2025-03-23,12:00,14:00,Fort Scott,North Diamond
+200,4,LF_01,LF_10,2025-03-23,13:00,15:00,Larsen,Field 1
+201,4,LF_03,LF_09,2025-03-23,13:00,15:00,Rossi,Field 1
+202,4,Challenger_02,Challenger_04,2025-03-23,14:00,16:00,Tepper,Field 1
+203,4,AAA_AL_05,AAA_AL_04,2025-03-23,14:00,16:30,Ketcham,Field 1
+204,4,Challenger_03,Challenger_01,2025-03-23,14:00,16:00,Riordan,Field 1
+205,4,Majors_NL_06,Majors_AL_02,2025-03-23,16:00,18:30,Tepper,Field 1
+206,4,Majors_AL_05,Majors_NL_10,2025-03-23,16:30,19:00,Ketcham,Field 1
+207,4,Juniors_AL_03,Juniors_NL_04,2025-03-25,17:00,20:00,McCoppin,Field 1
+208,4,AAA_NL_09,AAA_AL_02,2025-03-25,17:30,20:00,Ketcham,Field 1
+209,4,Majors_NL_08,Majors_AL_05,2025-03-25,17:30,20:00,Tepper,Field 1
+210,4,Juniors_NL_06,Juniors_AL_02,2025-03-26,17:00,20:00,Crocker Amazon,D2
+211,4,Juniors_AL_01,Juniors_NL_05,2025-03-26,17:00,20:00,McCoppin,Field 1
+212,4,Majors_NL_10,Majors_AL_02,2025-03-26,17:30,20:00,Tepper,Field 1
+213,4,Majors_AL_01,Majors_NL_07,2025-03-26,17:30,20:00,Ketcham,Field 1
+214,4,Rookie_AL_03,Rookie_NL_08,2025-03-27,17:30,20:00,Balboa,D2
+215,4,Rookie_AL_01,Rookie_NL_07,2025-03-27,17:30,20:00,Fort Scott,South Diamond
+217,4,AAA_NL_07,AAA_AL_05,2025-03-27,17:30,20:00,Tepper,Field 1
+218,4,AA_NL_06,AA_NL_09,2025-03-27,17:30,20:00,South Sunset,Diamond 1
+219,4,Rookie_NL_06,Rookie_AL_02,2025-03-27,17:30,20:00,Fort Scott,North Diamond
+220,4,Majors_AL_04,Majors_NL_06,2025-03-28,17:30,20:00,South Sunset,Diamond 1
+221,4,Rookie_AL_04,Rookie_NL_10,2025-03-28,17:30,20:00,Fort Scott,South Diamond
+222,4,AA_NL_08,AA_NL_10,2025-03-28,17:30,20:00,South Sunset,Diamond 2
+224,5,Juniors_AL_01,Juniors_NL_06,2025-03-29,09:00,12:00,Moscone,D4
+225,5,AAA_AL_03,AAA_NL_10,2025-03-29,09:00,11:30,Ketcham,Field 1
+226,5,Majors_AL_03,Majors_NL_10,2025-03-29,09:00,11:30,Tepper,Field 1
+227,5,TB_01,TB_10,2025-03-29,09:00,10:30,Aptos,Field 1
+228,5,TB_07,TB_13,2025-03-29,09:00,10:30,Larsen,Field 1
+231,5,TB_14,TB_12,2025-03-29,11:00,12:30,Paul Goode,Practice
+232,5,Rookie_NL_07,Rookie_AL_05,2025-03-29,11:30,14:00,Tepper,Field 1
+233,5,AAA_AL_05,AAA_NL_09,2025-03-29,11:30,14:00,Ketcham,Field 1
+234,5,TB_06,TB_05,2025-03-29,12:00,13:30,Larsen,Field 1
+235,5,TB_02,TB_04,2025-03-29,12:30,14:00,Paul Goode,Practice
+236,5,AA_NL_09,AA_AL_04,2025-03-29,13:00,15:30,Aptos,Field 1
+237,5,TB_11,TB_09,2025-03-29,13:30,15:00,Larsen,Field 1
+238,5,Rookie_NL_09,Rookie_AL_03,2025-03-29,14:00,16:30,Ketcham,Field 1
+239,5,AA_AL_05,AA_NL_06,2025-03-29,14:00,16:30,Tepper,Field 1
+240,5,Majors_AL_01,Majors_NL_08,2025-03-29,16:30,19:00,Tepper,Field 1
+241,5,Rookie_AL_02,Rookie_NL_08,2025-03-29,16:30,19:00,Ketcham,Field 1
+242,5,UF_10,UF_06,2025-03-30,08:00,10:00,Fort Scott,North Diamond
+243,5,UF_04,UF_11,2025-03-30,08:00,10:00,Fort Scott,South Diamond
+244,5,Majors_AL_02,Majors_AL_04,2025-03-30,09:00,11:30,Tepper,Field 1
+245,5,Juniors_NL_05,Juniors_AL_02,2025-03-30,09:00,12:00,Paul Goode,Main
+246,5,LF_02,LF_10,2025-03-30,09:00,11:00,Rossi,Field 1
+247,5,AAA_AL_01,AAA_NL_06,2025-03-30,09:00,11:30,West Sunset,Field 3
+248,5,AAA_AL_04,AAA_NL_08,2025-03-30,09:00,11:30,Ketcham,Field 1
+249,5,LF_05,LF_07,2025-03-30,09:00,11:00,Larsen,Field 1
+250,5,Juniors_AL_03,Juniors_NL_04,2025-03-30,09:00,12:00,West Sunset,Field 1
+251,5,AA_AL_01,AA_NL_08,2025-03-30,09:00,11:30,Sunset Rec,Diamond
+252,5,UF_05,UF_09,2025-03-30,10:00,12:00,Fort Scott,North Diamond
+253,5,UF_03,UF_02,2025-03-30,10:00,12:00,Fort Scott,South Diamond
+254,5,LF_12,LF_06,2025-03-30,11:00,13:00,Larsen,Field 1
+255,5,LF_03,LF_04,2025-03-30,11:00,13:00,Rossi,Field 1
+256,5,AA_NL_10,AA_NL_07,2025-03-30,11:30,14:00,West Sunset,Field 3
+257,5,AAA_AL_02,AAA_NL_07,2025-03-30,11:30,14:00,Tepper,Field 1
+258,5,Rookie_NL_10,Rookie_NL_06,2025-03-30,11:30,14:00,Sunset Rec,Diamond
+259,5,Rookie_AL_01,Rookie_AL_04,2025-03-30,11:30,14:00,Ketcham,Field 1
+260,5,UF_12,UF_07,2025-03-30,12:00,14:00,Fort Scott,North Diamond
+261,5,UF_08,UF_01,2025-03-30,12:00,14:00,Fort Scott,South Diamond
+262,5,LF_01,LF_08,2025-03-30,13:00,15:00,Rossi,Field 1
+263,5,LF_09,LF_11,2025-03-30,13:00,15:00,Larsen,Field 1
+264,5,Challenger_01,Challenger_03,2025-03-30,14:00,16:00,Tepper,Field 1
+265,5,Challenger_04,Challenger_02,2025-03-30,14:00,16:00,Riordan,Field 1
+266,5,AA_AL_02,AA_AL_03,2025-03-30,14:00,16:30,Ketcham,Field 1
+267,5,Majors_AL_05,Majors_NL_09,2025-03-30,16:00,18:30,Tepper,Field 1
+268,5,Majors_NL_07,Majors_NL_06,2025-03-30,16:30,19:00,Ketcham,Field 1
+269,5,Juniors_AL_02,Juniors_NL_06,2025-04-01,17:00,20:00,McCoppin,Field 1
+270,5,Majors_AL_05,Majors_NL_07,2025-04-01,17:30,20:00,Tepper,Field 1
+271,5,AAA_AL_01,AAA_NL_06,2025-04-01,17:30,20:00,Ketcham,Field 1
+272,5,Juniors_AL_03,Juniors_AL_01,2025-04-02,17:00,20:00,McCoppin,Field 1
+273,5,Juniors_NL_04,Juniors_NL_05,2025-04-02,17:00,20:00,Crocker Amazon,D2
+274,5,Majors_NL_10,Majors_AL_03,2025-04-02,17:30,20:00,Ketcham,Field 1
+275,5,Majors_NL_09,Majors_AL_02,2025-04-02,17:30,20:00,Tepper,Field 1
+276,5,Rookie_AL_05,Rookie_AL_02,2025-04-03,17:30,20:00,Balboa,D2
+277,5,AAA_NL_09,AAA_AL_03,2025-04-03,17:30,20:00,Tepper,Field 1
+278,5,AA_AL_04,AA_AL_03,2025-04-03,17:30,20:00,South Sunset,Diamond 1
+279,5,AA_NL_07,AA_AL_05,2025-04-03,17:30,20:00,Fort Scott,North Diamond
+280,5,Rookie_NL_07,Rookie_NL_06,2025-04-03,17:30,20:00,Fort Scott,South Diamond
+281,5,AAA_NL_08,AAA_NL_10,2025-04-03,17:30,20:00,Ketcham,Field 1
+282,5,Majors_AL_01,Majors_NL_08,2025-04-04,17:30,20:00,South Sunset,Diamond 1
+283,5,AAA_AL_02,AAA_NL_07,2025-04-04,17:30,20:00,Fort Scott,North Diamond
+285,5,AA_AL_01,AA_AL_02,2025-04-04,17:30,20:00,South Sunset,Diamond 2
+286,6,LF_11,LF_02,2025-04-05,09:00,11:00,Larsen,Field 1
+287,6,Majors_AL_03,Majors_AL_04,2025-04-05,09:00,11:30,Ketcham,Field 1
+288,6,UF_06,UF_04,2025-04-05,09:00,11:00,Aptos,Field 1
+289,6,AAA_AL_05,AAA_NL_08,2025-04-05,09:00,11:30,Tepper,Field 1
+290,6,Juniors_NL_04,Juniors_NL_05,2025-04-05,09:00,12:00,Moscone,D4
+291,6,LF_07,LF_08,2025-04-05,11:00,13:00,Larsen,Field 1
+292,6,TB_02,TB_08,2025-04-05,11:00,12:30,Paul Goode,Practice
+293,6,UF_12,UF_01,2025-04-05,11:00,13:00,Aptos,Field 1
+294,6,Rookie_AL_01,Rookie_NL_09,2025-04-05,11:30,14:00,Tepper,Field 1
+295,6,Rookie_NL_08,Rookie_AL_05,2025-04-05,11:30,14:00,Ketcham,Field 1
+296,6,TB_13,TB_03,2025-04-05,12:30,14:00,Paul Goode,Practice
+297,6,UF_07,UF_05,2025-04-05,13:00,15:00,Larsen,Field 1
+298,6,AA_NL_08,AA_NL_07,2025-04-05,13:00,15:30,Aptos,Field 1
+299,6,AA_NL_09,AA_AL_03,2025-04-05,14:00,16:30,Tepper,Field 1
+300,6,Rookie_NL_10,Rookie_NL_06,2025-04-05,14:00,16:30,Ketcham,Field 1
+301,6,Majors_AL_05,Majors_NL_09,2025-04-05,16:30,19:00,Tepper,Field 1
+302,6,AAA_AL_01,AAA_AL_03,2025-04-05,16:30,19:00,Ketcham,Field 1
+303,6,Challenger_04,Challenger_02,2025-04-06,14:00,16:00,Tepper,Field 1
+304,6,Challenger_01,Challenger_03,2025-04-06,14:00,16:00,Riordan,Field 1
+305,6,Juniors_AL_02,Juniors_AL_03,2025-04-08,17:00,20:00,McCoppin,Field 1
+306,6,Majors_NL_06,Majors_NL_08,2025-04-08,17:30,20:00,Tepper,Field 1
+307,6,Majors_NL_07,Majors_AL_03,2025-04-08,17:30,20:00,Ketcham,Field 1
+308,6,Juniors_AL_01,Juniors_NL_04,2025-04-09,17:00,20:00,McCoppin,Field 1
+309,6,Juniors_NL_05,Juniors_NL_06,2025-04-09,17:00,20:00,Crocker Amazon,D2
+310,6,Majors_AL_01,Majors_NL_09,2025-04-09,17:30,20:00,Tepper,Field 1
+311,6,Majors_AL_04,Majors_AL_05,2025-04-09,17:30,20:00,Ketcham,Field 1
+312,6,Rookie_NL_08,Rookie_AL_04,2025-04-10,17:30,20:00,Fort Scott,South Diamond
+313,6,AA_AL_05,AA_AL_04,2025-04-10,17:30,20:00,South Sunset,Diamond 1
+314,6,AAA_NL_06,AAA_AL_04,2025-04-10,17:30,20:00,Ketcham,Field 1
+315,6,Rookie_NL_09,Rookie_NL_07,2025-04-10,17:30,20:00,Balboa,D2
+316,6,AAA_NL_10,AAA_AL_02,2025-04-10,17:30,20:00,Tepper,Field 1
+317,6,AA_AL_01,AA_AL_02,2025-04-10,17:30,20:00,Fort Scott,North Diamond
+318,6,AAA_NL_09,AAA_NL_07,2025-04-11,17:30,20:00,Fort Scott,North Diamond
+319,6,AA_NL_10,AA_NL_06,2025-04-11,17:30,20:00,South Sunset,Diamond 2
+320,6,Rookie_AL_02,Rookie_AL_03,2025-04-11,17:30,20:00,Fort Scott,South Diamond
+321,6,Majors_AL_02,Majors_NL_10,2025-04-11,17:30,20:00,South Sunset,Diamond 1
+322,7,AAA_AL_02,AAA_AL_05,2025-04-12,09:00,11:30,Ketcham,Field 1
+323,7,Majors_NL_06,Majors_NL_07,2025-04-12,09:00,11:30,Tepper,Field 1
+324,7,Juniors_AL_02,Juniors_NL_05,2025-04-12,09:00,12:00,Moscone,D4
+325,7,TB_07,TB_14,2025-04-12,09:00,10:30,Aptos,Field 1
+326,7,TB_09,TB_04,2025-04-12,09:00,10:30,Larsen,Field 1
+327,7,TB_08,TB_10,2025-04-12,10:30,12:00,Larsen,Field 1
+328,7,Rookie_NL_08,Rookie_NL_09,2025-04-12,10:30,13:00,Aptos,Field 1
+329,7,TB_13,TB_01,2025-04-12,11:00,12:30,Paul Goode,Practice
+330,7,AAA_NL_10,AAA_AL_04,2025-04-12,11:30,14:00,Ketcham,Field 1
+331,7,Rookie_NL_06,Rookie_AL_05,2025-04-12,11:30,14:00,Tepper,Field 1
+332,7,TB_05,TB_02,2025-04-12,12:00,13:30,Larsen,Field 1
+333,7,TB_06,TB_12,2025-04-12,12:30,14:00,Paul Goode,Practice
+334,7,Rookie_AL_04,Rookie_NL_10,2025-04-12,13:00,15:30,Aptos,Field 1
+335,7,TB_03,TB_11,2025-04-12,13:30,15:00,Larsen,Field 1
+336,7,AA_NL_07,AA_AL_01,2025-04-12,14:00,16:30,Tepper,Field 1
+338,7,Majors_NL_09,Majors_AL_04,2025-04-12,16:30,19:00,Tepper,Field 1
+339,7,AA_AL_03,AA_NL_08,2025-04-12,16:30,19:00,Ketcham,Field 1
+340,7,UF_10,UF_12,2025-04-13,08:00,10:00,Fort Scott,South Diamond
+341,7,UF_01,UF_05,2025-04-13,08:00,10:00,Fort Scott,North Diamond
+342,7,LF_09,LF_12,2025-04-13,09:00,11:00,Larsen,Field 1
+343,7,Juniors_NL_04,Juniors_NL_06,2025-04-13,09:00,12:00,Paul Goode,Main
+344,7,Majors_AL_05,Majors_AL_02,2025-04-13,09:00,11:30,Tepper,Field 1
+345,7,AAA_AL_01,AAA_NL_07,2025-04-13,09:00,11:30,Ketcham,Field 1
+346,7,LF_10,LF_07,2025-04-13,09:00,11:00,Rossi,Field 1
+347,7,AA_NL_09,AA_AL_05,2025-04-13,09:00,11:30,Sunset Rec,Diamond
+348,7,AAA_NL_08,AAA_NL_09,2025-04-13,09:00,11:30,West Sunset,Field 3
+349,7,Juniors_AL_03,Juniors_AL_01,2025-04-13,09:00,12:00,West Sunset,Field 1
+350,7,UF_07,UF_02,2025-04-13,10:00,12:00,Fort Scott,South Diamond
+351,7,UF_11,UF_09,2025-04-13,10:00,12:00,Fort Scott,North Diamond
+352,7,LF_04,LF_11,2025-04-13,11:00,13:00,Rossi,Field 1
+353,7,LF_08,LF_02,2025-04-13,11:00,13:00,Larsen,Field 1
+354,7,Rookie_AL_02,Rookie_AL_01,2025-04-13,11:30,14:00,Ketcham,Field 1
+355,7,AA_AL_02,AA_NL_10,2025-04-13,11:30,14:00,West Sunset,Field 3
+356,7,AAA_NL_06,AAA_AL_03,2025-04-13,11:30,14:00,Tepper,Field 1
+357,7,Rookie_NL_07,Rookie_AL_03,2025-04-13,11:30,14:00,Sunset Rec,Diamond
+358,7,UF_08,UF_04,2025-04-13,12:00,14:00,Fort Scott,North Diamond
+359,7,UF_06,UF_03,2025-04-13,12:00,14:00,Fort Scott,South Diamond
+360,7,LF_06,LF_05,2025-04-13,13:00,15:00,Larsen,Field 1
+361,7,LF_03,LF_01,2025-04-13,13:00,15:00,Rossi,Field 1
+362,7,AA_NL_06,AA_AL_04,2025-04-13,14:00,16:30,Ketcham,Field 1
+363,7,Challenger_03,Challenger_02,2025-04-13,14:00,16:00,Tepper,Field 1
+364,7,Challenger_01,Challenger_04,2025-04-13,14:00,16:00,Riordan,Field 1
+365,7,Majors_AL_03,Majors_AL_01,2025-04-13,16:00,18:30,Tepper,Field 1
+366,7,Majors_NL_08,Majors_NL_10,2025-04-13,16:30,19:00,Ketcham,Field 1
+367,7,Juniors_AL_02,Juniors_NL_04,2025-04-15,17:00,20:00,McCoppin,Field 1
+368,7,Majors_NL_06,Majors_NL_08,2025-04-15,17:30,20:00,Tepper,Field 1
+370,7,Juniors_AL_01,Juniors_AL_03,2025-04-16,17:00,20:00,Crocker Amazon,D2
+371,7,Juniors_NL_05,Juniors_NL_06,2025-04-16,17:00,20:00,McCoppin,Field 1
+372,7,Majors_AL_05,Majors_AL_04,2025-04-16,17:30,20:00,Tepper,Field 1
+373,7,Majors_AL_03,Majors_NL_09,2025-04-16,17:30,20:00,Ketcham,Field 1
+374,7,Rookie_NL_10,Rookie_NL_09,2025-04-17,17:30,20:00,Fort Scott,South Diamond
+375,7,Rookie_AL_04,Rookie_NL_07,2025-04-17,17:30,20:00,Balboa,D2
+376,7,AAA_AL_05,AAA_AL_04,2025-04-17,17:30,20:00,Ketcham,Field 1
+377,7,AA_NL_09,AA_NL_10,2025-04-17,17:30,20:00,South Sunset,Diamond 1
+378,7,AA_AL_03,AA_AL_05,2025-04-17,17:30,20:00,Fort Scott,North Diamond
+379,7,AAA_NL_09,AAA_AL_01,2025-04-17,17:30,20:00,Tepper,Field 1
+380,7,Rookie_AL_05,Rookie_NL_08,2025-04-18,17:30,20:00,Fort Scott,South Diamond
+381,7,Majors_AL_01,Majors_AL_02,2025-04-18,17:30,20:00,South Sunset,Diamond 1
+382,7,AAA_AL_03,AAA_NL_08,2025-04-18,17:30,20:00,Fort Scott,North Diamond
+383,7,AA_AL_04,AA_NL_08,2025-04-18,17:30,20:00,South Sunset,Diamond 2
+384,8,Majors_AL_05,Majors_NL_06,2025-04-19,09:00,11:30,Ketcham,Field 1
+385,8,Juniors_NL_06,Juniors_AL_03,2025-04-19,09:00,12:00,Moscone,D4
+386,8,UF_02,UF_09,2025-04-19,09:00,11:00,Aptos,Field 1
+387,8,AAA_NL_06,AAA_NL_07,2025-04-19,09:00,11:30,Tepper,Field 1
+388,8,LF_01,LF_09,2025-04-19,09:00,11:00,Larsen,Field 1
+389,8,TB_08,TB_01,2025-04-19,11:00,12:30,Paul Goode,Practice
+390,8,UF_03,UF_10,2025-04-19,11:00,13:00,Aptos,Field 1
+391,8,LF_06,LF_04,2025-04-19,11:00,13:00,Larsen,Field 1
+392,8,Rookie_NL_07,Rookie_NL_09,2025-04-19,11:30,14:00,Ketcham,Field 1
+393,8,Rookie_AL_04,Rookie_AL_02,2025-04-19,11:30,14:00,Tepper,Field 1
+394,8,TB_11,TB_07,2025-04-19,12:30,14:00,Paul Goode,Practice
+395,8,AA_NL_07,AA_NL_09,2025-04-19,13:00,15:30,Aptos,Field 1
+396,8,UF_11,UF_08,2025-04-19,13:00,15:00,Larsen,Field 1
+397,8,Rookie_NL_06,Rookie_AL_03,2025-04-19,14:00,16:30,Ketcham,Field 1
+398,8,AA_AL_05,AA_AL_02,2025-04-19,14:00,16:30,Tepper,Field 1
+399,8,Majors_NL_07,Majors_NL_08,2025-04-19,16:30,19:00,Tepper,Field 1
+400,8,AAA_AL_04,AAA_NL_09,2025-04-19,16:30,19:00,Ketcham,Field 1
+401,8,Juniors_NL_04,Juniors_NL_05,2025-04-22,17:00,20:00,McCoppin,Field 1
+402,8,Majors_AL_02,Majors_NL_09,2025-04-22,17:30,20:00,Ketcham,Field 1
+403,8,Majors_AL_03,Majors_NL_06,2025-04-22,17:30,20:00,Tepper,Field 1
+404,8,Juniors_AL_01,Juniors_AL_02,2025-04-23,17:00,20:00,McCoppin,Field 1
+405,8,Juniors_NL_06,Juniors_AL_03,2025-04-23,17:00,20:00,Crocker Amazon,D2
+406,8,Majors_AL_04,Majors_NL_10,2025-04-23,17:30,20:00,Ketcham,Field 1
+407,8,Majors_NL_07,Majors_AL_01,2025-04-23,17:30,20:00,Tepper,Field 1
+408,8,AA_NL_08,AA_NL_10,2025-04-24,17:30,20:00,South Sunset,Diamond 1
+409,8,AAA_AL_02,AAA_NL_10,2025-04-24,17:30,20:00,Ketcham,Field 1
+410,8,Rookie_AL_03,Rookie_AL_05,2025-04-24,17:30,20:00,Fort Scott,South Diamond
+411,8,AA_AL_01,AA_AL_04,2025-04-24,17:30,20:00,Fort Scott,North Diamond
+412,8,AAA_NL_08,AAA_AL_01,2025-04-24,17:30,20:00,Tepper,Field 1
+413,8,Rookie_NL_10,Rookie_NL_08,2025-04-24,17:30,20:00,Balboa,D2
+414,8,Majors_NL_08,Majors_AL_05,2025-04-25,17:30,20:00,South Sunset,Diamond 1
+415,8,AAA_AL_05,AAA_AL_03,2025-04-25,17:30,20:00,Fort Scott,North Diamond
+416,8,Rookie_AL_01,Rookie_NL_06,2025-04-25,17:30,20:00,Fort Scott,South Diamond
+417,8,AA_AL_03,AA_NL_06,2025-04-25,17:30,20:00,South Sunset,Diamond 2
+418,9,TB_02,TB_11,2025-04-26,09:00,10:30,Aptos,Field 1
+419,9,Majors_NL_10,Majors_NL_07,2025-04-26,09:00,11:30,Tepper,Field 1
+420,9,TB_10,TB_09,2025-04-26,09:00,10:30,Larsen,Field 1
+421,9,Juniors_NL_04,Juniors_AL_02,2025-04-26,09:00,12:00,Moscone,D4
+422,9,AAA_NL_09,AAA_NL_06,2025-04-26,09:00,11:30,Ketcham,Field 1
+424,9,TB_06,TB_08,2025-04-26,10:30,12:00,Larsen,Field 1
+425,9,TB_04,TB_05,2025-04-26,11:00,12:30,Paul Goode,Practice
+426,9,Rookie_AL_04,Rookie_NL_09,2025-04-26,11:30,14:00,Tepper,Field 1
+427,9,AA_AL_05,AA_AL_01,2025-04-26,11:30,14:00,Ketcham,Field 1
+428,9,TB_03,TB_12,2025-04-26,12:00,13:30,Larsen,Field 1
+429,9,TB_13,TB_14,2025-04-26,12:30,14:00,Paul Goode,Practice
+430,9,Rookie_AL_03,Rookie_AL_02,2025-04-26,13:00,15:30,Aptos,Field 1
+431,9,TB_01,TB_07,2025-04-26,13:30,15:00,Larsen,Field 1
+432,9,Rookie_NL_10,Rookie_NL_07,2025-04-26,14:00,16:30,Ketcham,Field 1
+433,9,AA_AL_02,AA_NL_08,2025-04-26,14:00,16:30,Tepper,Field 1
+434,9,Majors_AL_01,Majors_AL_02,2025-04-26,16:30,19:00,Tepper,Field 1
+435,9,AAA_NL_07,AAA_NL_08,2025-04-26,16:30,19:00,Ketcham,Field 1
+436,9,UF_09,UF_08,2025-04-27,08:00,10:00,Fort Scott,South Diamond
+437,9,UF_12,UF_06,2025-04-27,08:00,10:00,Fort Scott,North Diamond
+438,9,LF_06,LF_01,2025-04-27,09:00,11:00,Larsen,Field 1
+439,9,AAA_AL_03,AAA_NL_10,2025-04-27,09:00,11:30,Ketcham,Field 1
+440,9,LF_07,LF_03,2025-04-27,09:00,11:00,Rossi,Field 1
+441,9,Juniors_NL_06,Juniors_AL_01,2025-04-27,09:00,12:00,West Sunset,Field 1
+442,9,AA_AL_03,AA_NL_07,2025-04-27,09:00,11:30,Sunset Rec,Diamond
+443,9,Juniors_NL_05,Juniors_AL_03,2025-04-27,09:00,12:00,Paul Goode,Main
+444,9,AAA_AL_02,AAA_AL_05,2025-04-27,09:00,11:30,West Sunset,Field 3
+445,9,Majors_NL_09,Majors_NL_08,2025-04-27,09:00,11:30,Tepper,Field 1
+446,9,UF_02,UF_04,2025-04-27,10:00,12:00,Fort Scott,South Diamond
+447,9,UF_07,UF_10,2025-04-27,10:00,12:00,Fort Scott,North Diamond
+448,9,LF_10,LF_08,2025-04-27,11:00,13:00,Larsen,Field 1
+449,9,LF_05,LF_11,2025-04-27,11:00,13:00,Rossi,Field 1
+450,9,Rookie_AL_05,Rookie_AL_01,2025-04-27,11:30,14:00,Ketcham,Field 1
+451,9,AAA_AL_04,AAA_AL_01,2025-04-27,11:30,14:00,Tepper,Field 1
+452,9,AA_NL_09,AA_NL_06,2025-04-27,11:30,14:00,West Sunset,Field 3
+453,9,Rookie_NL_06,Rookie_NL_08,2025-04-27,11:30,14:00,Sunset Rec,Diamond
+454,9,UF_01,UF_03,2025-04-27,12:00,14:00,Fort Scott,South Diamond
+455,9,UF_11,UF_05,2025-04-27,12:00,14:00,Fort Scott,North Diamond
+456,9,LF_09,LF_04,2025-04-27,13:00,15:00,Rossi,Field 1
+457,9,LF_02,LF_12,2025-04-27,13:00,15:00,Larsen,Field 1
+458,9,AA_NL_10,AA_AL_04,2025-04-27,14:00,16:30,Ketcham,Field 1
+459,9,Challenger_04,Challenger_03,2025-04-27,14:00,16:00,Riordan,Field 1
+460,9,Challenger_02,Challenger_01,2025-04-27,14:00,16:00,Tepper,Field 1
+461,9,Majors_AL_03,Majors_AL_05,2025-04-27,16:00,18:30,Tepper,Field 1
+462,9,Majors_AL_04,Majors_NL_06,2025-04-27,16:30,19:00,Ketcham,Field 1
+463,9,Juniors_NL_06,Juniors_NL_04,2025-04-29,17:00,20:00,McCoppin,Field 1
+464,9,Majors_NL_10,Majors_NL_06,2025-04-29,17:30,20:00,Tepper,Field 1
+465,9,Majors_AL_02,Majors_AL_03,2025-04-29,17:30,20:00,Ketcham,Field 1
+466,9,Juniors_AL_02,Juniors_AL_03,2025-04-30,17:00,20:00,McCoppin,Field 1
+467,9,Juniors_NL_05,Juniors_AL_01,2025-04-30,17:00,20:00,Crocker Amazon,D2
+468,9,Majors_AL_01,Majors_AL_04,2025-04-30,17:30,20:00,Tepper,Field 1
+469,9,AAA_NL_07,AAA_NL_10,2025-04-30,17:30,20:00,Ketcham,Field 1
+470,9,AAA_AL_05,AAA_AL_01,2025-05-01,17:30,20:00,Ketcham,Field 1
+471,9,Rookie_AL_01,Rookie_AL_04,2025-05-01,17:30,20:00,Balboa,D2
+472,9,AA_NL_07,AA_NL_06,2025-05-01,17:30,20:00,South Sunset,Diamond 1
+473,9,AA_AL_05,AA_NL_08,2025-05-01,17:30,20:00,Fort Scott,North Diamond
+474,9,Rookie_NL_09,Rookie_AL_05,2025-05-01,17:30,20:00,Fort Scott,South Diamond
+475,9,AAA_AL_03,AAA_AL_04,2025-05-01,17:30,20:00,Tepper,Field 1
+476,9,AA_AL_02,AA_NL_09,2025-05-02,17:30,20:00,South Sunset,Diamond 2
+477,9,Majors_NL_07,Majors_NL_09,2025-05-02,17:30,20:00,South Sunset,Diamond 1
+478,9,AAA_NL_09,AAA_NL_06,2025-05-02,17:30,20:00,Fort Scott,North Diamond
+479,10,TB_12,TB_11,2025-05-03,09:00,10:30,Larsen,Field 1
+480,10,TB_13,TB_06,2025-05-03,09:00,10:30,Aptos,Field 1
+481,10,TB_04,TB_10,2025-05-03,10:30,12:00,Larsen,Field 1
+482,10,TB_09,TB_08,2025-05-03,11:00,12:30,Paul Goode,Practice
+483,10,TB_05,TB_07,2025-05-03,12:00,13:30,Larsen,Field 1
+484,10,TB_03,TB_14,2025-05-03,12:30,14:00,Paul Goode,Practice
+486,10,UF_07,UF_04,2025-05-04,08:00,10:00,Fort Scott,North Diamond
+487,10,UF_11,UF_01,2025-05-04,08:00,10:00,Fort Scott,South Diamond
+488,10,LF_02,LF_03,2025-05-04,09:00,11:00,Rossi,Field 1
+489,10,LF_09,LF_05,2025-05-04,09:00,11:00,Larsen,Field 1
+490,10,UF_05,UF_06,2025-05-04,10:00,12:00,Fort Scott,North Diamond
+491,10,UF_10,UF_02,2025-05-04,10:00,12:00,Fort Scott,South Diamond
+492,10,LF_01,LF_07,2025-05-04,11:00,13:00,Rossi,Field 1
+493,10,LF_10,LF_06,2025-05-04,11:00,13:00,Larsen,Field 1
+494,10,UF_08,UF_03,2025-05-04,12:00,14:00,Fort Scott,South Diamond
+495,10,UF_12,UF_09,2025-05-04,12:00,14:00,Fort Scott,North Diamond
+496,10,LF_11,LF_08,2025-05-04,13:00,15:00,Rossi,Field 1
+497,10,LF_04,LF_12,2025-05-04,13:00,15:00,Larsen,Field 1
+498,10,Challenger_03,Challenger_02,2025-05-04,14:00,16:00,Riordan,Field 1
+499,10,Challenger_01,Challenger_04,2025-05-04,14:00,16:00,Tepper,Field 1
+500,11,TB_03,TB_02,2025-05-10,09:00,10:30,Aptos,Field 1
+501,11,TB_05,TB_08,2025-05-10,09:00,10:30,Larsen,Field 1
+502,11,TB_04,TB_13,2025-05-10,10:30,12:00,Larsen,Field 1
+503,11,TB_14,TB_09,2025-05-10,11:00,12:30,Paul Goode,Practice
+504,11,TB_01,TB_11,2025-05-10,12:00,13:30,Larsen,Field 1
+505,11,TB_07,TB_06,2025-05-10,12:30,14:00,Paul Goode,Practice
+506,11,TB_12,TB_10,2025-05-10,13:30,15:00,Larsen,Field 1
+507,11,UF_01,UF_06,2025-05-11,08:00,10:00,Fort Scott,South Diamond
+508,11,UF_02,UF_08,2025-05-11,08:00,10:00,Fort Scott,North Diamond
+509,11,LF_12,LF_08,2025-05-11,09:00,11:00,Rossi,Field 1
+510,11,LF_11,LF_01,2025-05-11,09:00,11:00,Larsen,Field 1
+511,11,UF_07,UF_11,2025-05-11,10:00,12:00,Fort Scott,South Diamond
+512,11,UF_09,UF_10,2025-05-11,10:00,12:00,Fort Scott,North Diamond
+513,11,LF_05,LF_03,2025-05-11,11:00,13:00,Rossi,Field 1
+514,11,LF_07,LF_06,2025-05-11,11:00,13:00,Larsen,Field 1
+515,11,UF_04,UF_05,2025-05-11,12:00,14:00,Fort Scott,South Diamond
+516,11,UF_12,UF_03,2025-05-11,12:00,14:00,Fort Scott,North Diamond
+517,11,LF_10,LF_09,2025-05-11,13:00,15:00,Rossi,Field 1
+518,11,LF_04,LF_02,2025-05-11,13:00,15:00,Larsen,Field 1
+519,11,Challenger_02,Challenger_03,2025-05-11,14:00,16:00,Tepper,Field 1
+520,11,Challenger_04,Challenger_01,2025-05-11,14:00,16:00,Riordan,Field 1
+521,12,TB_09,TB_06,2025-05-17,09:00,10:30,Aptos,Field 1
+523,12,TB_10,TB_14,2025-05-17,10:30,12:00,Larsen,Field 1
+524,12,TB_01,TB_04,2025-05-17,11:00,12:30,Paul Goode,Practice
+525,12,TB_12,TB_02,2025-05-17,12:00,13:30,Larsen,Field 1
+526,12,TB_11,TB_05,2025-05-17,12:30,14:00,Paul Goode,Practice
+527,12,TB_07,TB_03,2025-05-17,13:30,15:00,Larsen,Field 1
+528,12,UF_09,UF_03,2025-05-18,08:00,10:00,Fort Scott,North Diamond
+529,12,UF_08,UF_06,2025-05-18,08:00,10:00,Fort Scott,South Diamond
+530,12,LF_11,LF_12,2025-05-18,09:00,11:00,Rossi,Field 1
+531,12,LF_03,LF_10,2025-05-18,09:00,11:00,Larsen,Field 1
+532,12,UF_04,UF_10,2025-05-18,10:00,12:00,Fort Scott,North Diamond
+533,12,UF_05,UF_12,2025-05-18,10:00,12:00,Fort Scott,South Diamond
+534,12,LF_08,LF_05,2025-05-18,11:00,13:00,Larsen,Field 1
+535,12,LF_01,LF_04,2025-05-18,11:00,13:00,Rossi,Field 1
+536,12,UF_01,UF_07,2025-05-18,12:00,14:00,Fort Scott,North Diamond
+537,12,UF_02,UF_11,2025-05-18,12:00,14:00,Fort Scott,South Diamond
+538,12,LF_06,LF_09,2025-05-18,13:00,15:00,Rossi,Field 1
+539,12,LF_07,LF_02,2025-05-18,13:00,15:00,Larsen,Field 1
+540,12,Challenger_02,Challenger_01,2025-05-18,14:00,16:00,Tepper,Field 1
+541,12,Challenger_04,Challenger_03,2025-05-18,14:00,16:00,Riordan,Field 1

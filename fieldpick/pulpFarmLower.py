@@ -7,9 +7,10 @@ from frametools import (
     assign_row,
     clear_division,
 )
-from inputs import ( division_info)
+from inputs import (division_info)
 
 from pulp import LpProblem, LpVariable, LpMaximize, lpSum, PULP_CBC_CMD, LpStatus
+from pulpFunctions import minimum_games_per_team
 from collections import Counter
 import sys
 
@@ -19,12 +20,13 @@ from frametools import (
 )
 
 from pulpFunctions import (
-    common_constraints, solveMe, 
+    common_constraints, solveMe,
     limit_faceoffs,
     limit_games_per_week,
+    minimum_faceoffs,
     early_starts,
     field_limits, set_field_ratios
-                           )
+)
 
 logging.basicConfig(
     format="%(asctime)s %(levelname)s\t%(message)s",
@@ -40,8 +42,8 @@ tFrame = load_frame("data/teams.pkl")
 pd.set_option('display.max_rows', None)
 
 
-############################################################################################################
-### PULP STUFF
+##########################################################################
+# PULP STUFF
 
 division = "Lower Farm"
 teams = list_teams_for_division(division, tFrame)
@@ -49,7 +51,7 @@ duration = "120"
 day_off = "Monday"
 last_week = "12"
 
-games_per_team = 11
+games_per_team = 10
 
 # Data cleanup
 cleanFrame = cFrame[cFrame["Week_Number"] != "UNKNOWN"].copy()
@@ -60,7 +62,7 @@ valid_week_number = (pd.isna(cleanFrame["Week_Number"]) == False)
 correct_time = duration_correct & valid_week_number
 
 division_same = cleanFrame["Division"] == division
-division_not_set = (pd.isna(cleanFrame["Division"]) == True)
+division_not_set = (pd.isna(cleanFrame["Division"]))
 slot_good_for_division = division_same | division_not_set
 
 before_last_week = (pd.to_numeric(cleanFrame["Week_Number"]) <= int(last_week))
@@ -91,7 +93,7 @@ weeks = working_slots["Week_Name"].unique()
 early_times = ["08:00", "08:30", "09:00", "09:30"]
 early_slots = working_slots[working_slots["Start"].isin(early_times)].index
 
-############################################################################################################
+##########################################################################
 
 # Slot Variables
 slot_ids = working_slots.index
@@ -112,17 +114,44 @@ prob = common_constraints(prob, slots_vars, teams, slot_ids, working_slots)
 
 
 # Division Specific
-prob = limit_faceoffs(prob, slots_vars, teams, slot_ids)
-prob = limit_games_per_week(prob, weeks, working_slots, slots_vars, teams, limit=1)
+prob = minimum_faceoffs(prob, slots_vars, teams, slot_ids, limit=0)
+prob = limit_faceoffs(prob, slots_vars, teams, slot_ids, limit=1)
+prob = limit_games_per_week(
+    prob,
+    weeks,
+    working_slots,
+    slots_vars,
+    teams,
+    limit=1)
 
-prob = early_starts(prob, teams, slots_vars, early_slots, min=1, max=4)
+prob = minimum_games_per_team(
+    prob,
+    teams,
+    slots_vars,
+    slot_ids,
+    min_games=games_per_team)
+
+prob = early_starts(
+    prob,
+    teams,
+    slots_vars,
+    early_slots,
+    min=3,
+    max=4)
 
 # Balance fields
 field_ratios = set_field_ratios(working_slots)
 for field in field_ratios:
     min = math.floor(field_ratios[field] * games_per_team) - 1
     max = math.ceil(field_ratios[field] * games_per_team) + 1
-    prob = field_limits(prob, teams, working_slots, slots_vars, field, min, max)
+    prob = field_limits(
+        prob,
+        teams,
+        working_slots,
+        slots_vars,
+        field,
+        min,
+        max)
 
 
 # Solve (quietly)
@@ -134,12 +163,22 @@ for v in prob.variables():
     if v.varValue:
         if v.varValue > 0:
             # gross text parsing
-            d = v.name.replace("Slot_", "").replace(",_", ",").replace("'", "").replace("(", "").replace(")", "")
+            d = v.name.replace(
+                "Slot_",
+                "").replace(
+                ",_",
+                ",").replace(
+                "'",
+                "").replace(
+                "(",
+                "").replace(
+                    ")",
+                "")
             (id, home, away) = d.split(",")
             id = int(id)
 
             # Apply change
-            #print(f"Slot {id} Home: {home} Away: {away}")
+            # print(f"Slot {id} Home: {home} Away: {away}")
             assign_row(cFrame, id, division, home, away, safe=False)
 
             check_count[home] += 1
@@ -156,6 +195,3 @@ for i in range(100):
 
 
 save_frame(cFrame, "calendar.pkl")
-
-
-

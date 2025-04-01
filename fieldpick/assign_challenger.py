@@ -32,17 +32,25 @@ logging.basicConfig(
 
 logger = logging.getLogger()
 
+
 def clear_row(frame, slot):
-    frame.loc[slot, ["Division", "Home_Team", "Home_Team_Name", "Away_Team", "Away_Team_Name", "Game_ID"]] = [
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-    ]
+    frame.loc[slot,
+              ["Division",
+               "Home_Team",
+               "Home_Team_Name",
+               "Away_Team",
+               "Away_Team_Name",
+               "Game_ID"]] = [None,
+                              None,
+                              None,
+                              None,
+                              None,
+                              None,
+                              ]
 
 # @profile
+
+
 def main():
     # Main loop
 
@@ -58,24 +66,25 @@ def main():
     tFrame = pd.read_pickle(save_file)
 
     # Block off for Challenger
-    cFrame.update(reserve_slots(cFrame, day_of_week="Sunday", field="Riordan", start="13:30", division="Challenger"))
-    cFrame.update(reserve_slots(cFrame, day_of_week="Sunday", field="Tepper", start="14:00", division="Challenger"))
     cFrame.update(
-        reserve_slots(cFrame, day_of_week="Sunday", field="McCoppin", start="09:00", division="Challenger", date="2023-03-12")
-    )
+        reserve_slots(
+            cFrame,
+            day_of_week="Sunday",
+            field="Riordan",
+            start="14:00",
+            division="Challenger"))
+    cFrame.update(
+        reserve_slots(
+            cFrame,
+            day_of_week="Sunday",
+            field="Tepper",
+            start="14:00",
+            division="Challenger"))
 
-
-    # Remove Challenger slot on 3/14/23
-    mothers_day = cFrame[cFrame["Date"] == "2023-05-14"].index
+    # Remove Challenger slot on 5/11/25
+    mothers_day = cFrame[cFrame["Date"] == "2025-05-11"].index
     challenger = cFrame[cFrame["Division"] == "Challenger"].index
     challenger_slots = mothers_day.intersection(challenger)
-    for slot in challenger_slots:
-        clear_row(cFrame, slot)
-
-    # Remove Challenger slot on opening day 3/4
-    opening_day = cFrame[cFrame["Date"] == "2023-03-05"].index
-    challenger = cFrame[cFrame["Division"] == "Challenger"].index
-    challenger_slots = opening_day.intersection(challenger)
     for slot in challenger_slots:
         clear_row(cFrame, slot)
 

@@ -38,7 +38,6 @@ cFrame = pd.read_pickle(save_file)
 print(f"Loaded {len(cFrame)} slots")
 
 
-
 for slot in cFrame.index:
     if cFrame.loc[slot, "Division"]:
         division = cFrame.loc[slot, "Division"]
@@ -54,11 +53,13 @@ for slot in cFrame.index:
         if cFrame.loc[slot, "Home_Team"]:
             home_team = cFrame.loc[slot, "Home_Team"]
             if home_team in team_names[division]:
-                cFrame.loc[slot, "Home_Team_Name"] = team_names[division][home_team]
+                cFrame.loc[slot,
+                           "Home_Team_Name"] = team_names[division][home_team]
         if cFrame.loc[slot, "Away_Team"]:
             away_team = cFrame.loc[slot, "Away_Team"]
             if away_team in team_names[division]:
-                cFrame.loc[slot, "Away_Team_Name"] = team_names[division][away_team]
+                cFrame.loc[slot,
+                           "Away_Team_Name"] = team_names[division][away_team]
 
 
 # sys.exit(1)

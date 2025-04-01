@@ -49,11 +49,28 @@ def main():
     tFrame = pd.read_pickle(save_file)
 
     # Block off for Challenger
-    cFrame.update(reserve_slots(cFrame, day_of_week="Sunday", field="Riordan", start="13:30", division="Challenger"))
-    cFrame.update(reserve_slots(cFrame, day_of_week="Sunday", field="Tepper", start="14:00", division="Challenger"))
     cFrame.update(
-        reserve_slots(cFrame, day_of_week="Sunday", field="McCoppin", start="09:00", division="Challenger", date="2023-03-12")
-    )
+        reserve_slots(
+            cFrame,
+            day_of_week="Sunday",
+            field="Riordan",
+            start="13:30",
+            division="Challenger"))
+    cFrame.update(
+        reserve_slots(
+            cFrame,
+            day_of_week="Sunday",
+            field="Tepper",
+            start="14:00",
+            division="Challenger"))
+    cFrame.update(
+        reserve_slots(
+            cFrame,
+            day_of_week="Sunday",
+            field="McCoppin",
+            start="09:00",
+            division="Challenger",
+            date="2025-03-09"))
 
     # Iterate over each division
     game_id_counter = 1
@@ -83,23 +100,30 @@ def main():
 
         # Lookup division preferences
         time_length = division_config.get("time_length", None)
-        denied_fields = division_config.get("denied_fields", [])  # Things like Kimbell D3 for bigger kids
-        dedicated_ti_weekend = division_config.get("dedicated_ti_weekend", None)
+        # Things like Kimbell D3 for bigger kids
+        denied_fields = division_config.get("denied_fields", [])
+        dedicated_ti_weekend = division_config.get(
+            "dedicated_ti_weekend", None)
 
         teams = list_teams_for_division(division, tFrame)
 
         # Random chance looper
         while loop_count <= max_loops:
-            faceoffs = faceoffs_repeated(teams, games=200)  # Make sure we have enough faceoffs to work with
+            # Make sure we have enough faceoffs to work with
+            faceoffs = faceoffs_repeated(teams, games=200)
 
             seed(random_seed)  # Set random seed for this division
 
-            # Make backups of the calendar and game_id_counter at start in case we need to revert
+            # Make backups of the calendar and game_id_counter at start in case
+            # we need to revert
             backup_frame = cFrame.copy()
             backup_game_id_counter = game_id_counter
 
             logger.info("#" * 80)
-            logger.info(f"# Processing {division:<15} with {len(teams)} teams   Loop {loop_count})")
+            logger.info(
+                f"# Processing {
+                    division:<15} with {
+                    len(teams)} teams   Loop {loop_count})")
 
             preferred_fields = division_config.get("preferred_fields", [None])
             preferred_days = division_config.get("preferred_days", [None])
@@ -121,7 +145,8 @@ def main():
                     games_per_week_pattern = phases[phase]
 
                     # Determine total slots available this week
-                    this_week_slots = working_frame.query("Week_Number == @week")
+                    this_week_slots = working_frame.query(
+                        "Week_Number == @week")
                     count_this_week_slots = len(this_week_slots)
 
                     games_to_schedule = games_per_week_pattern[int(week) - 1]
@@ -135,11 +160,13 @@ def main():
                         )
 
                     if games_to_schedule == 0:
-                        logger.info(f"{division:<15} No games to schedule in Phase {phase} Week {week}")
+                        logger.info(
+                            f"{division:<15} No games to schedule in Phase {phase} Week {week}")
                         continue
 
                     # Try only grabbing clean faceoffs (no repeats)
-                    clean_slice = int(count_teams / 2)  # number of pure faceoffs/games before repeating teams
+                    # number of pure faceoffs/games before repeating teams
+                    clean_slice = int(count_teams / 2)
                     clean_faceoffs = faceoffs[:clean_slice]
                     del faceoffs[:clean_slice]
                     shuffle(clean_faceoffs)
@@ -155,16 +182,20 @@ def main():
                                 continue
 
                             # Build query
-                            field_query = "Division != Division"  # division is empty (unused slot)
+                            # division is empty (unused slot)
+                            field_query = "Division != Division"
                             # Add constraints to query if we have them
-                            if preferred_days_set and preferred_days_set != [None]:
+                            if preferred_days_set and preferred_days_set != [
+                                    None]:
                                 field_query += " and Day_of_Week in @preferred_days_set"
-                            if preferred_fields_set and preferred_fields_set != [None]:
+                            if preferred_fields_set and preferred_fields_set != [
+                                    None]:
                                 field_query += " and Field in @preferred_fields_set"
 
                             # Limit to weekends or weekdays
                             if phase == "weekend":
-                                weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+                                weekdays = [
+                                    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
                                 field_query += " and Day_of_Week not in @weekdays"
                             elif phase == "weekday":
                                 weekends = ["Saturday", "Sunday"]
@@ -174,8 +205,10 @@ def main():
 
                             # Block dedicated TI weekend
                             if dedicated_ti_weekend:
-                                if int(week) == int(dedicated_ti_weekend) and phase == "weekend":
-                                    logger.info(f"{division:<15} Dedicated TI Weekend: {dedicated_ti_weekend}")
+                                if int(week) == int(
+                                        dedicated_ti_weekend) and phase == "weekend":
+                                    logger.info(
+                                        f"{division:<15} Dedicated TI Weekend: {dedicated_ti_weekend}")
                                     cs = cs.query("Field in @tepper_ketcham")
                                 # else:
                                 #     # Only prune if we need to (queries are expensive)
@@ -191,7 +224,9 @@ def main():
 
                             # Shuffle the candidate slots
                             shuffle(candidate_slot_ids)
-                            logger.info(f"Found {len(candidate_slot_ids)} candidate slots: {candidate_slot_ids}")
+                            logger.info(
+                                f"Found {
+                                    len(candidate_slot_ids)} candidate slots: {candidate_slot_ids}")
 
                             # Try each candidate slot
                             while len(candidate_slot_ids) > 0:
@@ -201,28 +236,32 @@ def main():
 
                                 # Confirm home team is not already scheduled
                                 if pd.isnull(cFrame.loc[slot, "Home_Team"]):
-                                    logger.debug(f"\t\tSlot {slot} is available")
+                                    logger.debug(
+                                        f"\t\tSlot {slot} is available")
 
                                     # Grab a faceoff
                                     if clean_faceoffs:
                                         (home_team, away_team) = clean_faceoffs.pop(0)
                                         faceoff_source = "clean"
                                     else:
-                                        logger.info("No more faceoffs to process ..  trying unused faceoffs")
+                                        logger.info(
+                                            "No more faceoffs to process ..  trying unused faceoffs")
                                         if unused_faceoffs:
                                             shuffle(unused_faceoffs)
-                                            (home_team, away_team) = unused_faceoffs.pop(0)
+                                            (home_team,
+                                             away_team) = unused_faceoffs.pop(0)
                                             faceoff_source = "unused"
                                         else:
                                             # pull another set of clean
                                             clean_faceoffs = faceoffs[:clean_slice]
                                             del faceoffs[:clean_slice]
                                             shuffle(clean_faceoffs)
-                                            (home_team, away_team) = clean_faceoffs.pop(0)
+                                            (home_team,
+                                             away_team) = clean_faceoffs.pop(0)
                                             faceoff_source = "clean"
                                             # shuffle(clean_faceoffs)
 
-                                    ## FIXME: This might be a better place to check for back to backs. (don't even allow it to schedule.. move on, and block if you can't get enough..)
+                                    # FIXME: This might be a better place to check for back to backs. (don't even allow it to schedule.. move on, and block if you can't get enough..)
                                     # IT IS ALL SUPER SLOW
                                     # Doesn't seem to be catching any??
                                     # if division in ["Rookie", "Minors AAA", "Minors AA", "Majors"]:
@@ -248,28 +287,43 @@ def main():
                                     #         continue
 
                                     # Assign the teams to the slot
-                                    game_id_string = f"{short_division_names[division]}-{game_id_counter:03d}"
+                                    game_id_string = f"{
+                                        short_division_names[division]}-{
+                                        game_id_counter:03d}"
                                     game_id_counter += 1
-                                    cFrame.loc[slot, ["Division", "Home_Team", "Home_Team_Name", "Away_Team", "Away_Team_Name", "Game_ID"]] = [
-                                        division,
-                                        home_team,
-                                        home_team,
-                                        away_team,
-                                        away_team,
-                                        game_id_string,
-                                    ]
+                                    cFrame.loc[slot,
+                                               ["Division",
+                                                "Home_Team",
+                                                "Home_Team_Name",
+                                                "Away_Team",
+                                                "Away_Team_Name",
+                                                "Game_ID"]] = [division,
+                                                               home_team,
+                                                               home_team,
+                                                               away_team,
+                                                               away_team,
+                                                               game_id_string,
+                                                               ]
 
                                     games_to_schedule -= 1
 
                                     logger.info(
-                                        f"{division:<15} Placed {home_team:<7} vs {away_team:<7} in slot {slot:>3} at {row.Field:<24} on {row.Day_of_Week:>8} {row.Datestamp} - Games Left:{games_to_schedule}"
-                                    )
+                                        f"{
+                                            division:<15} Placed {
+                                            home_team:<7} vs {
+                                            away_team:<7} in slot {
+                                            slot:>3} at {
+                                            row.Field:<24} on {
+                                            row.Day_of_Week:>8} {
+                                            row.Datestamp} - Games Left:{games_to_schedule}")
                                     if games_to_schedule == 0:
-                                        logger.info(f"{division:<15} ✅ No more games to schedule")
+                                        logger.info(
+                                            f"{division:<15} ✅ No more games to schedule")
                                         break
 
                                 else:
-                                    logger.debug(f"\t\tSlot {slot} is unavailable")
+                                    logger.debug(
+                                        f"\t\tSlot {slot} is unavailable")
                                     continue
 
                     if games_to_schedule > 0:
@@ -294,10 +348,15 @@ def main():
 
             gamecount_score = score_gamecount(cFrame, division)
 
-            total_score = field_score + start_score + day_spread_score + gamecount_score + unable_score
+            total_score = field_score + start_score + \
+                day_spread_score + gamecount_score + unable_score
             logger.info(
-                f"DEBUG SCORE {division} FS{field_score:0.2f} SS{start_score:0.2f} DS{day_spread_score:0.2f} GC{gamecount_score:0.2f} UA{unable_score:0.2f}  {total_score}"
-            )
+                f"DEBUG SCORE {division} FS{
+                    field_score:0.2f} SS{
+                    start_score:0.2f} DS{
+                    day_spread_score:0.2f} GC{
+                    gamecount_score:0.2f} UA{
+                        unable_score:0.2f}  {total_score}")
 
             # Track best score
             if total_score < best_score:
@@ -312,10 +371,15 @@ def main():
                 t1 = datetime.now()
                 logger.info(f"Elapsed time: {t1 - t0}")
                 rate = window / (t1 - t0).total_seconds()
-                logger.warning(f"{division:<15} PERFORMANCE Rate is {rate:0.2f} sims per second")
+                logger.warning(
+                    f"{division:<15} PERFORMANCE Rate is {rate:0.2f} sims per second")
                 logger.info(
-                    f"{division:<15} SCORES Best: {best_seed}:{best_score:0.2f}  Current: {random_seed}:{total_score:0.2f}  trying {max_loops - loop_count} loops"
-                )
+                    f"{
+                        division:<15} SCORES Best: {best_seed}:{
+                        best_score:0.2f}  Current: {random_seed}:{
+                        total_score:0.2f}  trying {
+                        max_loops -
+                        loop_count} loops")
 
                 t0 = t1
 
@@ -326,13 +390,16 @@ def main():
             # Annoyed about this logic vs the while loop
             if max_loops == 1:
                 # Not looping, so just exit
-                logger.info(f"{division:<15} Best SCORE is {best_seed}:{best_score:0.2f}")
+                logger.info(
+                    f"{division:<15} Best SCORE is {best_seed}:{best_score:0.2f}")
                 break
             elif loop_count == max_loops:
                 # intentionally set to best result for last run
-                logger.warning(f"{division:<15} Final Best SCORE is {best_seed}:{best_score:0.2f} - breaking early")
+                logger.warning(
+                    f"{division:<15} Final Best SCORE is {best_seed}:{best_score:0.2f} - breaking early")
 
-                logger.warning(f"{division:<15} RERUNNING Best SCORE for is {best_score:0.2f} with seed {best_seed}")
+                logger.warning(
+                    f"{division:<15} RERUNNING Best SCORE for is {best_score:0.2f} with seed {best_seed}")
                 random_seed = best_seed
 
                 # Revert to empty frame
@@ -351,9 +418,11 @@ def main():
                 cFrame = backup_frame.copy()
                 game_id_counter = backup_game_id_counter
 
-            # Last catch.. If you think the score is really good enough, go ahead and finish early
+            # Last catch.. If you think the score is really good enough, go
+            # ahead and finish early
             if best_score < 1.1:
-                logger.warning(f"{division:<15} Final Best SCORE is {best_seed}:{best_score:0.2f} - breaking early")
+                logger.warning(
+                    f"{division:<15} Final Best SCORE is {best_seed}:{best_score:0.2f} - breaking early")
                 loop_count = max_loops
                 random_seed = best_seed
 

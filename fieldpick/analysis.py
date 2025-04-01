@@ -23,13 +23,13 @@ scFrame = cFrame.copy()
 keep_columns = [
     'Week_Number',
     'Home_Team',
-     'Away_Team',
-     'Date',
-     'Start',
-        'End',
-        'Location',
-        'Field',
-        ]
+    'Away_Team',
+    'Date',
+    'Start',
+    'End',
+    'Location',
+    'Field',
+]
 scFrame = scFrame[keep_columns]
 scFrame.dropna(subset=['Home_Team'], inplace=True)
 
@@ -40,7 +40,6 @@ scFrame.rename(columns={'Date': 'MatchDate'}, inplace=True)
 scFrame.rename(columns={'Start': 'StartTime'}, inplace=True)
 scFrame.rename(columns={'End': 'EndTime'}, inplace=True)
 scFrame.index.name = "SortOrder"
-
 
 
 # for col in scFrame.columns:
@@ -59,21 +58,20 @@ publish_df_to_gsheet(aFrame, worksheet_name="Analysis")
 uFrame = cFrame.query("Division != Division")
 publish_df_to_gsheet(uFrame, worksheet_name="Unassigned")
 
-import time
 # time.sleep(3)
 
 divisionFrames = generate_schedules(cFrame)
 for division, division_frame in divisionFrames.items():
     drop_columns = [
         'Week_Number', 'Time_Length', 'Intended_Division',
-          'Day_of_Year', 'Division', "Datestamp", 
-          "Home_Team", "Away_Team",
-        'Notes','Location',	'Field', 'Size',	
-        'Type',	'Infield', 'Sunset', 'Region'
-        ]
+        'Day_of_Year', 'Division', "Datestamp",
+        "Home_Team", "Away_Team",
+        'Notes', 'Location', 'Field', 'Size',
+        'Type', 'Infield', 'Sunset', 'Region'
+    ]
     for col in drop_columns:
         if col in division_frame.columns:
             division_frame = division_frame.drop(columns=col)
     publish_df_to_gsheet(division_frame, worksheet_name=f"{division}")
     logger.info("Sleeping for 10 second to avoid rate limit")
-    time.sleep(3)
+    time.sleep(10)

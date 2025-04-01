@@ -39,11 +39,10 @@ print(f"Loaded {len(cFrame)} slots")
 
 
 # Data cleanup
-tidy = (pd.isna(cFrame["Division"]) == True)
+tidy = (pd.isna(cFrame["Division"]))
 slot_mask = tidy
 
 slots_to_clear = cFrame[slot_mask].index
-
 
 
 for i in slots_to_clear:
@@ -54,8 +53,6 @@ for i in slots_to_clear:
     cFrame.loc[i, "Away_Team_Name"] = None
 
     cFrame.loc[i, "Game_ID"] = f"NONE-9{i:03d}"
-
-    
 
 
 save_frame(cFrame, "calendar.pkl")

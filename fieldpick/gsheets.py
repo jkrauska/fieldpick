@@ -5,10 +5,13 @@ import logging
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
-spreadsheet_key = "1q6kRg6AbFQuV0HELl8APzy4-Mel4EyfIn12up6tGPKs"
+spreadsheet_key = "1TM5oeKk5pBtpSTCoXJLPrR1Ocpp0UR_mYggOAGA00Ig"
 
 
-def publish_df_to_gsheet(df, spreadsheet_key=spreadsheet_key, worksheet_name="Full Schedule"):
+def publish_df_to_gsheet(
+        df,
+        spreadsheet_key=spreadsheet_key,
+        worksheet_name="Full Schedule"):
     """Publish a dataframe to a Google Sheet"""
 
     logger.info(
@@ -18,5 +21,13 @@ def publish_df_to_gsheet(df, spreadsheet_key=spreadsheet_key, worksheet_name="Fu
         "https://spreadsheets.google.com/feeds",
         "https://www.googleapis.com/auth/drive",
     ]
-    credentials = ServiceAccountCredentials.from_json_keyfile_name("secret.json", scope)
-    d2g.upload(df, spreadsheet_key, worksheet_name, credentials=credentials, row_names=True, clean=False, df_size=True)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(
+        "secret.json", scope)
+    d2g.upload(
+        df,
+        spreadsheet_key,
+        worksheet_name,
+        credentials=credentials,
+        row_names=True,
+        clean=False,
+        df_size=True)

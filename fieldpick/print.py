@@ -1,3 +1,9 @@
+from inputs import team_names
+import datetime
+import os
+from weasyprint import HTML
+from jinja2 import Environment, FileSystemLoader
+from frametools import generate_team_schedules
 import pandas as pd
 import logging
 
@@ -7,16 +13,8 @@ pd.options.mode.chained_assignment = None
 
 logging.getLogger("weasyprint").setLevel(logging.ERROR)
 
-from frametools import generate_team_schedules
 
-from jinja2 import Environment, FileSystemLoader
-from weasyprint import HTML
-import os
-import datetime
-from inputs import team_names
-
-
-now=datetime.datetime.now()
+now = datetime.datetime.now()
 
 
 logging.basicConfig(
@@ -44,13 +42,12 @@ for division in divisionFrames.keys():
 
     # if division != "Juniors":
     #     continue
-    #if division != "Challenger": continue   
-
+    # if division != "Challenger": continue
 
     html_pages = []
 
     for team in divisionFrames[division].keys():
-        print (f"Generating schedule for {division} {team}")
+        print(f"Generating schedule for {division} {team}")
         team_frame = divisionFrames[division][team]
 
         drop_columns = [
@@ -97,26 +94,27 @@ for division in divisionFrames.keys():
 
         # Write to file
         base_url = os.path.dirname(os.path.realpath(__file__))
-        html = HTML(string=html_out, base_url=base_url).render(stylesheets=["fieldpick/reports/style.css"])
+        html = HTML(string=html_out, base_url=base_url).render(
+            stylesheets=["fieldpick/reports/style.css"])
 
         if not os.path.exists(division):
             os.makedirs(division)
-        #os.mkdir(division)
-        html.write_pdf(f"{division}/{division}_{team_name}_SFLL_Spring_2023_Schedule.pdf")
-
-
+        # os.mkdir(division)
+        html.write_pdf(
+            f"{division}/{division}_{team_name}_SFLL_Spring_2025_Schedule.pdf")
 
         html_pages.append(html_out)
 
-
     base_url = os.path.dirname(os.path.realpath(__file__))
 
-    pdf_pages = [HTML(string=html, base_url=base_url).render(stylesheets=["fieldpick/reports/style.css"]) for html in html_pages]
+    pdf_pages = [
+        HTML(
+            string=html,
+            base_url=base_url).render(
+            stylesheets=["fieldpick/reports/style.css"]) for html in html_pages]
 
     page_one = pdf_pages[0]
     for page in pdf_pages[1:]:
         page_one.pages.extend(page.pages)
 
-    page_one.write_pdf(f"SFLL_Spring_2023_Schedule_{division}.pdf")
-
-
+    page_one.write_pdf(f"SFLL_Spring_2025_Schedule_{division}.pdf")

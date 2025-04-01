@@ -13,7 +13,12 @@ from astral import LocationInfo
 # import datetime
 from astral.sun import sun
 
-loc = LocationInfo(name="SJC", region="CA, USA", timezone="America/Los_Angeles", latitude=37.3713439, longitude=-121.944675)
+loc = LocationInfo(
+    name="SJC",
+    region="CA, USA",
+    timezone="America/Los_Angeles",
+    latitude=37.3713439,
+    longitude=-121.944675)
 
 
 logger = logging.getLogger()
@@ -34,7 +39,7 @@ def range_of_dates(start_date, end_date):
 
 
 def add_time_slots(
-    locations=None, 
+    locations=None,
     fields=None,  # One or many fields matching this pattern
     intended_division=None,  # One or many divisions
     days_of_week=None,  # One or many days valid days of the week
@@ -80,17 +85,24 @@ def add_time_slots(
             # Apply for multiple fields
             for field in fields:
                 for (start_time, end_time) in times:
-                    logger.debug(f"Creating slot for {day_of_week} {single_date.date()} {start_time}-{end_time} {location} - {field}")
+                    logger.debug(
+                        f"Creating slot for {day_of_week} {
+                            single_date.date()} {start_time}-{end_time} {location} - {field}")
                     (hours, minutes) = start_time.split(":")
-                    datestamp = single_date + timedelta(hours=int(hours), minutes=int(minutes))
+                    datestamp = single_date + \
+                        timedelta(hours=int(hours), minutes=int(minutes))
 
                     # Calculate field time length
                     (start_h, start_m) = start_time.split(":")
                     (end_h, end_m) = end_time.split(":")
-                    game_length = (60 * int(end_h) + int(end_m)) - (60 * int(start_h) + int(start_m))
+                    game_length = (60 * int(end_h) + int(end_m)) - \
+                        (60 * int(start_h) + int(start_m))
                     game_length_pretty = game_length
 
-                    sun_info = sun(loc.observer, date=single_date, tzinfo=loc.timezone)
+                    sun_info = sun(
+                        loc.observer,
+                        date=single_date,
+                        tzinfo=loc.timezone)
 
                     mydata = dict(
                         Week_Name=f"{schedule_week}",
@@ -118,7 +130,8 @@ def add_time_slots(
                     # adds field data
                     combo_field = f"{location} - {field}"
                     if combo_field not in field_data:
-                        logger.error(f"ERROR Field {combo_field} not found in field data -- check inputs.py")
+                        logger.error(
+                            f"ERROR Field {combo_field} not found in field data -- check inputs.py")
                         sys.exit(1)
                     for (key, value) in field_data[combo_field].items():
                         if key == "field_name":
@@ -126,7 +139,8 @@ def add_time_slots(
                         mydata[key] = value
                     mydf = pd.DataFrame(mydata, index=[0])
 
-                    output = pd.concat([output, mydf], ignore_index=True)  # concat times
+                    output = pd.concat(
+                        [output, mydf], ignore_index=True)  # concat times
 
     if not input.empty:
         return pd.concat([input, output], ignore_index=True)
@@ -134,7 +148,7 @@ def add_time_slots(
         return output
 
 
-################################################################################
+##########################################################################
 # Macros
 fort_scott = ["Ft. Scott - North", "Ft. Scott - South"]
 farm_scott_goode = ["Ft. Scott - South", "Paul Goode Practice"]
@@ -143,7 +157,13 @@ ti = tepper_ketcham
 weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 monday_thursday = ["Monday", "Tuesday", "Wednesday", "Thursday"]
 tuesday_thursday = ["Tuesday", "Wednesday", "Thursday"]
-anyday_but_friday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Saturday", "Sunday"]
+anyday_but_friday = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Saturday",
+    "Sunday"]
 
 
 short_division_names = {
@@ -162,9 +182,9 @@ short_division_names = {
 }
 
 sports_connect_division_names = {
-    "Tee Ball": "TeeBall",
-    "Lower Farm": "LowerFarm",
-    "Upper Farm": "UpperFarm",
+    "Tee Ball": "TB",
+    "Lower Farm": "LF",
+    "Upper Farm": "UF",
     "Rookie": "Rookie",
     "Minors AA": "AA",
     "Minors AAA": "AAA",

@@ -26,7 +26,13 @@ from pulpFunctions import (
     balance_fields,
     minimum_games_per_team,
     maximum_games_per_team,
+    min_home_games,
     min_weekends,
+    min_ti,
+    max_ti,
+    max_ti_weekdays,
+    no_6_in_21,
+    min_games_per_week,
     solveMe,
 )
 
@@ -39,19 +45,18 @@ logger = logging.getLogger()
 
 
 # Load data
-cFrame = load_frame("data/calendar.pkl")
+cFrame: pd.DataFrame = load_frame("data/calendar.pkl")
 tFrame = load_frame("data/teams.pkl")
 
 pd.set_option("display.max_rows", None)
 
 
-############################################################################################################
-### PULP STUFF
+##########################################################################
+# PULP STUFF
 
 division = "Minors AAA"
 teams = list_teams_for_division(division, tFrame)
 
-day_off = "Monday"
 duration = "150"
 last_week = "9"
 
@@ -66,17 +71,16 @@ valid_week_number = pd.isna(cleanFrame["Week_Number"]) == False
 correct_time = duration_correct & valid_week_number
 
 division_same = cleanFrame["Division"] == division
-division_not_set = pd.isna(cleanFrame["Division"]) == True
+division_not_set = pd.isna(cleanFrame["Division"])
 slot_good_for_division = division_same | division_not_set
 
 before_last_week = pd.to_numeric(cleanFrame["Week_Number"]) <= int(last_week)
-not_day_off = cleanFrame["Day_of_Week"] != day_off
 not_opening_day = cleanFrame["Notes"] != "Opening Day Ceremony"
-non_blocked = not_opening_day & not_day_off & before_last_week
+non_blocked = not_opening_day & before_last_week
 
 
 # Prescribed slots
-divisions = [division, "Minors AA", "Rookie"]
+divisions = [division, "Majors"]
 prescribed_fields = cleanFrame["Intended_Division"].isin(divisions)
 print(f"Prescribed Slots2: {prescribed_fields.sum()}")
 prescribed = prescribed_fields
@@ -100,7 +104,7 @@ early_times = ["08:00", "08:30", "09:00", "09:30"]
 early_slots = working_slots[working_slots["Start"].isin(early_times)].index
 
 
-############################################################################################################
+##########################################################################
 
 # Slot Variables
 slot_ids = working_slots.index
@@ -113,8 +117,22 @@ slots_vars = LpVariable.dicts("Slot", combinations, cat="Binary")
 _division = division.replace(" ", "_")
 prob = LpProblem(f"League_Scheduling_{_division}", LpMaximize)
 
-# objective maximize number of slots used
-prob += lpSum([slots_vars]), "Number of games played"
+# objective maximize number of slots used at desired fields, and prefer
+# weekends
+
+desired_field = [
+    "Tepper - Field 1",
+    "West Sunset - Field 3",
+    "South Sunset - Diamond 1"]
+desired_slots = working_slots[working_slots["Full_Field"].isin(
+    desired_field)].index
+
+# Prefer weekend slots
+weekends = ["Saturday", "Sunday"]
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(
+    weekends)].index
+prob += lpSum([10 * slots_vars[i, h, a] for i in desired_slots for h in teams for a in teams]) + \
+    lpSum([slots_vars[i, h, a] for i in weekend_slots for h in teams for a in teams]), "Combined objective: desired fields and weekend slots"
 
 # Common constraints
 prob = common_constraints(prob, slots_vars, teams, slot_ids, working_slots)
@@ -122,38 +140,69 @@ prob = common_constraints(prob, slots_vars, teams, slot_ids, working_slots)
 # Division Specific
 prob = minimum_faceoffs(prob, slots_vars, teams, slot_ids, limit=1)
 prob = limit_faceoffs(prob, slots_vars, teams, slot_ids, limit=2)
-prob = limit_games_per_week(prob, weeks, working_slots, slots_vars, teams, limit=2)
+prob = limit_games_per_week(
+    prob,
+    weeks,
+    working_slots,
+    slots_vars,
+    teams,
+    limit=2)
 
-prob = minimum_games_per_team(prob, teams, slots_vars, slot_ids, min_games=10)
-prob = maximum_games_per_team(prob, teams, slots_vars, slot_ids, max_games=12)
+prob = minimum_games_per_team(
+    prob,
+    teams,
+    slots_vars,
+    slot_ids,
+    min_games=games_per_team)
+prob = maximum_games_per_team(
+    prob,
+    teams,
+    slots_vars,
+    slot_ids,
+    max_games=games_per_team)
+prob = early_starts(prob, teams, slots_vars, early_slots, min=3, max=4)
 
-prob = early_starts(prob, teams, slots_vars, early_slots, min=1, max=5)
+# Ensure each team has at least half of their games as home games
+prob = min_home_games(prob, teams, working_slots, slots_vars, min_games=games_per_team // 2)
 
 # # Balance fields
-prob = balance_fields(prob, teams, games_per_team, working_slots, slots_vars, fudge=1)
+prob = balance_fields(
+    prob,
+    teams,
+    games_per_team,
+    working_slots,
+    slots_vars,
+    fudge=1)
 
 # # Tepper Min
-prob = field_limits(prob, teams, working_slots, slots_vars, "Tepper - Field 1", min=1, max=5, variation="TEPPER_MIN")
-prob = field_limits(prob, teams, working_slots, slots_vars, "Ketcham - Field 1", min=1, max=5, variation="KETCHAM_MIN")
+prob = field_limits(
+    prob,
+    teams,
+    working_slots,
+    slots_vars,
+    "Tepper - Field 1",
+    min=3,
+    max=4,
+    variation="TEPPER_MIN")
+
+# Ensure at least one game at West Sunset - Field 3
+prob = field_limits(
+    prob,
+    teams,
+    working_slots,
+    slots_vars,
+    "West Sunset - Field 3",
+    min=1,
+    max=3,
+    variation="WEST_SUNSET_MIN")
 
 prob = min_weekends(prob, teams, working_slots, slots_vars, min=7)
 
-
-# Prefer tepper on weekends
-tepper = ["Tepper - Field 1", "Ketcham - Field 1"]
-tepper_slots = working_slots[working_slots["Full_Field"].isin(tepper)].index
-tepper_weekend_slots = tepper_slots
-for j in teams:
-    prob += (
-        (
-            lpSum([slots_vars[i, j, k] for i in tepper_weekend_slots] for k in teams)  # home team on tepper weekend
-            + lpSum([slots_vars[i, k, j] for i in tepper_weekend_slots] for k in teams) # away team on tepper weekend
-        )
-        >= 9,
-        f"get_tepper_min_team_{j}",
-    )
-
-
+prob = min_ti(prob, teams, working_slots, slots_vars, min=9)
+prob = max_ti(prob, teams, working_slots, slots_vars, max=10)
+prob = max_ti_weekdays(prob, teams, working_slots, slots_vars, max=4)
+prob = no_6_in_21(prob, teams, working_slots, slots_vars)
+prob = min_games_per_week(prob, teams, working_slots, slots_vars, min=1)
 
 prob = solveMe(prob, working_slots)
 clear_division(cFrame, division)
@@ -162,7 +211,17 @@ check_count = Counter()
 for v in prob.variables():
     if v.varValue > 0:
         # gross text parsing
-        d = v.name.replace("Slot_", "").replace(",_", ",").replace("'", "").replace("(", "").replace(")", "")
+        d = v.name.replace(
+            "Slot_",
+            "").replace(
+            ",_",
+            ",").replace(
+            "'",
+            "").replace(
+                "(",
+                "").replace(
+                    ")",
+            "")
         (id, home, away) = d.split(",")
         id = int(id)
 
@@ -178,7 +237,17 @@ for foo in check_count:
 for v in prob.variables():
     if v.varValue > 0:
         # gross text parsing
-        d = v.name.replace("Slot_", "").replace(",_", ",").replace("'", "").replace("(", "").replace(")", "")
+        d = v.name.replace(
+            "Slot_",
+            "").replace(
+            ",_",
+            ",").replace(
+            "'",
+            "").replace(
+                "(",
+                "").replace(
+                    ")",
+            "")
         (id, home, away) = d.split(",")
         id = int(id)
         assign_row(cFrame, id, division, home, away, safe=False)

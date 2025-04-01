@@ -1,3 +1,4 @@
+from collections import Counter
 import pandas as pd
 import logging
 import sys
@@ -17,7 +18,6 @@ cFrame = pd.read_pickle(save_file)
 print(f"Loaded {len(cFrame)} slots")
 
 
-
 divisionFrames = generate_schedules(cFrame)
 for division, division_frame in divisionFrames.items():
     print(division)
@@ -29,29 +29,30 @@ for division, division_frame in divisionFrames.items():
     for compare_division, compare_division_frame in divisionFrames.items():
         if division == compare_division:
             continue
-        team_names_b = sorted(list(compare_division_frame['Away_Team'].unique()))
+        team_names_b = sorted(
+            list(compare_division_frame['Away_Team'].unique()))
         for teamA in team_names_a:
-            for teamB in team_names_b: 
+            for teamB in team_names_b:
 
-                a_starts = division_frame.query(f"Home_Team == '{teamA}' or Away_Team == '{teamA}'")
-                b_starts = compare_division_frame.query(f"Home_Team == '{teamB}' or Away_Team == '{teamB}'")
+                a_starts = division_frame.query(
+                    f"Home_Team == '{teamA}' or Away_Team == '{teamA}'")
+                b_starts = compare_division_frame.query(
+                    f"Home_Team == '{teamB}' or Away_Team == '{teamB}'")
 
                 atimes = a_starts['Datestamp'].astype(int).values
                 btimes = b_starts['Datestamp'].astype(int).values
 
                 min_delta = 999999999999
                 for i in atimes:
-                    #print(atimes)
+                    # print(atimes)
                     for j in btimes:
-                        delta = int(abs(i-j)/1000000000 / 60)
+                        delta = int(abs(i - j) / 1000000000 / 60)
                         min_delta = min(delta, min_delta)
-                
+
                 if min_delta > 120:
                     print(f"Min {min_delta},A,{teamA},B,{teamB}")
 
 
-
-from collections import Counter
 dupe_check = Counter()
 dropids = []
 for row in cFrame.itertuples():

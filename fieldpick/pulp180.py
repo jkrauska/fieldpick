@@ -41,15 +41,16 @@ tFrame = pd.read_pickle(save_file)
 weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 weekends = ["Saturday", "Sunday"]
 
-############################################################################################################
-### PULP STUFF
+##########################################################################
+# PULP STUFF
 
 
 # Data cleanup
 cleanFrame = cFrame[cFrame["Week_Number"] != "UNKNOWN"].copy()
 
 # Working Slots
-correct_time = (cleanFrame["Time_Length"] == "180") & (pd.isna(cleanFrame["Week_Number"]) == False)
+correct_time = (cleanFrame["Time_Length"] == "180") & (
+    pd.isna(cleanFrame["Week_Number"]) == False)
 not_riordan = (cleanFrame["Field"] != "Riordan")
 non_blocked = (cleanFrame["Notes"] != "Opening Day Ceremony")
 less_than_10 = (pd.to_numeric(cleanFrame["Week_Number"]) < 10)
@@ -72,10 +73,18 @@ fields = working_slots["Field"].unique()
 # Extract Divisions
 divisions = list(tFrame["Division"].unique())
 # Remove non-150 divisions
-for non150 in ["Tee Ball", "Upper Farm", "Lower Farm", "Challenger", "Rookie", "Minors AA", "Minors AAA", "Majors"]:
+for non150 in [
+    "Tee Ball",
+    "Upper Farm",
+    "Lower Farm",
+    "Challenger",
+    "Rookie",
+    "Minors AA",
+    "Minors AAA",
+        "Majors"]:
     try:
         divisions.remove(non150)
-    except:
+    except BaseException:
         pass
 
 # Remove all division data
@@ -86,7 +95,7 @@ for division in divisions:
 print(f"Divisions: {divisions}")
 
 
-############################################################################################################
+##########################################################################
 
 # Slot Variables
 slots = working_slots.index
@@ -94,7 +103,8 @@ slots = working_slots.index
 # Helpful Dict of each division's teams
 teams_by_division = {}
 for division in divisions:
-    teams_by_division[division] = tFrame[tFrame["Division"] == division]["Team"].unique()
+    teams_by_division[division] = tFrame[tFrame["Division"]
+                                         == division]["Team"].unique()
 
 
 print(f"Teams by Division: {teams_by_division}")
@@ -120,9 +130,9 @@ with warnings.catch_warnings():
 prob = LpProblem("League scheduling", LpMaximize)
 
 
-
 # objective minimize games played
-prob += lpSum([slots_vars]), "Number of games played should be minimized"  # Odd objective function?
+# Odd objective function?
+prob += lpSum([slots_vars]), "Number of games played should be minimized"
 
 
 # Set games per team
@@ -136,9 +146,6 @@ for division in divisions:
             lpSum([slots_vars[i, division, j, k] for i in slots for k in teams])
             + lpSum([slots_vars[i, division, k, j] for i in slots for k in teams])
         ) == 10, f"Games_per_team_{division}_{j}"
-
-
-
 
 
 # Only allow one game per slot
@@ -160,10 +167,12 @@ for i in slots:
 for division in divisions:
     teams = teams_by_division[division]
     for i in slots:
-        prob += (
-            lpSum([slots_vars[i, division, j, k] for j in teams for k in teams if j == k]) == 0,
-            f"No_Same_Team_{division}_{i}",
-        )
+        prob += (lpSum([slots_vars[i,
+                                   division,
+                                   j,
+                                   k] for j in teams for k in teams if j == k]) == 0,
+                 f"No_Same_Team_{division}_{i}",
+                 )
 
 
 # All teams must play each other at least once
@@ -172,9 +181,8 @@ for division in divisions:
     for j in teams:
         for k in teams:
             if j != k:
-                prob += (
-                    lpSum([slots_vars[i, division, j, k] for i in slots]) + lpSum([slots_vars[i, division, k, j] for i in slots])
-                ) >= 1, f"Min_games_per_pair_{division}_{j}_{k}"
+                prob += (lpSum([slots_vars[i, division, j, k] for i in slots]) + lpSum(
+                    [slots_vars[i, division, k, j] for i in slots])) >= 1, f"Min_games_per_pair_{division}_{j}_{k}"
 
 # # No team should play the same team more than twice
 for division in divisions:
@@ -182,9 +190,8 @@ for division in divisions:
     for j in teams:
         for k in teams:
             if j != k:
-                prob += (
-                    lpSum([slots_vars[i, division, j, k] for i in slots]) + lpSum([slots_vars[i, division, k, j] for i in slots])
-                ) <= 2, f"Max_games_per_pair_{division}_{j}_{k}"
+                prob += (lpSum([slots_vars[i, division, j, k] for i in slots]) + lpSum(
+                    [slots_vars[i, division, k, j] for i in slots])) <= 2, f"Max_games_per_pair_{division}_{j}_{k}"
 
 
 # # No team should play more than 2 games per week
@@ -195,9 +202,11 @@ for week in weeks:
         for j in teams:
             prob += (
                 (
-                    lpSum([slots_vars[i, division, j, k] for i in this_week for k in teams])
+                    lpSum([slots_vars[i, division, j, k]
+                          for i in this_week for k in teams])
                     + lpSum(
-                        [slots_vars[i, division, k, j] for i in this_week for k in teams]
+                        [slots_vars[i, division, k, j]
+                            for i in this_week for k in teams]
                     )  # home team on week  # away team on week
                 )
                 <= 2,
@@ -243,9 +252,11 @@ for day in days_of_year:
         for j in teams:
             prob += (
                 (
-                    lpSum([slots_vars[i, division, j, k] for i in this_day for k in teams])
+                    lpSum([slots_vars[i, division, j, k]
+                          for i in this_day for k in teams])
                     + lpSum(
-                        [slots_vars[i, division, k, j] for i in this_day for k in teams]
+                        [slots_vars[i, division, k, j]
+                            for i in this_day for k in teams]
                     )  # home team on day  # away team on day
                 )
                 <= 1,
@@ -256,16 +267,25 @@ for day in days_of_year:
 # No team can play back to back games
 for day in days_of_year:
     this_day = working_slots[working_slots["Day_of_Year"] == day].index
-    next_day = working_slots[working_slots["Day_of_Year"] == str(int(day) + 1)].index
+    next_day = working_slots[working_slots["Day_of_Year"]
+                             == str(int(day) + 1)].index
     for division in divisions:
         teams = teams_by_division[division]
         for j in teams:
             prob += (
                 (
-                    lpSum([slots_vars[i, division, j, k] for i in this_day for k in teams])  # home team on day
-                    + lpSum([slots_vars[i, division, k, j] for i in this_day for k in teams])  # away team on day
-                    + lpSum([slots_vars[i, division, j, k] for i in next_day for k in teams])  # home team on day+1
-                    + lpSum([slots_vars[i, division, k, j] for i in next_day for k in teams])  # away team on day+1
+                    lpSum([slots_vars[i, division, j, k]
+                          # home team on day
+                           for i in this_day for k in teams])
+                    + lpSum([slots_vars[i, division, k, j]
+                            # away team on day
+                             for i in this_day for k in teams])
+                    + lpSum([slots_vars[i, division, j, k]
+                            # home team on day+1
+                             for i in next_day for k in teams])
+                    + lpSum([slots_vars[i, division, k, j]
+                            # away team on day+1
+                             for i in next_day for k in teams])
                 )
                 <= 2,
                 f"Back_to_back_{division}_{day}_team_{j}",
@@ -292,154 +312,183 @@ for day in days_of_year:
 #             prob += by_day
 
 
-
-
-
-
 division = "Juniors"
 
-lockteam="Team 1"
-lockweek="Week 2"
+lockteam = "Team 1"
+lockweek = "Week 2"
 
-weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(
+    weekends)].index
 
 for week in weeks:
     if week == lockweek:  # hot week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
         ) == 2, f"Assign {lockteam} back to back in week {week}"
     else:  # cold week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
-        ) <= 1, f"Block {lockteam} back to back in week {week}" 
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
+        ) <= 1, f"Block {lockteam} back to back in week {week}"
 
 
-lockteam="Team 2"
-lockweek="Week 3"
-weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
+lockteam = "Team 2"
+lockweek = "Week 3"
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(
+    weekends)].index
 for week in weeks:
     if week == lockweek:  # hot week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
         ) == 2, f"Assign {lockteam} back to back in week {week}"
     else:  # cold week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
-        ) <= 1, f"Block {lockteam} back to back in week {week}" 
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
+        ) <= 1, f"Block {lockteam} back to back in week {week}"
 
-lockteam="Team 3"
-lockweek="Week 4"
-weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
+lockteam = "Team 3"
+lockweek = "Week 4"
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(
+    weekends)].index
 for week in weeks:
     if week == lockweek:  # hot week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
         ) == 2, f"Assign {lockteam} back to back in week {week}"
     else:  # cold week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
-        ) <= 1, f"Block {lockteam} back to back in week {week}" 
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
+        ) <= 1, f"Block {lockteam} back to back in week {week}"
 
-lockteam="Team 4"
-lockweek="Week 5"
-weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
+lockteam = "Team 4"
+lockweek = "Week 5"
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(
+    weekends)].index
 for week in weeks:
     if week == lockweek:  # hot week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
         ) == 2, f"Assign {lockteam} back to back in week {week}"
     else:  # cold week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
-        ) <= 1, f"Block {lockteam} back to back in week {week}" 
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
+        ) <= 1, f"Block {lockteam} back to back in week {week}"
 
-lockteam="Team 5"
-lockweek="Week 7"
-weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
+lockteam = "Team 5"
+lockweek = "Week 7"
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(
+    weekends)].index
 for week in weeks:
     if week == lockweek:  # hot week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
         ) == 2, f"Assign {lockteam} back to back in week {week}"
     else:  # cold week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
-        ) <= 1, f"Block {lockteam} back to back in week {week}" 
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
+        ) <= 1, f"Block {lockteam} back to back in week {week}"
 
-lockteam="Team 6"
-lockweek="Week 8"
-weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
+lockteam = "Team 6"
+lockweek = "Week 8"
+weekend_slots = working_slots[working_slots["Day_of_Week"].isin(
+    weekends)].index
 for week in weeks:
     if week == lockweek:  # hot week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
         ) == 2, f"Assign {lockteam} back to back in week {week}"
     else:  # cold week
         this_week = working_slots[working_slots["Week_Name"] == week].index
         weekend_slots_this_week = weekend_slots.intersection(this_week)
-        prob += ( 
-            lpSum([slots_vars[slot, division, lockteam, k] for slot in weekend_slots_this_week for k in teams])  # home team on day
-            + lpSum([slots_vars[slot, division, k, lockteam] for slot in weekend_slots_this_week for k in teams])  # away team on day
-        ) <= 1, f"Block {lockteam} back to back in week {week}" 
-
-
-
-
-
+        prob += (
+            lpSum([slots_vars[slot, division, lockteam, k]
+                  for slot in weekend_slots_this_week for k in teams])  # home team on day
+            + lpSum([slots_vars[slot, division, k, lockteam]
+                    for slot in weekend_slots_this_week for k in teams])  # away team on day
+        ) <= 1, f"Block {lockteam} back to back in week {week}"
 
 
 # # No team can play 3 games in 5 days
 for day in days_of_year:
     day_one = working_slots[working_slots["Day_of_Year"] == day].index
-    day_two = working_slots[working_slots["Day_of_Year"] == str(int(day) + 1)].index
-    day_three = working_slots[working_slots["Day_of_Year"] == str(int(day) + 2)].index
-    day_four = working_slots[working_slots["Day_of_Year"] == str(int(day) + 3)].index
-    day_five = working_slots[working_slots["Day_of_Year"] == str(int(day) + 4)].index
+    day_two = working_slots[working_slots["Day_of_Year"]
+                            == str(int(day) + 1)].index
+    day_three = working_slots[working_slots["Day_of_Year"] == str(
+        int(day) + 2)].index
+    day_four = working_slots[working_slots["Day_of_Year"]
+                             == str(int(day) + 3)].index
+    day_five = working_slots[working_slots["Day_of_Year"]
+                             == str(int(day) + 4)].index
 
-    five_days = list(day_one) + list(day_two)  + list(day_three) + list(day_four) + list(day_five)
-
+    five_days = list(day_one) + list(day_two) + \
+        list(day_three) + list(day_four) + list(day_five)
 
     for division in divisions:
         teams = teams_by_division[division]
         for j in teams:
-            prob += ( 
+            prob += (
                 (
-                    lpSum([slots_vars[i, division, j, k] for i in five_days for k in teams])  # home team on day
-                    + lpSum([slots_vars[i, division, k, j] for i in five_days for k in teams])  # away team on day
-                ) 
+                    lpSum([slots_vars[i, division, j, k]
+                          # home team on day
+                           for i in five_days for k in teams])
+                    + lpSum([slots_vars[i, division, k, j]
+                            # away team on day
+                             for i in five_days for k in teams])
+                )
                 <= 2,
                 f"3_games_in_5_days_{division}_{day}_team_{j}",
             )
@@ -465,8 +514,6 @@ for day in days_of_year:
 #                 <= 2,  # Not sure about this...2 or 3?
 #                 f"3_games_in_6_days_{division}_{day}_team_{j}",
 #             )
-
-
 
 
 # # # More than 1 Paul Goode Main
@@ -517,8 +564,6 @@ for field in fields:
 #             ) <= int(games_per_team / 2) - 1, f"Single_field_{field}_{division}_{j}"
 
 
-
-
 # # Try to balance Weekday and Weekend
 # weekday_slots = working_slots[working_slots["Day_of_Week"].isin(weekdays)].index
 # weekend_slots = working_slots[working_slots["Day_of_Week"].isin(weekends)].index
@@ -544,10 +589,6 @@ for field in fields:
 #         ) <= 1, f"Weekend_Weekday_{division}_{j}"
 
 
-
-
-
-
 logger.info("Solving")
 # Solve (quietly)
 # prob.solve(PULP_CBC_CMD(msg=0))
@@ -562,7 +603,17 @@ check_count = Counter()
 for v in prob.variables():
     if v.varValue > 0:
         # gross text parsing
-        d = v.name.replace("Slot_", "").replace(",_", ",").replace("'", "").replace("(", "").replace(")", "")
+        d = v.name.replace(
+            "Slot_",
+            "").replace(
+            ",_",
+            ",").replace(
+            "'",
+            "").replace(
+                "(",
+                "").replace(
+                    ")",
+            "")
         (id, division, home, away) = d.split(",")
         id = int(id)
         home = home.replace("_", " ")
@@ -570,7 +621,8 @@ for v in prob.variables():
         division = division.replace("_", " ")
 
         # Apply change
-        print(f"Slot {id} \tDivision: {division} \tHome: {home} \tAway: {away}")
+        print(
+            f"Slot {id} \tDivision: {division} \tHome: {home} \tAway: {away}")
         assign_row(cFrame, id, division, home, away, safe=False)
 
         check_count[home] += 1
@@ -578,7 +630,7 @@ for v in prob.variables():
         check_count["total"] += 1
 
 
-#sys.exit(1)
+# sys.exit(1)
 
 # Balance hack
 for i in range(100):

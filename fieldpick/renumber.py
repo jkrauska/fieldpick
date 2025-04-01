@@ -1,3 +1,4 @@
+import math
 import pandas as pd
 import logging
 from frametools import analyze_columns, swap_rows_by_game_id, balance_home_away, swap_rows_by_slot, assign_row
@@ -26,14 +27,19 @@ print(f"Loaded {len(cFrame)} slots")
 
 
 def clear_row(frame, slot):
-    cFrame.loc[slot, ["Division", "Home_Team", "Home_Team_Name", "Away_Team", "Away_Team_Name", "Game_ID"]] = [
-        None,
-        None,
-        None,
-        None,
-        None,
-        None,
-    ]
+    cFrame.loc[slot,
+               ["Division",
+                "Home_Team",
+                "Home_Team_Name",
+                "Away_Team",
+                "Away_Team_Name",
+                "Game_ID"]] = [None,
+                               None,
+                               None,
+                               None,
+                               None,
+                               None,
+                               ]
 
 
 def move_row(frame, slot, new_slot):
@@ -45,25 +51,34 @@ def move_row(frame, slot, new_slot):
         logger.warning(f"Slot {slot} does not have a game assigned")
         return
     else:
-        cFrame.loc[new_slot, ["Division", "Home_Team", "Home_Team_Name", "Away_Team", "Away_Team_Name", "Game_ID"]] = [
-            cFrame.loc[slot, "Division"],
-            cFrame.loc[slot, "Home_Team"],
-            cFrame.loc[slot, "Home_Team_Name"],
-            cFrame.loc[slot, "Away_Team"],
-            cFrame.loc[slot, "Away_Team_Name"],
-            cFrame.loc[slot, "Game_ID"],
-        ]
+        cFrame.loc[new_slot,
+                   ["Division",
+                    "Home_Team",
+                    "Home_Team_Name",
+                    "Away_Team",
+                    "Away_Team_Name",
+                    "Game_ID"]] = [cFrame.loc[slot,
+                                              "Division"],
+                                   cFrame.loc[slot,
+                                              "Home_Team"],
+                                   cFrame.loc[slot,
+                                              "Home_Team_Name"],
+                                   cFrame.loc[slot,
+                                              "Away_Team"],
+                                   cFrame.loc[slot,
+                                              "Away_Team_Name"],
+                                   cFrame.loc[slot,
+                                              "Game_ID"],
+                                   ]
         clear_row(frame, slot)
 
 
-import math
-id=1
+id = 1
 for division in short_division_names:
     print(f"Renumbering {division}")
 
     for slot in cFrame[cFrame["Division"] == division].index:
         game_id_string = f"{short_division_names[division]}-{id:03d}"
-
 
         old_game_id = cFrame.loc[slot, "Game_ID"]
 
@@ -71,7 +86,7 @@ for division in short_division_names:
         #     continue
         # else:
         #     print
-        #cFrame.loc[slot, "Old_Game_ID"] = cFrame.loc[slot, "Game_ID"]
+        # cFrame.loc[slot, "Old_Game_ID"] = cFrame.loc[slot, "Game_ID"]
         print(f"Renumbering {slot} from {old_game_id} to {game_id_string}")
         cFrame.loc[slot, "Game_ID"] = game_id_string
 
@@ -86,7 +101,7 @@ for division in short_division_names:
 try:
     cFrame.drop("Old_Game_ID", axis=1, inplace=True)
 except KeyError:
-    pass    
+    pass
 
 
 # Clear notes, send empty gameID
@@ -99,12 +114,12 @@ for slot in cFrame.index:
     if cFrame.loc[slot, "Game_ID"] is None:
         game_id_string = f"NONE-{id:03d}"
 
-        #print(f"Numbering {slot} to {game_id_string}")
+        # print(f"Numbering {slot} to {game_id_string}")
         cFrame.loc[slot, "Game_ID"] = game_id_string
         id += 1
 
 
-#sys.exit(1)
+# sys.exit(1)
 
 save_frame(cFrame, "calendar.pkl")
 publish_df_to_gsheet(cFrame, worksheet_name="Full Schedule")
